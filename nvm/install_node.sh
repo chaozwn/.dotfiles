@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo "Install Node 22"
 nvm install v22.13.0
