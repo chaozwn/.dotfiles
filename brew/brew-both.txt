@@ -15,3 +15,24 @@ ncdu
 bottom
 # starship
 starship
+# tmux
+tmux
+# yazi
+file
+yazi
+ffmpegthumbnailer
+unar
+jq
+poppler
+ripgrep 
+fzf 
+zoxide 
+exiftool
+lazygit
+lazydocker
+sevenzip
+imagemagick
+ripgrep-all 
+mediainfo 
+glow 
+eza

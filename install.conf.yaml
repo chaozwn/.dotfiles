@@ -10,6 +10,8 @@
     ~/.config/starship.toml: ./starship/starship.toml
     ~/.config/fish/: ./fish
     ~/.config/kitty/: ./kitty
+    ~/.config/yazi/: ./yazi
+    ~/.config/tmux/: ./tmux
 
 - shell:
     - git submodule sync --recursive
