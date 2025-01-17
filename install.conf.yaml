@@ -5,9 +5,11 @@
       relink: true
 
 - clean: ["~"]
+
 - link:
     ~/.config/starship.toml: ./starship/starship.toml
     ~/.config/fish/: ./fish
+    ~/.config/kitty/: ./kitty
 
 - shell:
     - git submodule sync --recursive
