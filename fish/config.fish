@@ -15,6 +15,7 @@ set -Ux XDG_CONFIG_HOME ~/.config
 # Path
 set -x fish_user_paths
 fish_add_path /opt/homebrew/bin
+fish_add_path /home/linuxbrew/.linuxbrew/bin
 fish_add_path ~/.local/bin
 fish_add_path ~/.luarocks/bin
 fish_add_path /usr/local/sbin
