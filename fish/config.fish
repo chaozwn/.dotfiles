@@ -120,13 +120,13 @@ abbr hide-cursor "tput civis"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-if test -f /Users/jayce.zhao/miniconda3/bin/conda
-    eval /Users/jayce.zhao/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+if test -f ~/miniconda3/bin/conda
+    eval ~/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 else
-    if test -f "/Users/jayce.zhao/miniconda3/etc/fish/conf.d/conda.fish"
-        . "/Users/jayce.zhao/miniconda3/etc/fish/conf.d/conda.fish"
+    if test -f "~/miniconda3/etc/fish/conf.d/conda.fish"
+        . "~/miniconda3/etc/fish/conf.d/conda.fish"
     else
-        set -x PATH "/Users/jayce.zhao/miniconda3/bin" $PATH
+        set -x PATH "~/miniconda3/bin" $PATH
     end
 end
 # <<< conda initialize <<<
