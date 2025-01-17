@@ -1,0 +1,14 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- clean: ["~"]
+
+- link:
+    ~/.config/starship.toml: ./starship/starship.toml
+
+- shell:
+    - git submodule sync --recursive
+    - git submodule update --init --recursive
+    - ./scripts/install_homebrew.sh
