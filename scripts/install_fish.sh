@@ -23,4 +23,3 @@ brew install bottom
 
 # npm
 npm install -g yarn pnpm devmoji ultra
-

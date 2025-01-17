@@ -1,0 +1,17 @@
+# fish
+fastfetch
+gum
+hub
+fd
+grc
+bat
+nvm
+numbat
+htop
+mosh
+tmuxinator
+eza
+ncdu
+bottom
+# starship
+starship

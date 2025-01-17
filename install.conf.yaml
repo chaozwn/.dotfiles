@@ -7,8 +7,8 @@
 
 - link:
     ~/.config/starship.toml: ./starship/starship.toml
+    ~/.config/fish/: ./fish
 
 - shell:
     - git submodule sync --recursive
     - git submodule update --init --recursive
-    - sudo bash ./scripts/install_homebrew.sh
