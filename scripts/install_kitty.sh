@@ -17,3 +17,5 @@ install_fonts() {
     cp ~/.dotfiles/fonts/*.ttf ~/.local/share/fonts/
   fi
 }
+
+install_fonts 
