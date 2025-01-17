@@ -18,4 +18,5 @@ install_fonts() {
   fi
 }
 
+get_system_info 
 install_fonts 

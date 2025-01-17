@@ -1,5 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env fish
 
-echo "Install Node 22"
 nvm install v22.13.0
+
+# 安装全局 npm 包
 npm install -g yarn pnpm devmoji ultra
