@@ -1,10 +1,10 @@
 - defaults:
     link:
       create: true
+      force: true
       relink: true
 
 - clean: ["~"]
-
 - link:
     ~/.config/starship.toml: ./starship/starship.toml
     ~/.config/fish/: ./fish
