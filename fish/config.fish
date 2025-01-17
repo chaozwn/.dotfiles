@@ -10,7 +10,7 @@ set -gx fish_cursor_insert line blink
 set -gx fish_cursor_visual block
 set -gx fish_cursor_replace_one underscore
 
-set -Ux TERM xterm-256color
+set -Ux TERM xterm-kitty
 set -Ux XDG_CONFIG_HOME ~/.config
 # Path
 set -x fish_user_paths
