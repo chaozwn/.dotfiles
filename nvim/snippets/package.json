@@ -1,0 +1,104 @@
+{
+  "name": "user_snippets",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "language": [
+      {
+        "id": "goctl",
+        "aliases": [
+          "goctl"
+        ],
+        "extensions": [
+          ".api"
+        ],
+        "configuration": "./language-configuration-goctl.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": [
+          "typescript",
+          "typescriptreact"
+        ],
+        "path": "./init/react.json"
+      },
+      {
+        "language": [
+          "typescript",
+          "typescriptreact"
+        ],
+        "path": "./init/solid.json"
+      },
+      {
+        "language": "vue",
+        "path": "./init/vue.json"
+      },
+      {
+        "language": "goctl",
+        "path": "./init/goctl.json"
+      },
+      {
+        "language": "go",
+        "path": "./init/go.json"
+      },
+      {
+        "language": "python",
+        "path": "./init/python.json"
+      },
+      {
+        "language": "proto",
+        "path": "./init/proto3.json"
+      },
+      {
+        "language": "sql",
+        "path": "./jinja/jinja-sql.json"
+      },
+      {
+        "language": "yaml",
+        "path": "./jinja/jinja-yaml.json"
+      },
+      {
+        "language": "markdown",
+        "path": "./jinja/jinja-markdown.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./angular18/typescript.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./angular18/javascript.json"
+      },
+      {
+        "language": "jsonc",
+        "path": "./angular18/jsonc.json"
+      },
+      {
+        "language": "html",
+        "path": "./angular18/html.json"
+      },
+      {
+        "language": "dockerfile",
+        "path": "./angular18/dockerfile.json"
+      },
+      {
+        "language": "html",
+        "path": "./angular17/html.json"
+      },
+      {
+        "language": "json",
+        "path": "./angular17/json.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./angular17/typescript.json"
+      },
+      {
+        "language": "rust",
+        "path": "./init/rust.json"
+      }
+    ]
+  }
+}

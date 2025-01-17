@@ -1,0 +1,98 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
+# https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
+
+services:
+  "gitlab.baronatechnologies.fi": "gitlab:gitlab.baronatechnologies.fi"
+
+customCommands:
+  - key: "-"
+    context: global
+    description: Show branch graph
+    command: git lg # custom git alias
+    subprocess: true
+  - key: "<c-a>"
+    context: "global"
+    description: "Save everything as WIP"
+    command: "git commit --all --no-verify --message 'WIP: work in progress'"
+  - key: "<c-r>"
+    context: "commits"
+    description: "Reword, leaving only the first line"
+    # this is really useful when I have tons of squashed temp commits and I
+    # want to reduce the repetition in the commit messages
+    command: "git commit --amend --no-verify --message '{{.SelectedLocalCommit.Name}}'"
+  - key:
+      # backspace does not work, tracked in
+      # https://github.com/jesseduffield/lazygit/issues/2953
+      # https://github.com/jesseduffield/lazygit/issues/3847
+      "I"
+    context: global
+    command: "git stash-keep"
+  - key: "E"
+    description: "Add empty commit"
+    context: files
+    command: 'git commit --allow-empty -m "empty commit"'
+    loadingText: "Committing empty commit..."
+    prompts:
+      - type: input
+        title: Empty commit message
+        initialValue: "(empty commit)"
+  - key: "C"
+    command: "git cz"
+    description: "commit with commitizen"
+    context: "files"
+    loadingText: "opening commitizen commit tool"
+    subprocess: true
+
+keybinding:
+  universal:
+    edit: e
+  files:
+    commitChanges: c # using the interactive commit dialog
+    toggleTreeView: f
+
+os:
+  editPreset: "nvim-remote"
+
+promptToReturnFromSubprocess: false
+
+notARepository: "quit"
+
+gui:
+  commitHashLength: 0
+  skipRewordInEditorWarning: true
+  nerdFontsVersion: "3"
+  scrollHeight: 10
+  mainPanelSplitMode: vertical
+  showDivergenceFromBaseBranch: arrowAndNumber
+  showNumstatInFilesView: true
+  theme:
+    activeBorderColor:
+      - "#ff966c"
+      - "bold"
+    inactiveBorderColor:
+      - "#589ed7"
+    searchingActiveBorderColor:
+      - "#ff966c"
+      - "bold"
+    optionsTextColor:
+      - "#82aaff"
+    selectedLineBgColor:
+      - "#2d3f76"
+    cherryPickedCommitFgColor:
+      - "#82aaff"
+    cherryPickedCommitBgColor:
+      - "#c099ff"
+    markedBaseCommitFgColor:
+      - "#82aaff"
+    markedBaseCommitBgColor:
+      - "#ffc777"
+    unstagedChangesColor:
+      - "#c53b53"
+    defaultFgColor:
+      - "#c8d3f5"
+
+git:
+  parseEmoji: true
+  paging:
+    colorArg: always
+    pager: delta --paging=never

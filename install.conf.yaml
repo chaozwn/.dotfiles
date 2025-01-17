@@ -12,6 +12,9 @@
     ~/.config/kitty/: ./kitty
     ~/.config/yazi/: ./yazi
     ~/.config/tmux/: ./tmux
+    ~/.config/nvim/: ./nvim
+    ~/.config/fastfetch/: ./fastfetch
+    ~/.config/lazygit/: ./lazygit
 
 - shell:
     - git submodule sync --recursive

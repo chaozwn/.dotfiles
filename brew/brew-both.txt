@@ -36,3 +36,15 @@ ripgrep-all
 mediainfo 
 glow 
 eza
+
+#neovim
+gdu
+protobuf
+gun-sed
+ast-grep
+lazydocker
+chafa
+delta
+coreutils
+pngpaste
+squirrel

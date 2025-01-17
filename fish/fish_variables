@@ -1,6 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export TERM:xterm\x2d256color
+SETUVAR --export TERM:xterm\x2dkitty
 SETUVAR --export XDG_CONFIG_HOME:/Users/jayce\x2ezhao/\x2econfig
 SETUVAR __fish_initialized:3400
 SETUVAR _fisher_franciscolourenco_2F_done_files:\x7e/\x2econfig/fish/conf\x2ed/done\x2efish
