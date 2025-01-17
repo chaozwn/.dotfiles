@@ -11,4 +11,4 @@
 - shell:
     - git submodule sync --recursive
     - git submodule update --init --recursive
-    - bash ./scripts/install_homebrew.sh
+    - sudo bash ./scripts/install_homebrew.sh
