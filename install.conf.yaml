@@ -15,6 +15,7 @@
     ~/.config/nvim/: ./nvim
     ~/.config/fastfetch/: ./fastfetch
     ~/.config/lazygit/: ./lazygit
+    ~/.config/glow/: ./glow
 
 - shell:
     - git submodule sync --recursive
