@@ -102,14 +102,6 @@ return {
           function() open "files" end,
           desc = "Find files (Root Dir)",
         }
-        maps.n["<Leader>fF"] = {
-          function()
-            open("files", {
-              cwd = vim.uv.cwd(),
-            })
-          end,
-          desc = "Find files (cwd)",
-        }
         maps.n["<Leader>fg"] = {
           "<cmd>FzfLua git_files<cr>",
           desc = "Find Files (git-files)",
@@ -117,14 +109,6 @@ return {
         maps.n["<Leader>fr"] = {
           "<cmd>FzfLua oldfiles<cr>",
           desc = "Recent",
-        }
-        maps.n["<Leader>fR"] = {
-          function()
-            open("oldfiles", {
-              cwd = vim.uv.cwd(),
-            })
-          end,
-          desc = "Recent (cwd)",
         }
         -- git
         if vim.fn.executable "git" == 1 then
@@ -143,14 +127,6 @@ return {
         maps.n["<Leader>sd"] = { "<cmd>FzfLua diagnostics_document<cr>", desc = "Document Diagnostics" }
         maps.n["<Leader>sD"] = { "<cmd>FzfLua diagnostics_workspace<cr>", desc = "Workspace Diagnostics" }
         maps.n["<Leader>sg"] = { function() open "live_grep" end, desc = "Grep (Root Dir)" }
-        maps.n["<Leader>sG"] = {
-          function()
-            open("live_grep", {
-              cwd = vim.uv.cwd(),
-            })
-          end,
-          desc = "Grep (cwd)",
-        }
         maps.n["<Leader>sh"] = { "<cmd>FzfLua help_tags<cr>", desc = "Find help" }
         maps.n["<Leader>sH"] = {
           "<cmd>FzfLua highlights<cr>",
@@ -179,25 +155,9 @@ return {
           function() open "grep_cword" end,
           desc = "Word (Root Dir)",
         }
-        maps.n["<Leader>sW"] = {
-          function()
-            open("grep_cword", {
-              cwd = vim.uv.cwd(),
-            })
-          end,
-          desc = "Word (cwd)",
-        }
         maps.v["<Leader>sw"] = {
           function() open "grep_visual" end,
           desc = "Selection (Root Dir)",
-        }
-        maps.v["<Leader>sW"] = {
-          function()
-            open("grep_visual", {
-              cwd = vim.uv.cwd(),
-            })
-          end,
-          desc = "Selection (cwd)",
         }
       end,
     },
