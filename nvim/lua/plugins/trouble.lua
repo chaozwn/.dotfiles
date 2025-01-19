@@ -18,11 +18,11 @@ return {
         maps.n[prefix .. "X"] =
           { "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer Diagnostics (Trouble)" }
         maps.n["<Leader>ls"] = {
-          "<cmd>Trouble symbols toggle<cr>",
+          "<cmd>Trouble symbols toggle focus=false<cr>",
           desc = "Symbols (Trouble)",
         }
         maps.n["<Leader>lS"] = {
-          "<cmd>Trouble lsp toggle<cr>",
+          "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
           desc = "LSP references/definitions/... (Trouble)",
         }
         maps.n[prefix .. "L"] = { "<cmd>Trouble loclist toggle<cr>", desc = "Location List (Trouble)" }
@@ -56,36 +56,37 @@ return {
   },
   opts = function(_, opts)
     if not opts.icons then opts.icons = {} end
-    if not opts.icons.kinds then opts.icons.kinds = {} end
-    local get_icon = require("astroui").get_icon
-    for kind, _ in pairs {
-      Array = " ",
-      Boolean = "󰨙 ",
-      Class = " ",
-      Constant = "󰏿 ",
-      Constructor = " ",
-      Enum = " ",
-      EnumMember = " ",
-      Event = " ",
-      Field = " ",
-      File = " ",
-      Function = "󰊕 ",
-      Interface = " ",
-      Key = " ",
-      Method = "󰊕 ",
-      Module = " ",
-      Namespace = "󰦮 ",
-      Null = " ",
-      Number = "󰎠 ",
-      Object = " ",
-      Operator = " ",
-      Package = " ",
-      Property = " ",
-      String = " ",
-      Struct = "󰆼 ",
-      TypeParameter = " ",
-      Variable = "󰀫 ",
-    } do
+    if not opts.icons.kinds then
+      opts.icons.kinds = {
+        Array = " ",
+        Boolean = "󰨙 ",
+        Class = " ",
+        Constant = "󰏿 ",
+        Constructor = " ",
+        Enum = " ",
+        EnumMember = " ",
+        Event = " ",
+        Field = " ",
+        File = " ",
+        Function = "󰊕 ",
+        Interface = " ",
+        Key = " ",
+        Method = "󰊕 ",
+        Module = " ",
+        Namespace = "󰦮 ",
+        Null = " ",
+        Number = "󰎠 ",
+        Object = " ",
+        Operator = " ",
+        Package = " ",
+        Property = " ",
+        String = " ",
+        Struct = "󰆼 ",
+        TypeParameter = " ",
+        Variable = "󰀫 ",
+      }
+    end
+    for kind, _ in pairs(opts.icons.kinds) do
       local icon, _, _ = require("mini.icons").get("lsp", kind)
       opts.icons.kinds[kind] = icon
     end
@@ -99,14 +100,6 @@ return {
         ["<ESC>"] = "close",
         ["q"] = "close",
         ["<C-E>"] = "close",
-      },
-      icons = {
-        indent = {
-          fold_open = get_icon "FoldOpened",
-          fold_closed = get_icon "FoldClosed",
-        },
-        folder_closed = get_icon "FolderClosed",
-        folder_open = get_icon "FolderOpen",
       },
       auto_preview = true, -- automatically open preview when on an item
       auto_refresh = true, -- auto refresh when open
