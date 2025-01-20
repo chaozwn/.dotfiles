@@ -12,7 +12,7 @@
     ~/.config/kitty/: ./kitty
     ~/.config/yazi/: ./yazi
     ~/.config/tmux/: ./tmux
-    ~/.config/nvim/: ./nvim
+    ~/.config/nvim/: ./astronvim_user
     ~/.config/fastfetch/: ./fastfetch
     ~/.config/lazygit/: ./lazygit
     ~/.config/glow/: ./glow
