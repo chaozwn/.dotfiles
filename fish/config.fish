@@ -22,6 +22,7 @@ fish_add_path /usr/local/sbin
 fish_add_path ~/.local/bin/pnpm-bins
 fish_add_path ~/.local/share/bob-nvim/bin
 fish_add_path ~/miniconda3/bin
+fish_add_path ~/.cargo/bin
 #fish_add_path ~/.local/share/bob-nvim/nvim-linux64/bin
 fish_add_path ~/.local/share/bob-nvim/nvim-macos-arm64/bin
 
