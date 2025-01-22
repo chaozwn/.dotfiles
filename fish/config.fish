@@ -73,9 +73,11 @@ abbr mux tmuxinator
 abbr mv "mv -iv"
 abbr cp "cp -riv"
 abbr mkdir "mkdir -vp"
-alias ls="eza --color=always --icons --group-directories-first"
-alias la 'eza --color=always --icons --group-directories-first --all'
-alias ll 'eza --color=always --icons --group-directories-first --all --long'
+alias ls "eza --color=always --icons --group-directories-first"
+alias la 'eza --color=always --icons --group-directories-first --all --header'
+alias ll 'eza --color=always --icons --group-directories-first --all --header --long'
+alias lg 'eza --color=always --icons --group-directories-first --all --header --long --git'
+alias lt 'eza --tree -L 2 --icons'
 abbr l ll
 abbr ncdu "ncdu --color dark"
 
