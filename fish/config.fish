@@ -12,6 +12,7 @@ set -gx fish_cursor_replace_one underscore
 
 set -Ux TERM xterm-kitty
 set -Ux XDG_CONFIG_HOME ~/.config
+set -Ux NODE_OPTIONS --max-old-space-size=4096
 # Path
 set -x fish_user_paths
 fish_add_path /opt/homebrew/bin
