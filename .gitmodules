@@ -6,3 +6,7 @@
 	path = astronvim_user
 	url = https://github.com/chaozwn/astronvim_user.git
 	ignore = dirty
+[submodule "lazyvim"]
+	path = lazyvim
+	url = https://github.com/chaozwn/lazyvim.git
+	ignore = dirty
