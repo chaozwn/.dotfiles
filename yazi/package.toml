@@ -1,12 +1,32 @@
-[plugin]
-deps = [
-  { use = "Sonico98/exifaudio", rev = "d794614" },
-  { use = "lpnh/fg", rev = "9bba743" },
-  { use = "imsi32/yatline", rev = "9328205" },
-  { use = "Lil-Dank/lazygit", rev = "c82794f" },
-  { use = "Reledia/glow", rev = "5ce76dc" },
-  { use = "qsdrqs/searchjump", rev = "489b0db" },
-]
+[[plugin.deps]]
+use = "Sonico98/exifaudio"
+rev = "d794614"
+hash = "a8e15d3c21c02a5af41d46ed04778a02"
+
+[[plugin.deps]]
+use = "lpnh/fg"
+rev = "9bba743"
+hash = "5c395bf9b8ef3d4701ac9bdbc963c4c1"
+
+[[plugin.deps]]
+use = "imsi32/yatline"
+rev = "9328205"
+hash = "3e51d1fd8a2e481fcfa8eab1251d1c5f"
+
+[[plugin.deps]]
+use = "Lil-Dank/lazygit"
+rev = "c82794f"
+hash = "2b0c33928986f126d5c5a4cac31a6b46"
+
+[[plugin.deps]]
+use = "Reledia/glow"
+rev = "5ce76dc"
+hash = "52e5f5c602962e7cbf874da28f52ba45"
+
+[[plugin.deps]]
+use = "qsdrqs/searchjump"
+rev = "489b0db"
+hash = "4715e3eb8925e6b178f27c66407f5feb"
 
 [flavor]
 deps = []
