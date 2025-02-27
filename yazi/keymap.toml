@@ -407,23 +407,23 @@ keymap = [
 
   { on = [
     "k",
-  ], run = "plugin arrow --args=-1" },
+  ], run = "plugin arrow -1" },
 
   { on = [
     "j",
-  ], run = "plugin arrow --args=1" },
+  ], run = "plugin arrow 1" },
 
   { on = [
     "S",
-  ], run = "plugin fg --args='rg'", desc = "find file by content (ripgrep match)" },
+  ], run = "plugin fg 'rg'", desc = "find file by content (ripgrep match)" },
 
   { on = [
     "F",
-  ], run = "plugin fg --args='rga'", desc = "find file by content (ripgrep also search in PDFs, E-Books, Office documents, zip, tar.gz, etc.)" },
+  ], run = "plugin fg 'rga'", desc = "find file by content (ripgrep also search in PDFs, E-Books, Office documents, zip, tar.gz, etc.)" },
 
   { on = [
     "f",
-  ], run = "plugin fg --args='fzf'", desc = "find file by filename" },
+  ], run = "plugin fg 'fzf'", desc = "find file by filename" },
 
   { on = [
     "t",
@@ -432,7 +432,7 @@ keymap = [
 
   { on = [
     "s",
-  ], run = "plugin searchjump --args='autocd'", desc = "searchjump" },
+  ], run = "plugin searchjump 'autocd'", desc = "searchjump" },
 
   { on = [
     "E",
