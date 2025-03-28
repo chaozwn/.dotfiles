@@ -48,3 +48,4 @@ delta
 coreutils
 pngpaste
 squirrel
+bob
