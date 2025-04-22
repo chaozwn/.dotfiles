@@ -23,3 +23,9 @@ brew install fish
 sudo sh -c 'echo /home/linuxbrew/.linuxbrew/bin/fish >> /etc/shells'
 chsh -s /home/linuxbrew/.linuxbrew/bin/fish
 ```
+
+install kitty
+
+```shell
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+```
