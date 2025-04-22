@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+
+set -x
+
+# initialization
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+# Layout
+yabai -m config layout bsp
+
+# Padding and gaps
+yabai -m config top_padding 10
+yabai -m config bottom_padding 10
+yabai -m config left_padding 10
+yabai -m config right_padding 10
+yabai -m config window_gap 10
+
+yabai -m config external_bar all:30:0
+
+# Split ratios
+yabai -m config auto_balance on
+yabai -m config split_ratio 0.50
+
+# Mouse support
+yabai -m config mouse_modifier fn
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 resize
+yabai -m config focus_follows_mouse off
+yabai -m config mouse_follows_focus off
+
+# Window modifications
+yabai -m config window_shadow on
+yabai -m config window_opacity off
+yabai -m config active_window_opacity 1.0
+yabai -m config normal_window_opacity 0.9
+
+
+yabai -m signal --add event=window_created action="sketchybar -m --trigger window_change &> /dev/null"
+yabai -m signal --add event=window_destroyed action="sketchybar -m --trigger window_change &> /dev/null"
+
+# ===== Rules ==================================
+# yabai -m rule --add label="Activity Monitor" app="^Activity Monitor$" manage=off
+# yabai -m rule --add label="Adobe Lightroom Classic" app="Adobe Lightroom Classic" manage=off space=main
+# yabai -m rule --add label="Alfred Preferences" app="^Alfred Preferences$" manage=off
+yabai -m rule --add app="^App Store$" manage=off
+# yabai -m rule --add label="Calculator" app="^Calculator$" manage=off
+# yabai -m rule --add label="Dash" app="Dash" manage=off
+# yabai -m rule --add label="Dictionary" app="^Dictionary$" manage=off
+# yabai -m rule --add app="^Discord$" space=7 grid=1:1:0:0:1:1 manage=off
+# yabai -m rule --add label="EventViewer" app="EventViewer" manage=off
+yabai -m rule --add app="^Finder$" manage=off
+yabai -m rule --add app="^QQ$" manage=off
+# yabai -m rule --add app="^Microsoft Outlook$" manage=off
+# yabai -m rule --add app="^Microsoft Teams" manage=off
+yabai -m rule --add app="translate" manage=off
+yabai -m rule --add app="System Settings" manage=off
+# yabai -m rule --add label="GoldenDict" app="GoldenDict" manage=off space=main
+# yabai -m rule --add label="KakaoTalk" app="KakaoTalk" manage=off space=main
+# yabai -m rule --add label="kitty" app="kitty" manage=off
+# yabai -m rule --add label="NeteaseMusic" app="NeteaseMusic" manage=off
+# yabai -m rule --add label="IntelliJ IDEA" app="IntelliJ IDEA" manage=off space=code
+# yabai -m rule --add label="Preview" app="Preview" manage=off
+yabai -m rule --add label="System Preferences" app="^System Preferences$" manage=off
+# yabai -m rule --add label="SmartGit" app="SmartGit" manage=off space=git
+# yabai -m rule --add label="Sketch" app="Sketch" manage=off
+# yabai -m rule --add label="Telegram" app="Telegram" manage=off space=main
+# yabai -m rule --add label="VirtualBox" app="^VirtualBox$" manage=off
+# yabai -m rule --add label="VMware Fusion" app="^VMware Fusion$" manage=off space=main
+# yabai -m rule --add app="^WeChat$" manage=off
+yabai -m rule --add app="^Clash for Windows$" manage=off
+# yabai -m rule --add app="^DataGrip$" split-child="second_child" manage=off
+# yabai -m rule --add label="Zotero" app="^Zotero$" manage=off space=main
+
+echo "yabai configuration loaded.."

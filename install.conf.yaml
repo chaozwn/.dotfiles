@@ -17,6 +17,9 @@
     ~/.config/lazygit/: ./lazygit
     ~/.config/glow/: ./glow
     ~/.config/sketchybar/: ./sketchybar
+    ~/.config/borders/: ./borders
+    ~/.config/skhd/: ./skhd
+    ~/.config/yabai/: ./yabai
 
 - shell:
     - git submodule sync --recursive
