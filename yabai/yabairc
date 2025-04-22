@@ -35,10 +35,6 @@ yabai -m config window_opacity off
 yabai -m config active_window_opacity 1.0
 yabai -m config normal_window_opacity 0.9
 
-
-yabai -m signal --add event=window_created action="sketchybar -m --trigger window_change &> /dev/null"
-yabai -m signal --add event=window_destroyed action="sketchybar -m --trigger window_change &> /dev/null"
-
 # ===== Rules ==================================
 # yabai -m rule --add label="Activity Monitor" app="^Activity Monitor$" manage=off
 # yabai -m rule --add label="Adobe Lightroom Classic" app="Adobe Lightroom Classic" manage=off space=main
