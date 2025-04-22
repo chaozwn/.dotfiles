@@ -1,5 +1,9 @@
 # 🛠️ Installation
 
+## NOTE
+
+`桌面与程序坞`关闭`根据最近的使用情况自动重新排列空间`
+
 ```shell
 git clone https://github.com/chaozwn/yabai.git ~/.config/yabai
 ```
