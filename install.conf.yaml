@@ -16,6 +16,7 @@
     ~/.config/fastfetch/: ./fastfetch
     ~/.config/lazygit/: ./lazygit
     ~/.config/glow/: ./glow
+    ~/.config/sketchybar/: ./sketchybar
 
 - shell:
     - git submodule sync --recursive
