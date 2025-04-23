@@ -83,18 +83,18 @@ source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/volume.sh"
 # source "$ITEM_DIR/qq.sh"
 source "$ITEM_DIR/wechat.sh"
-# source "$ITEM_DIR/cpu.sh"
+source "$ITEM_DIR/cpu.sh"
 # source "$ITEM_DIR/svim.sh"
 # sketchybar --add alias "iStat Menus Status,com.bjango.istatmenus.combined" right\
 #            --set "iStat Menus Status,com.bjango.istatmenus.combined" update_freq=2
-#source "$ITEM_DIR/istat.sh"   
+# source "$ITEM_DIR/istat.sh"   
 
 # source "$ITEM_DIR/mail.sh"
 
 
 
 #!/usr/bin/env sh
-source "$ITEM_DIR/animator.sh"
+# source "$ITEM_DIR/animator.sh"
 # source "$ITEM_DIR/spotify.sh"
 
 
