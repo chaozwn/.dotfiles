@@ -26,6 +26,7 @@ fish_add_path ~/miniconda3/bin
 fish_add_path ~/.cargo/bin
 #fish_add_path ~/.local/share/bob-nvim/nvim-linux64/bin
 fish_add_path ~/.local/share/bob-nvim/nvim-macos-arm64/bin
+fish_add_path ~/.bun/bin
 
 set -gx EDITOR (which nvim)
 set -gx VISUAL $EDITOR
@@ -147,3 +148,7 @@ zoxide init fish | source
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/zhaown/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/zhaown/Downloads/google-cloud-sdk/path.fish.inc'; end
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH

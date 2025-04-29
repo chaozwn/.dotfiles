@@ -43,4 +43,4 @@ SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
 SETUVAR grc_plugin_execs:df\x1edig\x1eifconfig\x1emake\x1emount\x1emtr\x1enetstat\x1eping\x1eps\x1etail\x1etraceroute\x1ewdiff\x1eblkid\x1edu\x1ednf\x1eenv\x1eid\x1eip\x1eiostat\x1ejournalctl\x1ekubectl\x1elast\x1elsattr\x1elsblk\x1elspci\x1elsmod\x1elsof\x1egetfacl\x1egetsebool\x1eulimit\x1euptime\x1enmap\x1efdisk\x1efindmnt\x1efree\x1esemanage\x1esar\x1ess\x1esysctl\x1esystemctl\x1etcpdump\x1etune2fs\x1evmstat\x1ew\x1ewho\x1esockstat
 SETUVAR nvm_default_package:yarn\x1epnpm\x1edevmoji\x1eultra
-SETUVAR nvm_default_version:v22\x2e13\x2e1
+SETUVAR nvm_default_version:v23\x2e11\x2e0
