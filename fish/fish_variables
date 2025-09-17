@@ -1,6 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export NODE_OPTIONS:\x2d\x2dmax\x2dold\x2dspace\x2dsize\x3d4096
+SETUVAR --export JAVA_HOME:/Users/zhaown/workspace/ai_project/nest_admin_source/infinity\x2dsql/release/byzer\x2dlang\x2dall\x2din\x2done\x2ddarwin\x2damd64\x2d3\x2e3\x2e0\x2d1\x2e0\x2e0/jdk8/Contents/Home
+SETUVAR --export NODE_OPTIONS:\x2d\x2dmax\x2dold\x2dspace\x2dsize\x3d4096\x1e\x2d\x2dexperimental\x2dvm\x2dmodules
 SETUVAR --export TERM:xterm\x2dkitty
 SETUVAR --export XDG_CONFIG_HOME:/Users/zhaown/\x2econfig
 SETUVAR __fish_initialized:3800
@@ -43,4 +44,4 @@ SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
 SETUVAR grc_plugin_execs:df\x1edig\x1eifconfig\x1emake\x1emount\x1emtr\x1enetstat\x1eping\x1eps\x1etail\x1etraceroute\x1ewdiff\x1eblkid\x1edu\x1ednf\x1eenv\x1eid\x1eip\x1eiostat\x1ejournalctl\x1ekubectl\x1elast\x1elsattr\x1elsblk\x1elspci\x1elsmod\x1elsof\x1egetfacl\x1egetsebool\x1eulimit\x1euptime\x1enmap\x1efdisk\x1efindmnt\x1efree\x1esemanage\x1esar\x1ess\x1esysctl\x1esystemctl\x1etcpdump\x1etune2fs\x1evmstat\x1ew\x1ewho\x1esockstat
 SETUVAR nvm_default_package:yarn\x1epnpm\x1edevmoji\x1eultra
-SETUVAR nvm_default_version:v23\x2e11\x2e0
+SETUVAR nvm_default_version:v22\x2e14\x2e0

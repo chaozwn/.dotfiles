@@ -12,7 +12,7 @@ set -gx fish_cursor_replace_one underscore
 
 set -Ux TERM xterm-kitty
 set -Ux XDG_CONFIG_HOME ~/.config
-set -Ux NODE_OPTIONS --max-old-space-size=4096
+set -Ux NODE_OPTIONS --max-old-space-size=4096 --experimental-vm-modules
 # Path
 set -x fish_user_paths
 fish_add_path /opt/homebrew/bin
@@ -152,3 +152,6 @@ if [ -f '/Users/zhaown/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/zh
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+
+# 设置java
+set -Ux JAVA_HOME /Users/zhaown/workspace/ai_project/nest_admin_source/infinity-sql/release/byzer-lang-all-in-one-darwin-amd64-3.3.0-1.0.0/jdk8/Contents/Home  

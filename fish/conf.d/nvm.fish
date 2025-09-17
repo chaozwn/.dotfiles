@@ -2,7 +2,7 @@ set --query nvm_mirror || set --global nvm_mirror https://nodejs.org/dist
 set --query XDG_DATA_HOME || set --local XDG_DATA_HOME ~/.local/share
 set --global nvm_data $XDG_DATA_HOME/nvm
 
-set --universal nvm_default_version v23.11.0
+set --universal nvm_default_version v22.14.0
 set --universal nvm_default_package yarn pnpm devmoji ultra
 
 function _nvm_install --on-event nvm_install
