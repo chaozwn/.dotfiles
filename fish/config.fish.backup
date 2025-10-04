@@ -112,7 +112,7 @@ abbr gp "hub pull"
 
 # Other
 abbr df "grc /bin/df -h"
-abbr ntop "ultra --monitor"
+# abbr ntop "ultra --monitor"
 abbr ytop btm
 abbr gotop btm
 abbr fda "fd -IH"

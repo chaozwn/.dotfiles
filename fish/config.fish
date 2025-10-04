@@ -101,7 +101,7 @@ set -x LG_CONFIG_FILE ~/.config/lazygit/config.yml
 
 alias lazygit "TERM=xterm-256color command lazygit"
 abbr gg lazygit
-abbr gl 'hub l --color | devmoji --log --color | less -rXF'
+# abbr gl 'hub l --color | devmoji --log --color | less -rXF'
 abbr gs "hub st"
 abbr gb "hub checkout -b"
 abbr gc "hub commit"
@@ -155,3 +155,4 @@ set --export PATH $BUN_INSTALL/bin $PATH
 
 # 设置java
 set -Ux JAVA_HOME /Users/zhaown/workspace/ai_project/nest_admin_source/infinity-sql/release/byzer-lang-all-in-one-darwin-amd64-3.3.0-1.0.0/jdk8/Contents/Home  
+fish_add_path $HOME/.local/bin
