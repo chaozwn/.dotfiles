@@ -1,0 +1,45 @@
+# 配置文档: https://ghostty.org/docs/config/reference
+font-family = "JetBrainsMono Nerd Font Mono"
+font-size = 15
+
+# 终端环境变量
+term = "xterm-256color"
+
+# 窗口设置
+window-padding-x = 2
+window-padding-y = 2
+window-decoration = auto
+window-vsync = false
+
+# 不移除掉圆角
+macos-titlebar-style = hidden
+
+# 光标设置
+cursor-style = "block"
+cursor-style-blink = true
+
+# 主题设置（可选，取消注释以启用）
+theme = "TokyoNight Moon"
+
+# macOS 特定设置
+macos-option-as-alt = true
+
+# 添加shader
+custom-shader = "~/.config/ghostty/ghostty-shader-playground/public/shaders/cursor_smear.glsl"
+
+# ANSI 码键盘映射
+# keybind = ctrl+'=csi:39;5u
+# keybind = ctrl+(=csi:40;5u
+# keybind = ctrl+)=csi:41;5u
+# keybind = ctrl+,=csi:44;5u
+# keybind = ctrl++=csi:43;5u
+# keybind = ctrl+-=csi:45;5u
+# keybind = ctrl+.=csi:46;5u
+# keybind = ctrl+;=csi:59;5u
+# keybind = ctrl+==csi:61;5u
+# keybind = ctrl+/=csi:47;5u
+# keybind = ctrl+~=csi:126;5u
+# keybind = ctrl+`=csi:96;5u
+
+# 背景透明度（可选，取消注释以启用）
+# background-opacity = 0.95

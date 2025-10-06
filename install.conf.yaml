@@ -20,6 +20,7 @@
     ~/.config/borders/: ./borders
     ~/.config/skhd/: ./skhd
     ~/.config/yabai/: ./yabai
+    ~/.config/ghostty/: ./ghostty
 
 - shell:
     - git submodule sync --recursive

@@ -2,7 +2,7 @@
 # VERSION: 3.0
 SETUVAR --export JAVA_HOME:/Users/zhaown/workspace/ai_project/nest_admin_source/infinity\x2dsql/release/byzer\x2dlang\x2dall\x2din\x2done\x2ddarwin\x2damd64\x2d3\x2e3\x2e0\x2d1\x2e0\x2e0/jdk8/Contents/Home
 SETUVAR --export NODE_OPTIONS:\x2d\x2dmax\x2dold\x2dspace\x2dsize\x3d4096\x1e\x2d\x2dexperimental\x2dvm\x2dmodules
-SETUVAR --export TERM:xterm\x2dkitty
+SETUVAR --export TERM:xterm\x2d256color
 SETUVAR --export XDG_CONFIG_HOME:/Users/zhaown/\x2econfig
 SETUVAR __fish_initialized:3800
 SETUVAR _fisher_franciscolourenco_2F_done_files:\x7e/\x2econfig/fish/conf\x2ed/done\x2efish

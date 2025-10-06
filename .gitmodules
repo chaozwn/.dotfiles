@@ -10,3 +10,6 @@
 	path = lazyvim
 	url = https://github.com/chaozwn/lazyvim.git
 	ignore = dirty
+[submodule "ghostty/ghostty-shader-playground"]
+	path = ghostty/ghostty-shader-playground
+	url = https://github.com/KroneCorylus/ghostty-shader-playground.git

@@ -10,7 +10,7 @@ set -gx fish_cursor_insert line blink
 set -gx fish_cursor_visual block
 set -gx fish_cursor_replace_one underscore
 
-set -Ux TERM xterm-kitty
+set -Ux TERM xterm-256color
 set -Ux XDG_CONFIG_HOME ~/.config
 set -Ux NODE_OPTIONS --max-old-space-size=4096 --experimental-vm-modules
 # Path
