@@ -10,7 +10,7 @@ end
 
 function Exiftool(...)
 	local child = Command("exiftool")
-		:args({
+		:arg({
 			"-q", "-q", "-S", "-Title", "-SortName",
 			"-TitleSort", "-TitleSortOrder", "-Artist",
 			"-SortArtist", "-ArtistSort", "-PerformerSortOrder",
@@ -31,7 +31,7 @@ function Mediainfo(...)
 	local file, cache_dir = ...
 	local template = cache_dir.."mediainfo.txt"
 	local child = Command("mediainfo")
-		:args({
+		:arg({
 			"--Output=file://"..template, tostring(file)
 		})
 		:stdout(Command.PIPED)
@@ -216,7 +216,7 @@ Channels: %Channel(s)%"\
 	fs.write(Url(cache_dir.."mediainfo.txt"), mediainfo_template)
 
 	local output = Command("exiftool")
-		:args({ "-b", "-CoverArt", "-Picture", tostring(job.file.url) })
+		:arg({ "-b", "-CoverArt", "-Picture", tostring(job.file.url) })
 		:stdout(Command.PIPED)
 		:stderr(Command.PIPED)
 		:output()

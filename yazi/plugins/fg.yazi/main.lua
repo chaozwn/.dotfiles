@@ -75,7 +75,7 @@ local function entry(_, job)
 	end
 
 	local child, err = Command(shell)
-		:args({ "-c", cmd_args })
+		:arg({ "-c", cmd_args })
 		:cwd(cwd)
 		:stdin(Command.INHERIT)
 		:stdout(Command.PIPED)

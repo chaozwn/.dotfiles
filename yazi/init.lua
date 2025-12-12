@@ -6,13 +6,13 @@ require("eza-preview"):setup()
 local tokyonight_theme = require("yatline-tokyonight"):setup "moon"
 
 require("searchjump"):setup {
-  opt_unmatch_fg = "#545c7e",
-  opt_match_str_fg = "#c8d3f5",
-  opt_match_str_bg = "#3e68d7",
-  opt_lable_fg = "#c8d3f5",
-  opt_lable_bg = "#ff007c",
-  opt_only_current = false, -- only search the current window
-  -- opt_search_patterns = {}  -- demo:{"%.e%d+","s%d+e%d+"}
+  unmatch_fg = "#545c7e",
+  match_str_fg = "#c8d3f5",
+  match_str_bg = "#3e68d7",
+  label_fg = "#c8d3f5",
+  label_bg = "#ff007c",
+  only_current = false, -- only search the current window
+  -- search_patterns = {}  -- demo:{"%.e%d+","s%d+e%d+"}
 }
 
 require("yatline"):setup {
