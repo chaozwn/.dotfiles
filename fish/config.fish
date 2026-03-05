@@ -155,6 +155,8 @@ set --export PATH $BUN_INSTALL/bin $PATH
 
 # 设置java
 set -Ux JAVA_HOME /Users/zhaown/workspace/ai_project/nest_admin_source/infinity-sql/release/byzer-lang-all-in-one-darwin-amd64-3.3.0-1.0.0/jdk8/Contents/Home  
+# set -Ux JAVA_HOME /Users/zhaown/Library/Java/JavaVirtualMachines/corretto-17.0.8/Contents/Home
+set -Ux PATH $JAVA_HOME/bin $PATH
 fish_add_path $HOME/.local/bin
 
 # pnpm
