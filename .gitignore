@@ -2,3 +2,4 @@
 **/.DS_Store
 tmux/plugins
 **/node_modules
+fish/fish_variables
