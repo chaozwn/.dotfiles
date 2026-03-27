@@ -10,9 +10,9 @@ set -gx fish_cursor_insert line blink
 set -gx fish_cursor_visual block
 set -gx fish_cursor_replace_one underscore
 
-set -Ux TERM xterm-256color
-set -Ux XDG_CONFIG_HOME ~/.config
-set -Ux NODE_OPTIONS --max-old-space-size=4096 --experimental-vm-modules
+set -gx TERM xterm-256color
+set -gx XDG_CONFIG_HOME ~/.config
+set -gx NODE_OPTIONS --max-old-space-size=4096 --experimental-vm-modules
 # Path
 set -x fish_user_paths
 fish_add_path /opt/homebrew/bin
@@ -42,11 +42,6 @@ alias mosh "TERM=xterm-256color command mosh"
 # set -Ux EMACS $emacs_path/Emacs
 fish_add_path ~/.emacs.d/bin
 # alias emacs $EMACS
-
-# Go
-set -x GOPATH ~/go
-set -x GOROOT ~/.go
-fish_add_path $GOPATH $GOPATH/bin
 
 # fish_add_path -m /etc/profiles/per-user/folke/bin /run/current-system/sw/bin
 # Exports
@@ -123,9 +118,10 @@ abbr suod sudo
 abbr show-cursor "tput cnorm"
 abbr hide-cursor "tput civis"
 
+# Go (managed by g version manager)
 set -gx GOPATH "$HOME/go"
 set -gx GOBIN "$GOPATH/bin"
-set -gx PATH "$GOBIN" $PATH
+fish_add_path $GOBIN
 
 if test -f "$HOME/.g/env"
     source "$HOME/.g/env"
@@ -136,10 +132,10 @@ end
 if test -f ~/miniconda3/bin/conda
     eval ~/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 else
-    if test -f "~/miniconda3/etc/fish/conf.d/conda.fish"
-        . "~/miniconda3/etc/fish/conf.d/conda.fish"
+    if test -f ~/miniconda3/etc/fish/conf.d/conda.fish
+        . ~/miniconda3/etc/fish/conf.d/conda.fish
     else
-        set -x PATH "~/miniconda3/bin" $PATH
+        fish_add_path ~/miniconda3/bin
     end
 end
 # <<< conda initialize <<<
@@ -147,21 +143,21 @@ end
 zoxide init fish | source
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/zhaown/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/zhaown/Downloads/google-cloud-sdk/path.fish.inc'; end
+if test -f "$HOME/google-cloud-sdk/path.fish.inc"
+    source "$HOME/google-cloud-sdk/path.fish.inc"
+else if test -f "$HOME/Downloads/google-cloud-sdk/path.fish.inc"
+    source "$HOME/Downloads/google-cloud-sdk/path.fish.inc"
+end
 
 # bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
+set -gx BUN_INSTALL "$HOME/.bun"
+fish_add_path $BUN_INSTALL/bin
 
 # 设置java
-set -Ux JAVA_HOME /Users/zhaown/workspace/ai_project/nest_admin_source/infinity-sql/release/byzer-lang-all-in-one-darwin-amd64-3.3.0-1.0.0/jdk8/Contents/Home  
-# set -Ux JAVA_HOME /Users/zhaown/Library/Java/JavaVirtualMachines/corretto-17.0.8/Contents/Home
-set -Ux PATH $JAVA_HOME/bin $PATH
-fish_add_path $HOME/.local/bin
+set -gx JAVA_HOME /Users/zhaown/workspace/ai_project/nest_admin_source/infinity-sql/release/byzer-lang-all-in-one-darwin-amd64-3.3.0-1.0.0/jdk8/Contents/Home
+# set -gx JAVA_HOME /Users/zhaown/Library/Java/JavaVirtualMachines/corretto-17.0.8/Contents/Home
+fish_add_path $JAVA_HOME/bin
 
 # pnpm
-set -gx PNPM_HOME "/Users/zhaown/Library/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
-end
-# pnpm end
+set -gx PNPM_HOME "$HOME/Library/pnpm"
+fish_add_path $PNPM_HOME
