@@ -13,7 +13,7 @@
     }
   },
   "general": {
-    "multithreading": true
+    "thread": true
   },
   "display": {
     "separator": "➜   "

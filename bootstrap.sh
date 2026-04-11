@@ -54,7 +54,7 @@ fi
 
 # ── Step 4: Fonts ────────────────────────────────────────────────
 echo "==> [4/7] Installing fonts..."
-bash "$BASEDIR/scripts/install_kitty.sh"
+bash "$BASEDIR/scripts/install_fonts.sh"
 
 # ── Step 5: Dotbot symlinks ─────────────────────────────────────
 echo "==> [5/7] Linking dotfiles via dotbot..."

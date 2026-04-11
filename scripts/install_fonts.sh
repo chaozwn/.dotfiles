@@ -1,13 +1,12 @@
 #!/bin/bash
 
-# 获取系统相关信息
-# Get system information
+# Install JetBrains Nerd Font for terminals (Ghostty, Kitty, etc.) via fontconfig on Linux,
+# or Homebrew cask on macOS.
+
 get_system_info() {
   OS_TYPE="$(uname)"
 }
 
-# 根据系统类型确定 brew 路径
-# Determine brew path based on OS
 install_fonts() {
   if [ "$OS_TYPE" = "Darwin" ]; then
     brew tap homebrew/cask-fonts
@@ -31,5 +30,5 @@ install_fonts() {
   fi
 }
 
-get_system_info 
-install_fonts 
+get_system_info
+install_fonts
