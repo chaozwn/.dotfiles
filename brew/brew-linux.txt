@@ -1,0 +1,2 @@
+# Extra Homebrew formulas for Linux only (x86_64 Linuxbrew).
+# Shared packages live in brew-both.txt; mac-only formulas are in brew-mac.txt.

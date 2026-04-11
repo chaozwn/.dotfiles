@@ -41,12 +41,10 @@ eza
 #neovim
 gdu
 protobuf
-gun-sed
+gnu-sed
 ast-grep
 lazydocker
 chafa
 delta
 coreutils
-pngpaste
-squirrel
 bob

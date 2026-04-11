@@ -1,4 +1,4 @@
-# proxy
+# proxy (override in ~/.config/fish/local.fish if needed, e.g. on machines without 7890)
 set -x https_proxy http://127.0.0.1:7890
 set -x http_proxy http://127.0.0.1:7890
 set -x all_proxy socks5://127.0.0.1:7890
@@ -13,20 +13,37 @@ set -gx fish_cursor_replace_one underscore
 set -gx TERM xterm-256color
 set -gx XDG_CONFIG_HOME ~/.config
 set -gx NODE_OPTIONS --max-old-space-size=4096 --experimental-vm-modules
+
 # Path
 set -x fish_user_paths
-fish_add_path /opt/homebrew/bin
-fish_add_path /home/linuxbrew/.linuxbrew/bin
+if test -d /opt/homebrew/bin
+    fish_add_path /opt/homebrew/bin
+end
+if test -d /home/linuxbrew/.linuxbrew/bin
+    fish_add_path /home/linuxbrew/.linuxbrew/bin
+end
 fish_add_path ~/.local/bin
 fish_add_path ~/.luarocks/bin
 fish_add_path /usr/local/sbin
 fish_add_path ~/.local/bin/pnpm-bins
-fish_add_path ~/.local/share/bob-nvim/bin
 fish_add_path ~/miniconda3/bin
 fish_add_path ~/.cargo/bin
-#fish_add_path ~/.local/share/bob-nvim/nvim-linux64/bin
-fish_add_path ~/.local/share/bob-nvim/nvim-macos-arm64/bin
 fish_add_path ~/.bun/bin
+
+# Bob (Neovim): first existing build wins (macOS arm/intel, Linux x64/arm64)
+set -l _bob_dirs
+switch (uname)
+    case Darwin
+        set _bob_dirs ~/.local/share/bob-nvim/nvim-macos-arm64/bin ~/.local/share/bob-nvim/nvim-macos-x86_64/bin
+    case Linux
+        set _bob_dirs ~/.local/share/bob-nvim/nvim-linux-arm64/bin ~/.local/share/bob-nvim/nvim-linux64/bin
+end
+for _bob in $_bob_dirs
+    if test -d "$_bob"
+        fish_add_path "$_bob"
+        break
+    end
+end
 
 set -gx EDITOR (which nvim)
 set -gx VISUAL $EDITOR
@@ -153,11 +170,32 @@ end
 set -gx BUN_INSTALL "$HOME/.bun"
 fish_add_path $BUN_INSTALL/bin
 
-# 设置java
-set -gx JAVA_HOME /Users/zhaown/workspace/ai_project/nest_admin_source/infinity-sql/release/byzer-lang-all-in-one-darwin-amd64-3.3.0-1.0.0/jdk8/Contents/Home
-# set -gx JAVA_HOME /Users/zhaown/Library/Java/JavaVirtualMachines/corretto-17.0.8/Contents/Home
-fish_add_path $JAVA_HOME/bin
+# Java — same project JDK on Mac if present; else Arch default / other common paths
+set -l _jdk_project $HOME/workspace/ai_project/nest_admin_source/infinity-sql/release/byzer-lang-all-in-one-darwin-amd64-3.3.0-1.0.0/jdk8/Contents/Home
+set -l _jdk_corretto $HOME/Library/Java/JavaVirtualMachines/corretto-17.0.8/Contents/Home
+if test -d "$_jdk_project"
+    set -gx JAVA_HOME "$_jdk_project"
+else if test -d "$_jdk_corretto"
+    set -gx JAVA_HOME "$_jdk_corretto"
+else if test -d /usr/lib/jvm/default
+    set -gx JAVA_HOME /usr/lib/jvm/default
+else if test -d /usr/lib/jvm/java-17-openjdk
+    set -gx JAVA_HOME /usr/lib/jvm/java-17-openjdk
+else if test -d /usr/lib/jvm/java-21-openjdk
+    set -gx JAVA_HOME /usr/lib/jvm/java-21-openjdk
+end
+if set -q JAVA_HOME
+    fish_add_path $JAVA_HOME/bin
+end
 
-# pnpm
-set -gx PNPM_HOME "$HOME/Library/pnpm"
+# pnpm — Mac keeps ~/Library/pnpm; Linux uses XDG-style default
+if test (uname) = Darwin
+    set -gx PNPM_HOME "$HOME/Library/pnpm"
+else
+    set -gx PNPM_HOME "$HOME/.local/share/pnpm"
+end
 fish_add_path $PNPM_HOME
+
+if test -f ~/.config/fish/local.fish
+    source ~/.config/fish/local.fish
+end
