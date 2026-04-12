@@ -98,7 +98,7 @@ local function entry(_, job)
 	local file_url = split_and_get_first(target, ":")
 
 	if file_url ~= "" then
-		ya.manager_emit(file_url:match("[/\\]$") and "cd" or "reveal", { file_url })
+		ya.emit(file_url:match("[/\\]$") and "cd" or "reveal", { file_url })
 	end
 end
 
