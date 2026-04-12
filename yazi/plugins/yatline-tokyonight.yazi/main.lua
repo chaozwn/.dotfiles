@@ -109,10 +109,8 @@ return {
     cut = { icon = "󰆐 ", fg = colors.red },
 
     total = { icon = "󰆙 ", fg = colors.magenta },
-    succ = { icon = "󰄸 ", fg = colors.green },
-    fail = { icon = "󰱝 ", fg = colors.red },
-    found = { icon = "󰩉 ", fg = colors.blue },
-    processed = { icon = "󱊆 ", fg = colors.green },
+    success = { icon = "󰄸 ", fg = colors.green },
+    failed = { icon = "󰱝 ", fg = colors.red },
   }
   end,
 }
