@@ -5,8 +5,10 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$BASEDIR"
 
 USE_BREW=1
-if [ -f /etc/arch-release ] && [ "${DOTFILES_USE_BREW:-0}" != "1" ]; then
-  USE_BREW=0
+if [ "${DOTFILES_USE_BREW:-0}" != "1" ]; then
+  if [ -f /etc/arch-release ] || [ -f /etc/fedora-release ]; then
+    USE_BREW=0
+  fi
 fi
 
 # ── Steps 1–2: package manager ───────────────────────────────────
@@ -16,8 +18,16 @@ if [ "$USE_BREW" = "1" ]; then
   echo "==> [2/7] Installing brew packages..."
   bash "$BASEDIR/brew/1.brewInstallApps.sh"
 else
-  echo "==> [1-2/7] Arch Linux: installing packages via pacman (set DOTFILES_USE_BREW=1 to use Homebrew on Linux)..."
-  bash "$BASEDIR/scripts/bootstrap-arch.sh"
+  if [ -f /etc/arch-release ]; then
+    echo "==> [1-2/7] Arch Linux: installing packages via pacman (set DOTFILES_USE_BREW=1 to use Homebrew on Linux)..."
+    bash "$BASEDIR/scripts/bootstrap-arch.sh"
+  elif [ -f /etc/fedora-release ]; then
+    echo "==> [1-2/7] Fedora: installing packages via dnf (set DOTFILES_USE_BREW=1 to use Homebrew on Linux)..."
+    bash "$BASEDIR/scripts/bootstap-fedora.sh"
+  else
+    echo "Unsupported distro for native package bootstrap. Use DOTFILES_USE_BREW=1 or install packages manually."
+    exit 1
+  fi
 fi
 
 # ── Step 3: Fish shell ──────────────────────────────────────────

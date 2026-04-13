@@ -30,18 +30,25 @@ fish_add_path ~/miniconda3/bin
 fish_add_path ~/.cargo/bin
 fish_add_path ~/.bun/bin
 
-# Bob (Neovim): first existing build wins (macOS arm/intel, Linux x64/arm64)
-set -l _bob_dirs
-switch (uname)
-    case Darwin
-        set _bob_dirs ~/.local/share/bob-nvim/nvim-macos-arm64/bin ~/.local/share/bob-nvim/nvim-macos-x86_64/bin
-    case Linux
-        set _bob_dirs ~/.local/share/bob-nvim/nvim-linux-arm64/bin ~/.local/share/bob-nvim/nvim-linux64/bin
-end
-for _bob in $_bob_dirs
-    if test -d "$_bob"
-        fish_add_path "$_bob"
-        break
+# Bob (Neovim): nvim-bin is the official shim (current bob); bob-nvim/bin is version root with bin/ (new tarball layout);
+# nvim-*-*/bin is legacy extracted Neovim folder names.
+if test -d ~/.local/share/bob/nvim-bin
+    fish_add_path ~/.local/share/bob/nvim-bin
+else if test -d ~/.local/share/bob-nvim/bin
+    fish_add_path ~/.local/share/bob-nvim/bin
+else
+    set -l _bob_dirs
+    switch (uname)
+        case Darwin
+            set _bob_dirs ~/.local/share/bob-nvim/nvim-macos-arm64/bin ~/.local/share/bob-nvim/nvim-macos-x86_64/bin
+        case Linux
+            set _bob_dirs ~/.local/share/bob-nvim/nvim-linux-arm64/bin ~/.local/share/bob-nvim/nvim-linux64/bin
+    end
+    for _bob in $_bob_dirs
+        if test -d "$_bob"
+            fish_add_path "$_bob"
+            break
+        end
     end
 end
 
