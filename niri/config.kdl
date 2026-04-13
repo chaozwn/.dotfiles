@@ -43,6 +43,8 @@ input {
     touchpad {
         // off
         tap
+        tap-button-map "left-right-middle"
+        click-method "clickfinger"
         // dwt
         // dwtp
         // drag false
