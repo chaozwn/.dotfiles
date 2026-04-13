@@ -23,6 +23,7 @@
     ~/.config/skhd: ./skhd
     ~/.config/yabai: ./yabai
     ~/.config/ghostty: ./ghostty
+    ~/.config/niri: ./niri
 
 - shell:
     - git submodule sync --recursive
