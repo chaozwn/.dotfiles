@@ -27,6 +27,17 @@ macos-option-as-alt = true
 # 添加shader
 custom-shader = "~/.config/ghostty/ghostty-shader-playground/public/shaders/cursor_smear.glsl"
 
+# 复制粘贴（Linux 上默认是 Ctrl+Shift+C / Ctrl+Shift+V；Ctrl+C 在 shell 里是“中断”）
+# performable：仅在有选区时才消耗 Ctrl+C 为复制，无选区时仍为中断( SIGINT )
+keybind = performable:ctrl+c=copy_to_clipboard:mixed
+keybind = ctrl+v=paste_from_clipboard
+
+# 右键：有选区则复制，否则粘贴（比仅弹出菜单更直观）
+right-click-action = copy-or-paste
+
+# 选中文本时同步到系统剪贴板（与 X11/Wayland 其它应用用 Ctrl+V 互通更稳）
+copy-on-select = clipboard
+
 # ANSI 码键盘映射
 # keybind = ctrl+'=csi:39;5u
 # keybind = ctrl+(=csi:40;5u
