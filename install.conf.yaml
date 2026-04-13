@@ -24,6 +24,7 @@
     ~/.config/yabai: ./yabai
     ~/.config/ghostty: ./ghostty
     ~/.config/niri: ./niri
+    ~/.local/share/flatpak/overrides: ./flatpak/overrides
 
 - shell:
     - git submodule sync --recursive

@@ -1,0 +1,8 @@
+[Context]
+filesystems=xdg-download;
+
+[Environment]
+XMODIFIERS=@im=fcitx
+GTK_IM_MODULE=fcitx
+XCURSOR_SIZE=24
+QT_IM_MODULE=fcitx
