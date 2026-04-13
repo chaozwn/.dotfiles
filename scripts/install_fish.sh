@@ -8,7 +8,7 @@ chsh -s /opt/homebrew/bin/fish
 # install fish dependencies
 brew install fastfetch
 brew install gum
-brew install hub
+brew install gh
 brew install fd
 brew install grc
 brew install bat

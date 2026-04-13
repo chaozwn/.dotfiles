@@ -4,3 +4,4 @@ tmux/plugins
 **/node_modules
 fish/fish_variables
 fish/local.fish
+niri/dms/outputs.kdl

@@ -2,7 +2,7 @@
 fish
 fastfetch
 gum
-hub
+gh
 fd
 grc
 bat

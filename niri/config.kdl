@@ -64,7 +64,7 @@ input {
         // accel-speed 0.2
         // accel-profile "flat"
         // scroll-method "on-button-down"
-        // scroll-button 273
+        // scroll-button 2731
         // scroll-button-lock
         // middle-emulation
     }
@@ -227,7 +227,7 @@ window-rule {
     match app-id=r#"^gnome-calculator$"#
     match app-id=r#"^galculator$"#
     match app-id=r#"^blueman-manager$"#
-    match app-id=r#"^org\.gnome\.Nautilus$"#
+    // match app-id=r#"^org\.gnome\.Nautilus$"#
     match app-id=r#"^xdg-desktop-portal$"#
     open-floating true
 }

@@ -112,23 +112,21 @@ alias astronvim "NVIM_APPNAME=astronvim nvim"
 abbr av astronvim
 
 # Dev
-abbr git hub
 abbr topgit topgrade --only git_repos
-# abbr g hub
 
 set -x LG_CONFIG_FILE ~/.config/lazygit/config.yml
 
 alias lazygit "TERM=xterm-256color command lazygit"
 abbr gg lazygit
-# abbr gl 'hub l --color | devmoji --log --color | less -rXF'
-abbr gs "hub st"
-abbr gb "hub checkout -b"
-abbr gc "hub commit"
-abbr gpr "hub pr checkout"
-abbr gm "hub branch -l main | rg main > /dev/null 2>&1 && hub checkout main || hub checkout master"
-abbr gcp "hub commit -p"
-abbr gpp "hub push"
-abbr gp "hub pull"
+# abbr gl 'git log --color | devmoji --log --color | less -rXF'
+abbr gs "git status"
+abbr gb "git checkout -b"
+abbr gc "git commit"
+abbr gpr "gh pr checkout"
+abbr gm "git branch -l main | rg main > /dev/null 2>&1 && git checkout main || git checkout master"
+abbr gcp "git commit -p"
+abbr gpp "git push"
+abbr gp "git pull"
 
 # Other
 abbr df "grc /bin/df -h"

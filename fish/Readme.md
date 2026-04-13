@@ -10,7 +10,7 @@ brew install fish
 brew install fastfetch
 brew install starship
 brew install gum
-brew install hub
+brew install gh
 brew install fd
 brew install grc
 brew install bat

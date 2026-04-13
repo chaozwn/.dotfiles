@@ -14,7 +14,7 @@ sudo pacman -S --needed \
   file yazi ffmpegthumbnailer jq poppler ripgrep fzf zoxide \
   perl-image-exiftool lazygit lazydocker \
   p7zip imagemagick ripgrep-all mediainfo glow gdu protobuf ast-grep chafa git-delta \
-  coreutils neovim numbat gum hub \
+  coreutils neovim numbat gum github-cli \
   ttf-jetbrains-mono-nerd
 
 echo ""
