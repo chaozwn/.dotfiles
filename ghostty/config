@@ -42,4 +42,4 @@ custom-shader = "~/.config/ghostty/ghostty-shader-playground/public/shaders/curs
 # keybind = ctrl+`=csi:96;5u
 
 # 背景透明度（可选，取消注释以启用）
-# background-opacity = 0.95
+# background-opacity = 0.90

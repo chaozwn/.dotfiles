@@ -3,13 +3,12 @@
 
 services:
   "gitlab.baronatechnologies.fi": "gitlab:gitlab.baronatechnologies.fi"
-
 customCommands:
   - key: "-"
     context: global
     description: Show branch graph
     command: git lg # custom git alias
-    subprocess: true
+    output: terminal
   - key: "<c-a>"
     context: "global"
     description: "Save everything as WIP"
@@ -20,11 +19,10 @@ customCommands:
     # this is really useful when I have tons of squashed temp commits and I
     # want to reduce the repetition in the commit messages
     command: "git commit --amend --no-verify --message '{{.SelectedLocalCommit.Name}}'"
-  - key:
-      # backspace does not work, tracked in
-      # https://github.com/jesseduffield/lazygit/issues/2953
-      # https://github.com/jesseduffield/lazygit/issues/3847
-      "I"
+  - key: "I"
+    # backspace does not work, tracked in
+    # https://github.com/jesseduffield/lazygit/issues/2953
+    # https://github.com/jesseduffield/lazygit/issues/3847
     context: global
     command: "git stash-keep"
   - key: "E"
@@ -41,22 +39,17 @@ customCommands:
     description: "commit with commitizen"
     context: "files"
     loadingText: "opening commitizen commit tool"
-    subprocess: true
-
+    output: terminal
 keybinding:
   universal:
     edit: e
   files:
     commitChanges: c # using the interactive commit dialog
     toggleTreeView: f
-
 os:
   editPreset: "nvim-remote"
-
 promptToReturnFromSubprocess: false
-
 notARepository: "quit"
-
 gui:
   commitHashLength: 0
   skipRewordInEditorWarning: true
@@ -90,9 +83,8 @@ gui:
       - "#c53b53"
     defaultFgColor:
       - "#c8d3f5"
-
 git:
   parseEmoji: true
-  paging:
-    colorArg: always
-    pager: delta --paging=never
+  pagers:
+    - colorArg: always
+      pager: delta --paging=never
