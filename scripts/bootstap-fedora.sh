@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # Native Fedora bootstrap (no Homebrew). Keeps the same toolchain as brew-both.txt where possible.
 # Optional: tmuxinator — gem install tmuxinator (needs ruby)
-# Optional: bob, nvm — install upstream (see brew-both.txt)
+# Optional: nvm — install upstream (see brew-both.txt)
+# Optional: bob (Neovim version manager) — official script, no Homebrew:
+#   DOTFILES_BOB=0 bash scripts/bootstap-fedora.sh   # skip bob (default: install)
 #
 # Extras not in Fedora base+updates (fc43): starship, bottom, lazygit, yazi — installed via COPR by default.
 #   DOTFILES_FEDORA_COPR=0 bash scripts/bootstap-fedora.sh   # skip third-party COPR repos
@@ -30,12 +32,21 @@ if [ "${DOTFILES_FEDORA_COPR:-1}" = "1" ]; then
   sudo dnf install -y starship bottom lazygit yazi
 fi
 
+if [ "${DOTFILES_BOB:-1}" = "1" ]; then
+  echo "==> Installing bob (Neovim version manager) to ~/.local/bin..."
+  mkdir -p ~/.local/bin
+  curl -fsSL https://raw.githubusercontent.com/MordechaiHadad/bob/master/scripts/install.sh | bash
+fi
+
 echo ""
 echo "✅ dnf packages installed."
 if [ "${DOTFILES_FEDORA_COPR:-1}" != "1" ]; then
   echo "ℹ️  COPR skipped (DOTFILES_FEDORA_COPR=0): starship, bottom, lazygit, yazi were not installed — run again with default (COPR on) or install manually."
 fi
 echo "ℹ️  GitHub CLI \`gh\` is installed (e.g. \`gh pr checkout\` for PR branches)."
-echo "ℹ️  Not covered here: ripgrep-all, ast-grep, numbat, lazydocker, nvm, bob (install from upstream/COPR/cargo)."
+if [ "${DOTFILES_BOB:-1}" != "1" ]; then
+  echo "ℹ️  Bob skipped (DOTFILES_BOB=0): install with \`curl -fsSL https://raw.githubusercontent.com/MordechaiHadad/bob/master/scripts/install.sh | bash\`"
+fi
+echo "ℹ️  Not covered here: ripgrep-all, ast-grep, numbat, lazydocker, nvm (install from upstream)."
 echo "ℹ️  Fonts: jetbrains-mono-fonts is installed; for Nerd-patched glyphs use ~/.dotfiles/fonts/*.ttf (see install_fonts.sh)."
 echo "ℹ️  Match Mac workflow: clone this repo to ~/.dotfiles and run bash install for dotbot symlinks."
