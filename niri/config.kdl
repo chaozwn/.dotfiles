@@ -29,6 +29,10 @@ input {
             // localectl set-x11-keymap.
         }
 
+        // Faster key repeat (hjkl hold in terminal/Vim). Default is ~600ms / 25 cps.
+        repeat-delay 250
+        repeat-rate 35
+
         // Enable numlock on startup, omitting this setting disables it.
         numlock
     }
