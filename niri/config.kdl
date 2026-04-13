@@ -267,6 +267,13 @@ window-rule {
     match app-id=r#"com.danklinux.dms$"#
     open-floating true
 }
+// Settings 主窗口参与平铺（覆盖上一则规则；标题随语言为 Settings / 设置）
+window-rule {
+    match app-id=r#"org.quickshell$"#
+    match app-id=r#"com.danklinux.dms$"#
+    match title=r#"^(Settings|设置)$"#
+    open-floating false
+}
 debug {
     honor-xdg-activation-with-invalid-serial
 }
