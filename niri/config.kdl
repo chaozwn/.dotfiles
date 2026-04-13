@@ -160,7 +160,6 @@ overview {
 spawn-at-startup "fcitx5"
 environment {
   XDG_CURRENT_DESKTOP "niri"
-  GTK_IM_MODULE "fcitx"
   QT_IM_MODULE "fcitx"
   QT_IM_MODULES "wayland;fcitx"
   XMODIFIERS "@im=fcitx"
