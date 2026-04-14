@@ -259,6 +259,7 @@ window-rule {
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     match app-id="zoom"
+    match app-id="flameshot"
     open-floating true
 }
 // Open dms windows as floating by default
