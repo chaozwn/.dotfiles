@@ -5,3 +5,5 @@ tmux/plugins
 fish/fish_variables
 fish/local.fish
 niri/dms/outputs.kdl
+# stray symlink to ~/.local/share/bob-nvim (Bob nvim install dir)
+/bob-nvim
