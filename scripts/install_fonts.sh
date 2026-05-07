@@ -22,6 +22,8 @@ install_fonts() {
       fc-cache -f ~/.local/share/fonts 2>/dev/null || true
     elif command -v pacman >/dev/null 2>&1 && pacman -Qi ttf-jetbrains-mono-nerd >/dev/null 2>&1; then
       echo "✅ Using system font ttf-jetbrains-mono-nerd (from bootstrap-arch / pacman)."
+    elif command -v dpkg-query >/dev/null 2>&1 && dpkg-query -W -f='${Status}' fonts-jetbrains-mono 2>/dev/null | grep -q 'ok installed'; then
+      echo "✅ Using system font fonts-jetbrains-mono (from bootstrap-ubuntu / apt)."
     elif command -v pacman >/dev/null 2>&1; then
       echo "ℹ️  No ~/.dotfiles/fonts/*.ttf found. Install JetBrains Nerd Font: sudo pacman -S ttf-jetbrains-mono-nerd"
     else

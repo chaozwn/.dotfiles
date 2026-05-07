@@ -1,6 +1,6 @@
 # .dotfiles
 
-Personal dotfiles managed with [dotbot](https://github.com/anishathalye/dotbot). Supports **macOS**, **Arch Linux** (native `pacman`), and other **Linux** setups (Homebrew on x86_64).
+Personal dotfiles managed with [dotbot](https://github.com/anishathalye/dotbot). Supports **macOS**, **Arch Linux** (native `pacman`), **Fedora** / **Ubuntu**-family (native `dnf` / `apt`), and other **Linux** setups (Homebrew on x86_64).
 
 ## One-click Install
 
@@ -13,13 +13,13 @@ That's it. `bootstrap.sh` will run the following steps automatically:
 
 | Step | What it does |
 |------|-------------|
-| 1–2 | **macOS / Linux (non-Arch or `DOTFILES_USE_BREW=1`)**: Install [Homebrew](https://brew.sh) and packages from `brew/brew-both.txt` + `brew/brew-mac.txt` or `brew/brew-linux.txt`. **Arch Linux (default)**: `scripts/bootstrap-arch.sh` installs the same roles via `pacman` (no Homebrew). |
+| 1–2 | **macOS / Linux (non-Arch-Fedora-Ubuntu or `DOTFILES_USE_BREW=1`)**: Install [Homebrew](https://brew.sh) and packages from `brew/brew-both.txt` + `brew/brew-mac.txt` or `brew/brew-linux.txt`. **Arch Linux (default)**: `scripts/bootstrap-arch.sh` via `pacman`. **Fedora**: `scripts/bootstap-fedora.sh` via `dnf`. **Ubuntu** / **Linux Mint** / **Pop!_OS** (default): `scripts/bootstrap-ubuntu.sh` via `apt` (enable `universe` if needed) and **[yazi](https://snapcraft.io/yazi) via `snap install`**. All without Homebrew unless you opt in. |
 | 3 | Set [fish](https://fishshell.com) as the default shell (`/opt/homebrew`, Linuxbrew, or `/usr/bin/fish` on Arch) |
 | 4 | Install [Nerd Fonts](https://www.nerdfonts.com) (JetBrains Mono): Homebrew cask on macOS; `pacman` package or `~/.dotfiles/fonts/*.ttf` on Linux |
 | 5 | Symlink all config files via dotbot |
 | 6 | Install Node.js via fish [nvm](https://github.com/jorgebucaran/nvm.fish) + global npm packages |
 
-### macOS vs Arch
+### macOS vs Arch / Fedora / Ubuntu
 
 - **Same repo, same symlinks**: `fish/`, `tmux/`, editors, etc. are shared. mac-only tools (yabai, sketchybar, …) stay in the repo; on Linux they simply are not used.
 - **Optional Homebrew on Arch** (x86_64): run `DOTFILES_USE_BREW=1 bash bootstrap.sh` to use Linuxbrew instead of `scripts/bootstrap-arch.sh`.

@@ -1,5 +1,13 @@
 # Install
 
+**Ubuntu (recommended):** [Yazi is on the Snap Store](https://snapcraft.io/yazi). Ensure `snapd` is installed, then:
+
+```shell
+sudo snap install yazi --classic
+```
+
+The dotfiles [Ubuntu bootstrap script](../scripts/bootstrap-ubuntu.sh) runs this for you.
+
 ```shell
 brew install file yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide exiftool bat lazygit lazydocker sevenzip imagemagick font-symbols-only-nerd-font ripgrep-all mediainfo glow eza
 brew tap homebrew/cask-fonts && brew install --cask font-symbols-only-nerd-font

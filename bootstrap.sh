@@ -8,6 +8,12 @@ USE_BREW=1
 if [ "${DOTFILES_USE_BREW:-0}" != "1" ]; then
   if [ -f /etc/arch-release ] || [ -f /etc/fedora-release ]; then
     USE_BREW=0
+  elif [ -f /etc/os-release ]; then
+    # shellcheck source=/dev/null
+    . /etc/os-release
+    case "${ID:-}" in
+      ubuntu|linuxmint|pop) USE_BREW=0 ;;
+    esac
   fi
 fi
 
@@ -24,6 +30,19 @@ else
   elif [ -f /etc/fedora-release ]; then
     echo "==> [1-2/7] Fedora: installing packages via dnf (set DOTFILES_USE_BREW=1 to use Homebrew on Linux)..."
     bash "$BASEDIR/scripts/bootstap-fedora.sh"
+  elif [ -f /etc/os-release ]; then
+    # shellcheck source=/dev/null
+    . /etc/os-release
+    case "${ID:-}" in
+      ubuntu|linuxmint|pop)
+        echo "==> [1-2/7] ${PRETTY_NAME:-$ID}: installing packages via apt (set DOTFILES_USE_BREW=1 to use Homebrew on Linux)..."
+        bash "$BASEDIR/scripts/bootstrap-ubuntu.sh"
+        ;;
+      *)
+        echo "Unsupported distro for native package bootstrap. Use DOTFILES_USE_BREW=1 or install packages manually."
+        exit 1
+        ;;
+    esac
   else
     echo "Unsupported distro for native package bootstrap. Use DOTFILES_USE_BREW=1 or install packages manually."
     exit 1
