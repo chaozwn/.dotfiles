@@ -43,6 +43,8 @@ That's it. `bootstrap.sh` will run the following steps automatically:
 | [skhd](https://github.com/koekeishiya/skhd) | `skhd/` | Hotkey daemon (macOS) |
 | [sketchybar](https://github.com/FelixKratz/SketchyBar) | `sketchybar/` | Status bar (macOS) |
 | [borders](https://github.com/FelixKratz/JankyBorders) | `borders/` | Window borders (macOS) |
+| [Cursor](https://cursor.com) | `cursor/` | `settings.json` + `keybindings.json` + `snippets/` |
+| [VSCode](https://code.visualstudio.com) | `vscode/` | `settings.json` + `keybindings.json` + `snippets/` |
 
 ## Manual Steps
 

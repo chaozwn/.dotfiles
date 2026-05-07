@@ -26,6 +26,50 @@
     ~/.config/niri: ./niri
     ~/.local/share/flatpak/overrides: ./flatpak/overrides
 
+    # --- Cursor (macOS) ---
+    "~/Library/Application Support/Cursor/User/settings.json":
+      path: ./cursor/settings.json
+      if: '[ "$(uname)" = "Darwin" ]'
+    "~/Library/Application Support/Cursor/User/keybindings.json":
+      path: ./cursor/keybindings.json
+      if: '[ "$(uname)" = "Darwin" ]'
+    "~/Library/Application Support/Cursor/User/snippets":
+      path: ./cursor/snippets
+      if: '[ "$(uname)" = "Darwin" ]'
+
+    # --- Cursor (Linux) ---
+    ~/.config/Cursor/User/settings.json:
+      path: ./cursor/settings.json
+      if: '[ "$(uname)" = "Linux" ]'
+    ~/.config/Cursor/User/keybindings.json:
+      path: ./cursor/keybindings.json
+      if: '[ "$(uname)" = "Linux" ]'
+    ~/.config/Cursor/User/snippets:
+      path: ./cursor/snippets
+      if: '[ "$(uname)" = "Linux" ]'
+
+    # --- VSCode (macOS) ---
+    "~/Library/Application Support/Code/User/settings.json":
+      path: ./vscode/settings.json
+      if: '[ "$(uname)" = "Darwin" ]'
+    "~/Library/Application Support/Code/User/keybindings.json":
+      path: ./vscode/keybindings.json
+      if: '[ "$(uname)" = "Darwin" ]'
+    "~/Library/Application Support/Code/User/snippets":
+      path: ./vscode/snippets
+      if: '[ "$(uname)" = "Darwin" ]'
+
+    # --- VSCode (Linux) ---
+    ~/.config/Code/User/settings.json:
+      path: ./vscode/settings.json
+      if: '[ "$(uname)" = "Linux" ]'
+    ~/.config/Code/User/keybindings.json:
+      path: ./vscode/keybindings.json
+      if: '[ "$(uname)" = "Linux" ]'
+    ~/.config/Code/User/snippets:
+      path: ./vscode/snippets
+      if: '[ "$(uname)" = "Linux" ]'
+
 - shell:
     - git submodule sync --recursive
     - git submodule update --init --recursive --remote

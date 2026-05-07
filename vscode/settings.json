@@ -1,0 +1,460 @@
+{
+  "editor.parameterHints.enabled": false,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  },
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[rust]": {
+    "editor.semanticHighlighting.enabled": false
+  },
+  "editor.codeActionsOnSave": {
+    "source.addMissingImports": "explicit",
+    "source.organizeImports": "explicit",
+    "source.removeUnused": "never"
+  },
+  "files.trimTrailingWhitespace": true,
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.scrollbar.vertical": "hidden",
+  "editor.scrollbar.horizontalScrollbarSize": 0,
+  "editor.minimap.autohide": "mouseover",
+  "editor.hideCursorInOverviewRuler": true,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorSurroundingLines": 5,
+  "breadcrumbs.enabled": true,
+  "workbench.layoutControl.enabled": false,
+  "editor.renderLineHighlight": "line",
+  "editor.occurrencesHighlight": "multiFile",
+  "editor.selectionHighlight": false,
+  "editor.fontFamily": "JetBrainsMono Nerd Font Mono",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 16,
+  "editor.formatOnSave": false,
+  "editor.inlineSuggest.enabled": true,
+  "editor.lineNumbers": "relative",
+  "editor.linkedEditing": true,
+  "editor.minimap.enabled": false,
+  "editor.smoothScrolling": true,
+  "editor.stickyScroll.enabled": false,
+  "editor.suggest.insertMode": "replace",
+  "editor.suggestFontSize": 16,
+  "errorLens.enabledDiagnosticLevels": [
+    "error",
+    "warning",
+    "info",
+    "hint"
+  ],
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "extensions.ignoreRecommendations": true,
+  // 忽略排除的文件
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.idea": true,
+    "**/.svn": true,
+    "**/CVS": true,
+    "**/Thumbs.db": true,
+    "**/__pycache__": true // python 生产的cache文件
+  },
+  "security.workspace.trust.untrustedFiles": "open",
+  "sortJSON.orderOverride": [
+    "name",
+    "version",
+    "description"
+  ],
+  "terminal.integrated.inheritEnv": true,
+  "terminal.external.osxExec": "Kitty.app",
+  "terminal.integrated.fontFamily": "JetBrainsMonoNL Nerd Font Mono",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "vim.autoSwitchInputMethod.enable": false,
+  "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
+  "vim.autoSwitchInputMethod.obtainIMCmd": "/opt/homebrew/bin/im-select",
+  "vim.autoSwitchInputMethod.switchIMCmd": "/opt/homebrew/bin/im-select {im}",
+  "vim.foldfix": true,
+  "vim.highlightedyank.color": "rgba(230, 97, 89, 0.7)",
+  "vim.highlightedyank.enable": true,
+  "vim.highlightedyank.textColor": "white",
+  "vim.hlsearch": true,
+  "vim.incsearch": true,
+  "vim.leader": "<space>",
+  "vim.showMarksInGutter": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "Y"
+      ],
+      "after": [
+        "y",
+        "$"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "l"
+      ],
+      "after": [
+        "g",
+        "h"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "w",
+        "o"
+      ],
+      "after": [
+        "<C-w>",
+        "o"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "b",
+        "o"
+      ],
+      "commands": [
+        "workbench.action.closeOtherEditors"
+      ]
+    },
+    {
+      "after": [
+        "^"
+      ],
+      "before": [
+        "H"
+      ]
+    },
+    {
+      "after": [
+        "g",
+        "_"
+      ],
+      "before": [
+        "L"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "/"
+      ],
+      "commands": [
+        "workbench.action.findInFiles"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "g",
+        "g"
+      ],
+      "commands": [
+        "workbench.view.scm"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "space",
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "e"
+      ],
+      "commands": [
+        "workbench.action.toggleSidebarVisibility",
+      ],
+      "when": [
+        "editorTextFocus"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "o"
+      ],
+      "commands": [
+        "workbench.files.action.focusFilesExplorer",
+      ],
+      "when": [
+        "editorTextFocus"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "b",
+        "o"
+      ],
+      "commands": [
+        "workbench.action.closeOtherEditors"
+      ]
+    },
+    {
+      "before": [
+        "z",
+        "a"
+      ],
+      "commands": [
+        "editor.toggleFold"
+      ]
+    },
+    {
+      "before": [
+        "K"
+      ],
+      "commands": [
+        "editor.action.showHover"
+      ]
+    },
+    {
+      "before": [
+        "]",
+        "d"
+      ],
+      "commands": [
+        "editor.action.marker.next"
+      ]
+    },
+    {
+      "before": [
+        "[",
+        "d"
+      ],
+      "commands": [
+        "editor.action.marker.prev"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "c",
+        "a"
+      ],
+      "commands": [
+        "editor.action.quickFix"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "c",
+        "r"
+      ],
+      "commands": [
+        "editor.action.rename"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "r"
+      ],
+      "commands": [
+        "editor.action.goToReferences"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "c",
+        "f"
+      ],
+      "commands": [
+        "editor.action.formatDocument"
+      ]
+    },
+    {
+      "before": [
+        "u"
+      ],
+      "commands": [
+        "undo"
+      ]
+    },
+    {
+      "before": [
+        "C-r"
+      ],
+      "commands": [
+        "redo"
+      ]
+    },
+    {
+      "before": [
+        "]",
+        "b"
+      ],
+      "commands": [
+        "workbench.action.nextEditor"
+      ],
+      "when": [
+        "!codeActionMenuVisible && !terminalFocus"
+      ]
+    },
+    {
+      "before": [
+        "[",
+        "b"
+      ],
+      "commands": [
+        "workbench.action.previousEditor"
+      ],
+      "when": [
+        "!codeActionMenuVisible && !terminalFocus"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "/"
+      ],
+      "commands": [
+        "periscope.search"
+      ]
+    }
+  ],
+  "vim.surround": true,
+  "vim.useCtrlKeys": true,
+  "vim.useSystemClipboard": true,
+  "vim.insertModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "C-s",
+      ],
+      "commands": [
+        "editor.action.triggerParameterHints"
+      ],
+      "when": "editorHasSignatureHelpProvider && editorTextFocus"
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "K"
+      ],
+      "commands": [
+        "editor.action.moveLinesUpAction"
+      ]
+    },
+    {
+      "before": [
+        "J"
+      ],
+      "commands": [
+        "editor.action.moveLinesDownAction"
+      ]
+    },
+    {
+      "before": [
+        ">"
+      ],
+      "commands": [
+        "editor.action.indentLines"
+      ]
+    },
+    {
+      "before": [
+        "<"
+      ],
+      "commands": [
+        "editor.action.outdentLines"
+      ]
+    },
+  ],
+  "vim.flash.enable": true,
+  "vim.flash.ignorecase": true,
+  "workbench.colorTheme": "Evondev Dracula Darker Contrast",
+  "workbench.iconTheme": "material-icon-theme",
+  // 设置vim
+  "workbench.settings.editor": "json",
+  "workbench.startupEditor": "readme",
+  "vim.easymotion": false,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1"
+  },
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 2500,
+  "explorer.compactFolders": false,
+  "notebook.compactView": false,
+  "rust-analyzer.imports.prefix": "crate",
+  "[sql]": {
+    "editor.defaultFormatter": "innoverio.vscode-dbt-power-user"
+  },
+  "[jinja-sql]": {
+    "editor.defaultFormatter": "innoverio.vscode-dbt-power-user"
+  },
+  "files.associations": {
+    "*.sql": "jinja-sql",
+    "*.yml": "jinja-yaml"
+  },
+  // 在 settings.json 中添加
+  "multiCommand.commands": [
+    {
+      "command": "multiCommand.openFileAndSplitEditor",
+      "sequence": [
+        "list.select", // 这个命令用于打开文件资源管理器中选中的文件
+        "workbench.action.splitEditor" // 这个命令用于执行垂直分屏
+      ]
+    },
+    {
+      "command": "multiCommand.openFileAndSplitEditorOrthogonal",
+      "sequence": [
+        "list.select", // 打开选中的文件
+        "workbench.action.splitEditorOrthogonal" // 水平分屏
+      ]
+    }
+  ],
+  "sqltools.useNodeRuntime": true,
+  "console-ninja.featureSet": "Community",
+  "git.openRepositoryInParentFolders": "always",
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // project manager
+  "projectManager.git.baseFolders": [
+    "$home/workspace"
+  ],
+  "projectManager.sortList": "Recent",
+  "jest.nodeEnv": {
+    "PORT": "9800",
+    "BAR": "true",
+    "NODE_OPTIONS": "--max-old-space-size=4096 --experimental-vm-modules"
+  },
+  "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1"
+}

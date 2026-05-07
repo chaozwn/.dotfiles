@@ -1,0 +1,261 @@
+[
+    // 进行项目切换的时候时候
+    {
+        "key": "cmd+o",
+        "command": "projectManager.listGitProjects#sideBarGit"
+    },
+    // 按ctrl+=可以不断扩大选中
+    {
+        "command": "expand_region",
+        "key": "ctrl+=",
+        "when": "editorTextFocus"
+    },
+    {
+        "command": "undo_expand_region",
+        "key": "ctrl+-",
+        "when": "editorTextFocus && editorHasSelection"
+    },
+    // 终端
+    {
+        "key": "ctrl+/",
+        "command": "workbench.action.terminal.toggleTerminal",
+    },
+    {
+        "key": "ctrl+h",
+        "command": "vim.remap",
+        "when": "vim.mode == 'Normal' && !suggestWidgetVisible && !inQuickOpen && !panelFocus",
+        "args": {
+            "after": [
+                "<C-w>",
+                "h"
+            ]
+        }
+    },
+    {
+        "key": "ctrl+l",
+        "command": "vim.remap",
+        "when": "vim.mode == 'Normal' && !suggestWidgetVisible && !inQuickOpen",
+        "args": {
+            "after": [
+                "<C-w>",
+                "l"
+            ]
+        }
+    },
+    {
+        "key": "ctrl+j",
+        "command": "vim.remap",
+        "when": "vim.mode == 'Normal' && !suggestWidgetVisible && !inQuickOpen",
+        "args": {
+            "after": [
+                "<C-w>",
+                "j"
+            ]
+        }
+    },
+    {
+        "key": "ctrl+k",
+        "command": "vim.remap",
+        "when": "vim.mode == 'Normal' && !suggestWidgetVisible && !inQuickOpen && !panelFocus",
+        "args": {
+            "after": [
+                "<C-w>",
+                "k"
+            ]
+        }
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+w",
+        "command": "workbench.action.terminal.new",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+q",
+        "command": "workbench.action.terminal.kill",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+j",
+        "command": "workbench.action.terminal.scrollDown",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+k",
+        "command": "workbench.action.terminal.scrollUp",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+h",
+        "command": "workbench.action.terminal.focusPrevious",
+        "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+    },
+    {
+        "key": "alt+l",
+        "command": "workbench.action.terminal.focusNext",
+        "when": "terminalFocus"
+    },
+    // debug
+    {
+        "key": "F5",
+        "command": "extension.multiCommand.execute",
+        "when": "editorTextFocus",
+        "args": {
+            "sequence": [
+                "workbench.action.files.saveAll",
+                {
+                    "command": "workbench.action.terminal.sendSequence",
+                    "args": {
+                        "text": "clear \u000D"
+                    }
+                },
+                "workbench.action.terminal.focus",
+                {
+                    "command": "workbench.action.debug.start",
+                },
+                "workbench.action.focusActiveEditorGroup"
+            ]
+        }
+    },
+    {
+        "key": "shift+F5",
+        "command": "workbench.action.debug.stop"
+    },
+    {
+        "key": "ctrl+F5",
+        "command": "workbench.action.debug.restart"
+    },
+    {
+        "key": "F9",
+        "command": "editor.debug.action.toggleBreakpoint"
+    },
+    {
+        "key": "shift+F9",
+        "command": "editor.debug.action.conditionalBreakpoint"
+    },
+    {
+        "key": "F11",
+        "command": "workbench.action.debug.stepInto"
+    },
+    {
+        "key": "shift+F11",
+        "command": "workbench.action.debug.stepOut"
+    },
+    {
+        "key": "F10",
+        "command": "workbench.action.debug.stepOver"
+    },
+    {
+        "key": "F6",
+        "command": "workbench.action.debug.pause"
+    },
+    // explorer
+    {
+        "key": "a",
+        "command": "explorer.newFile",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "x",
+        "command": "filesExplorer.cut",
+        "when": "filesExplorerFocus && !inputFocus",
+    },
+    {
+        "key": "r",
+        "command": "renameFile",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "shift+r",
+        "command": "workbench.files.action.refreshFilesExplorer",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "y",
+        "command": "filesExplorer.copy",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "p",
+        "command": "filesExplorer.paste",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "d",
+        "command": "deleteFile",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "shift+d",
+        "command": "moveFileToTrash",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    // completion
+    {
+        "key": "tab",
+        "command": "~tab",
+        "when": "codeActionMenuVisible"
+    },
+    {
+        "key": "shift+tab",
+        "command": "~tab",
+        "when": "codeActionMenuVisible"
+    },
+    // explorer
+    {
+        "key": "s",
+        "command": "extension.multiCommand.execute",
+        "args": {
+            "command": "multiCommand.openFileAndSplitEditor"
+        },
+        "when": "filesExplorerFocus && vim.mode == 'Normal' && !inputFocus"
+    },
+    {
+        "key": "v",
+        "command": "extension.multiCommand.execute",
+        "args": {
+            "command": "multiCommand.openFileAndSplitEditorOrthogonal"
+        },
+        "when": "filesExplorerFocus && vim.mode == 'Normal' && !inputFocus"
+    },
+    {
+        "key": "/",
+        "command": "list.find",
+        "when": "listFocus && listSupportsFind && !inputFocus"
+    },
+    {
+        "key": "enter",
+        "command": "-renameFile",
+        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+    },
+    // 调整编辑器大小
+    {
+        "key": "ctrl+up",
+        "command": "workbench.action.increaseViewHeight",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+down",
+        "command": "workbench.action.decreaseViewHeight",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+left",
+        "command": "workbench.action.increaseViewWidth",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+right",
+        "command": "workbench.action.decreaseViewWidth",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+cmd+s",
+        "command": "workbench.action.toggleUnifiedSidebarFromKeyboard",
+        "when": "cursor.agentIdeUnification.enabled == true && !isAuxiliaryWindowFocusedContext"
+    }
+]
