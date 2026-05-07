@@ -45,7 +45,7 @@ ctrl + cmd - c : yabai -m space --create; set index (yabai -m query --spaces --d
 
 
 # destroy desktop
-ctrl + cmd - d : set index (yabai -m query --spaces | jq '.[] | select(."has-focus").index'); if test $index -gt 1; set newindex (math "$index - 1"); else; set newindex (math "$index + 1"); end; yabai -m space --destroy; yabai -m space --focus $newindex
+ctrl + cmd - d : set index (yabai -m query --spaces --space | jq '.index'); if test $index -gt 1; set newindex (math "$index - 1"); else; set newindex 1; end; yabai -m space --destroy && yabai -m space --focus $newindex
 
 # Resize windows
 ctrl + cmd - left : yabai -m window --resize left:-50:0; \

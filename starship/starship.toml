@@ -1,4 +1,4 @@
-command_timeout = 1000
+command_timeout = 3000
 
 # Replace the "❯" symbol in the prompt with "➜"
 [character]      # The name of the module we are configuring is "character"
@@ -38,7 +38,7 @@ detect_folders = []
 symbol = " "
 
 [git_metrics]
-disabled = false
+disabled = true
 
 [aws]
 symbol = "  "
