@@ -463,5 +463,6 @@
   "cursor.composer.usageSummaryDisplay": "always",
   "git.ignoreRebaseWarning": true,
   "go.toolsManagement.autoUpdate": true,
-  "diffEditor.maxComputationTime": 0
+  "diffEditor.maxComputationTime": 0,
+  "window.autoDetectColorScheme": false
 }
