@@ -24,6 +24,9 @@
     ~/.config/yabai: ./yabai
     ~/.config/ghostty: ./ghostty
     ~/.config/niri: ./niri
+    ~/.config/environment.d/90-dms.conf:
+      path: ./environment.d/90-dms.conf
+      if: '[ "$(uname)" = "Linux" ]'
     ~/.config/fcitx5/config:
       path: ./fcitx5/config
       if: '[ "$(uname)" = "Linux" ]'

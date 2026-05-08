@@ -2,6 +2,9 @@
 filesystems=xdg-download;
 
 [Environment]
+LANG=zh_CN.UTF-8
+LANGUAGE=zh_CN:zh
+LC_MESSAGES=zh_CN.UTF-8
 XMODIFIERS=@im=fcitx
 GTK_IM_MODULE=fcitx
 XCURSOR_SIZE=24
