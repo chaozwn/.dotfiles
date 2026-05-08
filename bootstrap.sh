@@ -19,23 +19,23 @@ fi
 
 # ── Steps 1–2: package manager ───────────────────────────────────
 if [ "$USE_BREW" = "1" ]; then
-  echo "==> [1/7] Installing Homebrew..."
+  echo "==> [1/8] Installing Homebrew..."
   bash "$BASEDIR/brew/0.install.sh"
-  echo "==> [2/7] Installing brew packages..."
+  echo "==> [2/8] Installing brew packages..."
   bash "$BASEDIR/brew/1.brewInstallApps.sh"
 else
   if [ -f /etc/arch-release ]; then
-    echo "==> [1-2/7] Arch Linux: installing packages via pacman (set DOTFILES_USE_BREW=1 to use Homebrew on Linux)..."
+    echo "==> [1-2/8] Arch Linux: installing packages via pacman (set DOTFILES_USE_BREW=1 to use Homebrew on Linux)..."
     bash "$BASEDIR/scripts/bootstrap-arch.sh"
   elif [ -f /etc/fedora-release ]; then
-    echo "==> [1-2/7] Fedora: installing packages via dnf (set DOTFILES_USE_BREW=1 to use Homebrew on Linux)..."
+    echo "==> [1-2/8] Fedora: installing packages via dnf (set DOTFILES_USE_BREW=1 to use Homebrew on Linux)..."
     bash "$BASEDIR/scripts/bootstap-fedora.sh"
   elif [ -f /etc/os-release ]; then
     # shellcheck source=/dev/null
     . /etc/os-release
     case "${ID:-}" in
       ubuntu|linuxmint|pop)
-        echo "==> [1-2/7] ${PRETTY_NAME:-$ID}: installing packages via apt (set DOTFILES_USE_BREW=1 to use Homebrew on Linux)..."
+        echo "==> [1-2/8] ${PRETTY_NAME:-$ID}: installing packages via apt (set DOTFILES_USE_BREW=1 to use Homebrew on Linux)..."
         bash "$BASEDIR/scripts/bootstrap-ubuntu.sh"
         ;;
       *)
@@ -50,7 +50,7 @@ else
 fi
 
 # ── Step 3: Fish shell ──────────────────────────────────────────
-echo "==> [3/7] Setting fish as default shell..."
+echo "==> [3/8] Setting fish as default shell..."
 FISH_PATH=""
 for candidate in /opt/homebrew/bin/fish /home/linuxbrew/.linuxbrew/bin/fish /usr/bin/fish; do
   if [ -x "$candidate" ]; then
@@ -82,23 +82,27 @@ else
 fi
 
 # ── Step 4: Fonts ────────────────────────────────────────────────
-echo "==> [4/7] Installing fonts..."
+echo "==> [4/8] Installing fonts..."
 bash "$BASEDIR/scripts/install_fonts.sh"
 
-# ── Step 5: Dotbot symlinks ─────────────────────────────────────
-echo "==> [5/7] Linking dotfiles via dotbot..."
+# ── Step 5: Rime user dir (rime-ice) ────────────────────────────
+echo "==> [5/8] Preparing Rime user dir (rime-ice)..."
+bash "$BASEDIR/scripts/install_rime.sh"
+
+# ── Step 6: Dotbot symlinks ─────────────────────────────────────
+echo "==> [6/8] Linking dotfiles via dotbot..."
 bash "$BASEDIR/install"
 
-# ── Step 6: Miniconda ───────────────────────────────────────────
+# ── Step 7: Miniconda ───────────────────────────────────────────
 if [ "${DOTFILES_SKIP_MINICONDA:-0}" != "1" ]; then
-  echo "==> [6/7] Installing Miniconda..."
+  echo "==> [7/8] Installing Miniconda..."
   bash "$BASEDIR/scripts/install_miniconda.sh"
 else
-  echo "==> [6/7] Skipping Miniconda (DOTFILES_SKIP_MINICONDA=1)"
+  echo "==> [7/8] Skipping Miniconda (DOTFILES_SKIP_MINICONDA=1)"
 fi
 
-# ── Step 7: Node.js ─────────────────────────────────────────────
-echo "==> [7/7] Installing Node.js via nvm..."
+# ── Step 8: Node.js ─────────────────────────────────────────────
+echo "==> [8/8] Installing Node.js via nvm..."
 if command -v fish &>/dev/null; then
   fish "$BASEDIR/nvm/install_node.sh"
 else

@@ -6,6 +6,14 @@ For more information see:
 * https://github.com/ryanoasis/nerd-fonts/
 * https://github.com/ryanoasis/nerd-fonts/releases/latest/
 
+# PingFang (苹方)
+
+`PingFang.ttc` is Apple's PingFang TrueType Collection, useful as a CJK
+fallback / UI font on Linux when Apple-style Chinese typography is desired.
+
+It will be installed to `~/.local/share/fonts/` by `scripts/install_fonts.sh`
+on Linux along with the JetBrains Nerd Font ttf files.
+
 # JetBrains Mono
 
 JetBrains Mono: a typeface made for developers

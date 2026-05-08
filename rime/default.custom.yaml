@@ -1,0 +1,24 @@
+# Adapted from chaozwn/rime@config/default.custom.yaml.
+# Removed the `luna_pinyin_simp` schema_list override because we now ship on
+# top of rime-ice (its default schema_list already starts with `rime_ice`).
+# Removed the `Release+Escape toggle ascii_mode` binding because the
+# vim_mode lua_processor handles Esc -> ascii switching for us.
+
+patch:
+  menu/page_size: 9
+
+  # 若 caps 切换大小写无效, 打开 Mac 系统偏好设置 > 键盘 > 输入法 >
+  # 取消勾选 [使用大写锁定键切换"美国"输入模式]
+  ascii_composer/switch_key:
+    Shift_L: commit_code  # 左 Shift，提交编码（不切中英）
+    Shift_R: noop
+
+  key_binder/bindings/+:
+    - { when: composing,    accept: Tab,                send: Shift+Right }   # tab 分词
+    - { when: paging,       accept: minus,              send: Page_Up }       # - 上一页
+    - { when: has_menu,     accept: equal,              send: Page_Down }     # = 下一页
+    - { when: paging,       accept: comma,              send: Page_Up }       # , 上一页
+    - { when: has_menu,     accept: period,             send: Page_Down }     # . 下一页
+    - { when: paging,       accept: bracketleft,        send: Page_Up }       # [ 上一页
+    - { when: has_menu,     accept: bracketright,       send: Page_Down }     # ] 下一页
+    - { when: composing,    accept: Control+h,          send: BackSpace }     # Ctrl+h 删除

@@ -14,20 +14,20 @@ install_fonts() {
   else
     mkdir -p ~/.local/share/fonts
     shopt -s nullglob
-    local ttf
-    ttf=(~/.dotfiles/fonts/*.ttf)
+    local fonts
+    fonts=(~/.dotfiles/fonts/*.ttf ~/.dotfiles/fonts/*.ttc ~/.dotfiles/fonts/*.otf)
     shopt -u nullglob
-    if [ "${#ttf[@]}" -gt 0 ]; then
-      cp "${ttf[@]}" ~/.local/share/fonts/
+    if [ "${#fonts[@]}" -gt 0 ]; then
+      cp "${fonts[@]}" ~/.local/share/fonts/
       fc-cache -f ~/.local/share/fonts 2>/dev/null || true
     elif command -v pacman >/dev/null 2>&1 && pacman -Qi ttf-jetbrains-mono-nerd >/dev/null 2>&1; then
       echo "✅ Using system font ttf-jetbrains-mono-nerd (from bootstrap-arch / pacman)."
     elif command -v dpkg-query >/dev/null 2>&1 && dpkg-query -W -f='${Status}' fonts-jetbrains-mono 2>/dev/null | grep -q 'ok installed'; then
       echo "✅ Using system font fonts-jetbrains-mono (from bootstrap-ubuntu / apt)."
     elif command -v pacman >/dev/null 2>&1; then
-      echo "ℹ️  No ~/.dotfiles/fonts/*.ttf found. Install JetBrains Nerd Font: sudo pacman -S ttf-jetbrains-mono-nerd"
+      echo "ℹ️  No fonts found in ~/.dotfiles/fonts/. Install JetBrains Nerd Font: sudo pacman -S ttf-jetbrains-mono-nerd"
     else
-      echo "ℹ️  No ~/.dotfiles/fonts/*.ttf copied; add fonts under ~/.dotfiles/fonts/ or install a Nerd Font package."
+      echo "ℹ️  No fonts copied; add ttf/ttc/otf files under ~/.dotfiles/fonts/ or install a Nerd Font package."
     fi
   fi
 }

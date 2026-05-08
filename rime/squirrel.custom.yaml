@@ -1,0 +1,96 @@
+# macOS Squirrel patches.
+# Adapted from chaozwn/rime@config/squirrel.custom.yaml.
+#
+# CHANGES vs. the original:
+# - All `vim_mode: true` entries are replaced with `vmode: true` so they
+#   route through our cross-platform lua_processor (see lua/vim_mode.lua),
+#   which behaves the same on Linux/fcitx5.
+# - `vim_mode: false` entries are dropped (vmode defaults to off via the
+#   `reset: 0` switch in rime_ice.custom.yaml).
+
+patch:
+  show_notifications_when: always
+
+  style/color_scheme: solarized_dark
+  style/color_scheme_dark: solarized_dark
+
+  preset_color_schemes:
+    solarized_dark:
+      name: 夜光石
+      horizontal: true
+      candidate_format: "%c %@ "
+      corner_radius: 6
+      font_point: 16
+      label_font_point: 15
+      line_spacing: 10
+      font_face: "PingFangSC-Regular,HanaMinB"
+      text_color: 0xA1A095
+      border_color: 0xf02A1F00
+      label_color: 0xCC8947
+      back_color: 0xf0352A0A
+      candidate_text_color: 0x989F52
+      comment_text_color: 0x289989
+      hilited_text_color: 0x2C8BAE
+      hilited_back_color: 0x444444
+      hilited_candidate_label_color: 0x2566C6
+      hilited_candidate_back_color: 0xD7E8ED
+      hilited_candidate_text_color: 0x3942CB
+      hilited_comment_text_color: 0x8144C2
+
+  # Per-app behavior. `vmode: true` activates lua/vim_mode.lua.
+  app_options/+:
+    # ── Vim-family editors ──────────────────────────────────────
+    org.vim.MacVim:
+      no_inline: true
+      vmode: true
+    uk.foon.Neovim:
+      no_inline: true
+      vmode: true
+    com.qvacua.VimR:
+      no_inline: true
+      vmode: true
+    com.ident.goneovim:
+      no_inline: true
+      vmode: true
+
+    # ── Terminals (no vim mode by default) ──────────────────────
+    com.googlecode.iterm2:
+      no_inline: true
+    com.apple.Terminal:
+      no_inline: true
+
+    # ── Terminals where I do use vim ────────────────────────────
+    net.kovidgoyal.kitty:
+      vmode: true
+    com.mitchellh.ghostty:
+      vmode: true
+
+    # ── IDEs / editors that start in ASCII ──────────────────────
+    com.todesktop.230313mzl4w4u92:   # Cursor
+      ascii_mode: true
+      ascii_punct: true
+      vmode: true
+    com.microsoft.VSCode:
+      ascii_mode: true
+      ascii_punct: true
+      vmode: true
+    com.jetbrains.intellij:
+      vmode: true
+    com.jetbrains.datagrip:
+      vmode: true
+    com.jetbrains.WebStorm:
+      vmode: true
+
+    # ── Notes / writing ─────────────────────────────────────────
+    md.obsidian:
+      vmode: true
+
+    # ── Launchers / utilities ───────────────────────────────────
+    com.alfredapp.Alfred:
+      ascii_mode: true
+
+    # ── AntDraw web apps (no inline) ────────────────────────────
+    com.microsoft.edgemac.app.jndbnbljngolcchhjbajncidekccnlck:
+      no_inline: true
+    com.google.Chrome.app.jndbnbljngolcchhjbajncidekccnlck:
+      no_inline: true

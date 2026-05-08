@@ -1,0 +1,16 @@
+# Patch rime-ice's main schema (rime_ice) to support cross-platform vim_mode
+# via lua_processor. See ./lua/vim_mode.lua and rime/README.md.
+#
+# `vmode` is OFF by default (reset: 0); it gets enabled per-app via
+# app_options in fcitx5.custom.yaml (Linux) and squirrel.custom.yaml (macOS).
+
+patch:
+  # Insert the lua processor right after select_character (index 0),
+  # before ascii_composer / key_binder, so we can intercept Esc / i a o c
+  # before any other binding consumes them.
+  engine/processors/@before 1: lua_processor@vim_mode
+
+  switches/+:
+    - name: vmode
+      states: [ NoVim, Vim ]
+      reset: 0

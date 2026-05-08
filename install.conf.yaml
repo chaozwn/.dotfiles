@@ -26,6 +26,48 @@
     ~/.config/niri: ./niri
     ~/.local/share/flatpak/overrides: ./flatpak/overrides
 
+    # --- Rime (Linux fcitx5) ---
+    # Layer ./rime/*.custom.yaml + ./rime/lua/*.lua on top of an existing
+    # rime-ice user dir (cloned by scripts/install_rime.sh). Skipped if the
+    # rime user dir is not present (e.g. fcitx5/rime not installed yet).
+    ~/.local/share/fcitx5/rime/rime.lua:
+      path: ./rime/rime.lua
+      if: '[ "$(uname)" = "Linux" ] && [ -d "$HOME/.local/share/fcitx5/rime" ]'
+    ~/.local/share/fcitx5/rime:
+      path: ./rime/*.custom.yaml
+      glob: true
+      if: '[ "$(uname)" = "Linux" ] && [ -d "$HOME/.local/share/fcitx5/rime" ]'
+    ~/.local/share/fcitx5/rime/lua:
+      path: ./rime/lua/*.lua
+      glob: true
+      if: '[ "$(uname)" = "Linux" ] && [ -d "$HOME/.local/share/fcitx5/rime/lua" ]'
+
+    # --- Rime (Linux ibus, fallback) ---
+    ~/.config/ibus/rime/rime.lua:
+      path: ./rime/rime.lua
+      if: '[ "$(uname)" = "Linux" ] && [ -d "$HOME/.config/ibus/rime" ] && [ ! -d "$HOME/.local/share/fcitx5/rime" ]'
+    ~/.config/ibus/rime:
+      path: ./rime/*.custom.yaml
+      glob: true
+      if: '[ "$(uname)" = "Linux" ] && [ -d "$HOME/.config/ibus/rime" ] && [ ! -d "$HOME/.local/share/fcitx5/rime" ]'
+    ~/.config/ibus/rime/lua:
+      path: ./rime/lua/*.lua
+      glob: true
+      if: '[ "$(uname)" = "Linux" ] && [ -d "$HOME/.config/ibus/rime/lua" ] && [ ! -d "$HOME/.local/share/fcitx5/rime/lua" ]'
+
+    # --- Rime (macOS Squirrel) ---
+    "~/Library/Rime/rime.lua":
+      path: ./rime/rime.lua
+      if: '[ "$(uname)" = "Darwin" ] && [ -d "$HOME/Library/Rime" ]'
+    "~/Library/Rime":
+      path: ./rime/*.custom.yaml
+      glob: true
+      if: '[ "$(uname)" = "Darwin" ] && [ -d "$HOME/Library/Rime" ]'
+    "~/Library/Rime/lua":
+      path: ./rime/lua/*.lua
+      glob: true
+      if: '[ "$(uname)" = "Darwin" ] && [ -d "$HOME/Library/Rime/lua" ]'
+
     # --- Cursor (macOS) ---
     "~/Library/Application Support/Cursor/User/settings.json":
       path: ./cursor/settings.json

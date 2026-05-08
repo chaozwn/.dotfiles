@@ -1,0 +1,52 @@
+# Linux fcitx5-rime patches.
+#
+# IMPORTANT: open the fcitx5 config tool and set
+#   Global Options -> Shared Input State = No
+# Otherwise app_options are not re-applied when switching apps.
+#
+# To find an app's identifier, run:
+#   dbus-send --print-reply=literal --dest=org.fcitx.Fcitx5 \
+#     /controller org.fcitx.Fcitx.Controller1.DebugInfo
+#
+# `vmode: true` activates lua/vim_mode.lua (see rime_ice.custom.yaml for the
+# processor wiring and switch declaration).
+
+patch:
+  app_options/+:
+    # ── Terminals where I use vim/nvim heavily ────────────────
+    kitty:
+      vmode: true
+    com.mitchellh.ghostty:
+      vmode: true
+    org.alacritty:
+      vmode: true
+    Alacritty:
+      vmode: true
+
+    # ── IDEs / editors that start in ASCII ────────────────────
+    code:
+      ascii_mode: true
+      ascii_punct: true
+      vmode: true
+    code-url-handler:
+      ascii_mode: true
+      ascii_punct: true
+      vmode: true
+    cursor:
+      ascii_mode: true
+      ascii_punct: true
+      vmode: true
+    Cursor:
+      ascii_mode: true
+      ascii_punct: true
+      vmode: true
+    jetbrains-idea:
+      vmode: true
+    jetbrains-datagrip:
+      vmode: true
+    jetbrains-webstorm:
+      vmode: true
+
+    # ── Notes / writing ───────────────────────────────────────
+    obsidian:
+      vmode: true
