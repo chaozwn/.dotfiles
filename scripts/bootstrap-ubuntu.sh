@@ -58,6 +58,13 @@ install_bat_command() {
   fi
 }
 
+install_danksearch_command() {
+  if ! command -v dsearch &>/dev/null && command -v danksearch &>/dev/null; then
+    echo "==> Exposing danksearch as dsearch for DMS..."
+    sudo ln -sf "$(command -v danksearch)" /usr/local/bin/dsearch
+  fi
+}
+
 install_lazydocker() {
   if command -v lazydocker &>/dev/null; then
     return
@@ -92,8 +99,9 @@ sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends "
 
 # Some packages are present on many recent Ubuntu releases; skip gracefully on older systems.
 OPTPKGS=()
-if apt-cache show bottom &>/dev/null; then OPTPKGS+=("bottom"); fi
-if apt-cache show resvg &>/dev/null; then OPTPKGS+=("resvg"); fi
+for pkg in bottom resvg khal ddcutil i2c-tools danksearch; do
+  if apt-cache show "$pkg" &>/dev/null; then OPTPKGS+=("$pkg"); fi
+done
 if ((${#OPTPKGS[@]} > 0)); then
   echo "==> Optional packages from apt: ${OPTPKGS[*]}"
   sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends "${OPTPKGS[@]}"
@@ -103,6 +111,7 @@ fi
 
 install_yazi
 install_bat_command
+install_danksearch_command
 install_lazydocker
 
 # fd (Debian): binary is fdfind; make \`fd\` available for configs that call \`fd\`.
