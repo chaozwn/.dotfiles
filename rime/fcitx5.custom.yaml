@@ -15,12 +15,20 @@ patch:
   app_options/+:
     # ── Terminals where I use vim/nvim heavily ────────────────
     kitty:
+      ascii_mode: true
+      ascii_punct: true
       vmode: true
     com.mitchellh.ghostty:
+      ascii_mode: true
+      ascii_punct: true
       vmode: true
     org.alacritty:
+      ascii_mode: true
+      ascii_punct: true
       vmode: true
     Alacritty:
+      ascii_mode: true
+      ascii_punct: true
       vmode: true
 
     # ── IDEs / editors that start in ASCII ────────────────────

@@ -1,5 +1,12 @@
 local M = {}
 
+local function preview(job, widget)
+	if ya.preview_widget then
+		return ya.preview_widget(job, widget)
+	end
+	return ya.preview_widgets(job, widget)
+end
+
 function M:peek(job)
 	-- Set a fixed width of 55 characters for the preview
 	local preview_width = 55
@@ -46,7 +53,7 @@ function M:peek(job)
 		})
 	else
 		lines = lines:gsub("\t", string.rep(" ", PREVIEW.tab_size))
-		ya.preview_widgets(job, { ui.Text.parse(lines):area(job.area) })
+		preview(job, { ui.Text.parse(lines):area(job.area) })
 	end
 end
 

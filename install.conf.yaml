@@ -24,6 +24,9 @@
     ~/.config/yabai: ./yabai
     ~/.config/ghostty: ./ghostty
     ~/.config/niri: ./niri
+    ~/.config/fcitx5/config:
+      path: ./fcitx5/config
+      if: '[ "$(uname)" = "Linux" ]'
     ~/.local/share/flatpak/overrides: ./flatpak/overrides
 
     # --- Rime (Linux fcitx5) ---

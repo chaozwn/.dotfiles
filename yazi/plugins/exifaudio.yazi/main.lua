@@ -1,5 +1,12 @@
 local M = {}
 
+local function preview(job, widget)
+	if ya.preview_widget then
+		return ya.preview_widget(job, widget)
+	end
+	return ya.preview_widgets(job, widget)
+end
+
 function GetPath(str)
 	local sep = '/'
 	if ya.target_family() == "windows" then
@@ -58,11 +65,11 @@ function M:peek(job)
 			-- TODO)) Remove legacy method when v0.4 gets released
 			local function display_error_legacy()
 				local p = ui.Paragraph(job.area, { error }):wrap(ui.Paragraph.WRAP)
-				ya.preview_widgets(job, { p })
+				preview(job, { p })
 			end
 			local function display_error()
 				local p = ui.Text(error):area(job.area):wrap(ui.Text.WRAP)
-				ya.preview_widgets(job, { p })
+				preview(job, { p })
 			end
 			if pcall(display_error) then else pcall(display_error_legacy) end
 			return
@@ -94,11 +101,11 @@ function M:peek(job)
 	-- TODO)) Remove legacy method when v0.4 gets released
 	local function display_metadata_legacy()
 		local p = ui.Paragraph(job.area, metadata):wrap(ui.Paragraph.WRAP)
-		ya.preview_widgets(job, { p })
+		preview(job, { p })
 	end
 	local function display_metadata()
 		local p = ui.Text(metadata):area(job.area):wrap(ui.Text.WRAP)
-		ya.preview_widgets(job, { p })
+		preview(job, { p })
 	end
 	if pcall(display_metadata) then else pcall(display_metadata_legacy) end
 

@@ -46,32 +46,41 @@ clone_rime_ice() {
   echo "✅ rime-ice ready at $target"
 }
 
-# Per-app vmode (and rime app_options in general) only re-applies on focus
-# change when fcitx5's "Share Input State" is set to No. Idempotently enforce
-# that here so app_options/vmode just works on a fresh machine.
-configure_fcitx5_share_input_state() {
+ensure_fcitx5_behavior_option() {
+  local cfg="$1"
+  local key="$2"
+  local value="$3"
+
+  if grep -q "^${key}=${value}$" "$cfg"; then
+    echo "✅ fcitx5 ${key}=${value} already set"
+    return 0
+  fi
+
+  if grep -q "^${key}=" "$cfg"; then
+    sed -i.bak "s/^${key}=.*/${key}=${value}/" "$cfg"
+    echo "✅ fcitx5 ${key} set to ${value} (backup at ${cfg}.bak)"
+  elif grep -q '^\[Behavior\]' "$cfg"; then
+    sed -i.bak "/^\[Behavior\]/a ${key}=${value}" "$cfg"
+    echo "✅ fcitx5 ${key}=${value} added under [Behavior] (backup at ${cfg}.bak)"
+  else
+    printf '\n[Behavior]\n%s=%s\n' "$key" "$value" >> "$cfg"
+    echo "✅ fcitx5 [Behavior]/${key}=${value} appended"
+  fi
+}
+
+# Per-app vmode (and rime app_options in general) works best with isolated
+# input contexts. Idempotently enforce the two behavior flags we maintain in
+# fcitx5/config so fresh machines converge even before dotbot links the file.
+configure_fcitx5_behavior() {
   local cfg="$HOME/.config/fcitx5/config"
 
   if [ ! -f "$cfg" ]; then
-    echo "ℹ️  $cfg not found yet (run fcitx5 once); skipping ShareInputState"
+    echo "ℹ️  $cfg not found yet (run fcitx5 once); skipping fcitx5 behavior options"
     return 0
   fi
 
-  if grep -q '^ShareInputState=No$' "$cfg"; then
-    echo "✅ fcitx5 ShareInputState=No already set"
-    return 0
-  fi
-
-  if grep -q '^ShareInputState=' "$cfg"; then
-    sed -i.bak 's/^ShareInputState=.*/ShareInputState=No/' "$cfg"
-    echo "✅ fcitx5 ShareInputState set to No (backup at ${cfg}.bak)"
-  elif grep -q '^\[Behavior\]' "$cfg"; then
-    sed -i.bak '/^\[Behavior\]/a ShareInputState=No' "$cfg"
-    echo "✅ fcitx5 ShareInputState=No added under [Behavior] (backup at ${cfg}.bak)"
-  else
-    printf '\n[Behavior]\nShareInputState=No\n' >> "$cfg"
-    echo "✅ fcitx5 [Behavior]/ShareInputState=No appended"
-  fi
+  ensure_fcitx5_behavior_option "$cfg" "resetStateWhenFocusIn" "No"
+  ensure_fcitx5_behavior_option "$cfg" "ShareInputState" "No"
 }
 
 main() {
@@ -86,7 +95,7 @@ main() {
   clone_rime_ice "$target"
 
   if [ "$(uname)" = "Linux" ]; then
-    configure_fcitx5_share_input_state
+    configure_fcitx5_behavior
   fi
 }
 

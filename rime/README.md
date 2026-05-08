@@ -21,7 +21,7 @@ This folder only holds **my customization delta**, not the upstream dictionary /
 | `rime.lua`                    | librime-lua entry point; exports `vim_mode = require("vim_mode")`             |
 | `default.custom.yaml`         | Global tweaks: page size, Shift_L=commit_code, key bindings (no schema list override; rime-ice's own list stands) |
 | `rime_ice.custom.yaml`        | Hooks `lua_processor@vim_mode` into the rime_ice schema and registers a `vmode` switch (off by default) |
-| `lua/vim_mode.lua`            | The processor itself: Esc / Ctrl+[ → switch to ASCII; i/a/o/c leaves normal-mode state but stays ASCII |
+| `lua/vim_mode.lua`            | The processor itself: Esc / Ctrl+[ clears candidates and switches to ASCII; i/a/o/c leaves normal-mode state without forcing CN/ASCII afterwards |
 | `squirrel.custom.yaml`        | macOS: solarized_dark theme + per-app `vmode: true` (Cursor, VSCode, kitty, Ghostty, JetBrains, Obsidian, …) |
 | `fcitx5.custom.yaml`          | Linux: per-app `vmode: true` (kitty, Ghostty, alacritty, code, cursor, JetBrains, Obsidian) |
 
@@ -40,6 +40,7 @@ When the active app has `app_options/vmode: true`:
 2. **i / a / o / c pressed while in normal mode**:
    - clear normal-mode flag
    - stay in ASCII (English)
+   - do not force input mode afterwards, so you can manually switch to Chinese in insert mode
 
 Caveats (from upstream):
 - Rime can't actually see Vim's mode, so this heuristic isn't 100%. Pressing Esc / Ctrl+[ when you're already in normal mode resets state harmlessly.

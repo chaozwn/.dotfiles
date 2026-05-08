@@ -3,6 +3,13 @@ local M = {}
 local function fail(s, ...) ya.notify { title = "Eza Preview", content = string.format(s, ...), timeout = 5, level =
     "error" } end
 
+local function preview(job, widget)
+    if ya.preview_widget then
+        return ya.preview_widget(job, widget)
+    end
+    return ya.preview_widgets(job, widget)
+end
+
 local toggle_view_mode = ya.sync(function(state, _)
     if state.tree == nil then
         state.tree = false
@@ -81,12 +88,12 @@ function M:peek(job)
             { tostring(math.max(0, job.skip - (limit - num_lines))), only_if = tostring(job.file.url), upper_bound = "" }
         )
     elseif empty_output then
-        ya.preview_widgets(job, {
+        preview(job, {
             ui.Text({ ui.Line("No items") }):area(job.area)
                 :align(ui.Text.CENTER),
         })
     else
-        ya.preview_widgets(job, { ui.Text.parse(lines):area(job.area) })
+        preview(job, { ui.Text.parse(lines):area(job.area) })
     end
 end
 

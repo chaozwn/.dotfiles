@@ -62,6 +62,14 @@ Pull the latest changes and re-link:
 cd ~/.dotfiles && git pull && bash install
 ```
 
+Update DankMaterialShell (DMS) on Linux:
+
+```bash
+cd ~/.dotfiles && bash scripts/update_dms.sh
+```
+
+For manual/source installs, force the DMS CLI updater with `bash scripts/update_dms.sh --cli`.
+
 ## Structure
 
 ```

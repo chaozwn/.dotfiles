@@ -10,16 +10,28 @@
 
 set -euo pipefail
 
+install_lazydocker() {
+  if command -v lazydocker &>/dev/null; then
+    return
+  fi
+
+  echo "==> Installing lazydocker to ~/.local/bin from upstream..."
+  mkdir -p "$HOME/.local/bin"
+  if ! curl -fsSL https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | DIR="$HOME/.local/bin" bash; then
+    echo "⚠️  lazydocker install failed; install manually if you use the Yazi td binding."
+  fi
+}
+
 echo "==> Installing packages via dnf (Fedora official repositories)..."
 
 sudo dnf install -y \
   @development-tools \
   git curl \
   fish fastfetch bat fd-find grc htop mosh tmux eza ncdu \
-  file ffmpegthumbnailer jq poppler-utils ripgrep fzf zoxide \
+  file ffmpegthumbnailer jq poppler-utils ripgrep fzf zoxide mpv resvg \
   perl-Image-ExifTool \
   7zip 7zip-standalone \
-  ImageMagick unar mediainfo glow gdu protobuf-compiler chafa git-delta \
+  ImageMagick libgomp unar mediainfo glow gdu protobuf-compiler chafa git-delta \
   coreutils neovim gum gh \
   jetbrains-mono-fonts 
 
@@ -31,6 +43,8 @@ if [ "${DOTFILES_FEDORA_COPR:-1}" = "1" ]; then
   sudo dnf copr enable -y lihaohong/yazi
   sudo dnf install -y starship bottom lazygit yazi
 fi
+
+install_lazydocker
 
 if [ "${DOTFILES_BOB:-1}" = "1" ]; then
   echo "==> Installing bob (Neovim version manager) to ~/.local/bin..."
@@ -47,6 +61,9 @@ echo "ℹ️  GitHub CLI \`gh\` is installed (e.g. \`gh pr checkout\` for PR bra
 if [ "${DOTFILES_BOB:-1}" != "1" ]; then
   echo "ℹ️  Bob skipped (DOTFILES_BOB=0): install with \`curl -fsSL https://raw.githubusercontent.com/MordechaiHadad/bob/master/scripts/install.sh | bash\`"
 fi
-echo "ℹ️  Not covered here: ripgrep-all, ast-grep, numbat, lazydocker, nvm (install from upstream)."
+if ! command -v ya &>/dev/null; then
+  echo "ℹ️  ya: missing. Ensure your Yazi package includes both \`yazi\` and \`ya\` if you use \`ya pack\`."
+fi
+echo "ℹ️  Not covered here: ripgrep-all, ast-grep, numbat, nvm (install from upstream)."
 echo "ℹ️  Fonts: jetbrains-mono-fonts is installed; for Nerd-patched glyphs use ~/.dotfiles/fonts/*.ttf (see install_fonts.sh)."
 echo "ℹ️  Match Mac workflow: clone this repo to ~/.dotfiles and run bash install for dotbot symlinks."

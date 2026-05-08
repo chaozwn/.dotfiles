@@ -37,6 +37,8 @@ ripgrep-all
 mediainfo 
 glow 
 eza
+mpv
+resvg
 
 #neovim
 gdu

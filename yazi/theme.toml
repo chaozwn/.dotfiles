@@ -1,5 +1,5 @@
 # Yazi 26+ theme (see https://yazi-rs.github.io/docs/configuration/theme/)
-"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
+# Schema: https://yazi-rs.github.io/schemas/theme.json
 
 [mgr]
 # NOTE: can combined with tmTheme (sublime colorshceme file) for preview code highlight

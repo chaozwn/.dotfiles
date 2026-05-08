@@ -61,8 +61,12 @@ patch:
 
     # ── Terminals where I do use vim ────────────────────────────
     net.kovidgoyal.kitty:
+      ascii_mode: true
+      ascii_punct: true
       vmode: true
     com.mitchellh.ghostty:
+      ascii_mode: true
+      ascii_punct: true
       vmode: true
 
     # ── IDEs / editors that start in ASCII ──────────────────────
