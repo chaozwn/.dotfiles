@@ -78,7 +78,7 @@ REQUIRED_PKGS=(
   file ffmpegthumbnailer jq poppler-utils ripgrep fzf zoxide
   libimage-exiftool-perl
   p7zip-full
-  imagemagick libgomp1 unar mediainfo mpv
+  imagemagick kimageformat6-plugins libgomp1 unar mediainfo mpv
   chafa gdu glow protobuf-compiler
   coreutils
   neovim gum gh
