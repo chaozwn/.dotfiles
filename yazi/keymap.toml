@@ -705,16 +705,28 @@ keymap = [
 keymap = [
   { on = [
     "<C-q>",
-  ], run = "close", desc = "Cancel completion" },
+  ], run = "close", desc = "Cancel confirmation" },
+  { on = [
+    "n",
+  ], run = "close", desc = "Cancel confirmation" },
+  { on = [
+    "N",
+  ], run = "close", desc = "Cancel confirmation" },
+  { on = [
+    "y",
+  ], run = "close --submit", desc = "Confirm" },
+  { on = [
+    "Y",
+  ], run = "close --submit", desc = "Confirm" },
   { on = [
     "<Tab>",
-  ], run = "close --submit", desc = "Submit the completion" },
+  ], run = "close --submit", desc = "Submit the confirmation" },
   { on = [
     "<Enter>",
   ], run = [
     "close --submit",
     "close_input --submit",
-  ], desc = "Submit the completion and input" },
+  ], desc = "Submit the confirmation and input" },
 
   { on = [
     "<A-k>",
