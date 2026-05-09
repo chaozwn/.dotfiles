@@ -26,7 +26,7 @@
     ~/.config/niri: ./niri
     ~/.config/environment.d/90-dms.conf:
       path: ./environment.d/90-dms.conf
-      if: '[ "$(uname)" = "Linux" ]'
+      if: '[ "$(uname)" = "Linux" ] && command -v niri >/dev/null 2>&1'
     ~/.config/fcitx5/config:
       path: ./fcitx5/config
       if: '[ "$(uname)" = "Linux" ]'
