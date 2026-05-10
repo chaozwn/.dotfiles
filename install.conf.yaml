@@ -24,6 +24,9 @@
     ~/.config/yabai: ./yabai
     ~/.config/ghostty: ./ghostty
     ~/.config/niri: ./niri
+    ~/.config/autostart/org.fcitx.Fcitx5.desktop:
+      path: ./autostart/org.fcitx.Fcitx5.desktop
+      if: '[ "$(uname)" = "Linux" ]'
     ~/.config/environment.d/90-dms.conf:
       path: ./environment.d/90-dms.conf
       if: '[ "$(uname)" = "Linux" ] && command -v niri >/dev/null 2>&1'

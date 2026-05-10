@@ -77,6 +77,24 @@ install_lazydocker() {
   fi
 }
 
+configure_gnome_keyboard() {
+  if ! command -v gsettings &>/dev/null; then
+    echo "ℹ️  gsettings not found; skipping GNOME keyboard settings."
+    return
+  fi
+
+  if ! gsettings writable org.gnome.desktop.input-sources xkb-options &>/dev/null; then
+    echo "ℹ️  GNOME input-sources settings unavailable; skipping keyboard settings."
+    return
+  fi
+
+  echo "==> Configuring GNOME keyboard: swap Caps/Ctrl and faster repeat..."
+  gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:swapcaps']"
+  gsettings set org.gnome.desktop.peripherals.keyboard repeat true
+  gsettings set org.gnome.desktop.peripherals.keyboard delay 250
+  gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 29
+}
+
 # Core: avoid one huge failure if a single name differs — split required vs optional.
 REQUIRED_PKGS=(
   build-essential
@@ -113,6 +131,7 @@ install_yazi
 install_bat_command
 install_danksearch_command
 install_lazydocker
+configure_gnome_keyboard
 
 # fd (Debian): binary is fdfind; make \`fd\` available for configs that call \`fd\`.
 if command -v fdfind &>/dev/null; then

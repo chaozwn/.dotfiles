@@ -65,6 +65,8 @@ if [ -n "$FISH_PATH" ]; then
   fi
   LOGIN_SHELL="$(getent passwd "$(id -un)" | cut -d: -f7)"
   if [ "$LOGIN_SHELL" != "$FISH_PATH" ]; then
+    echo "==> Changing login shell to $FISH_PATH. You may be prompted for your login password."
+    echo "    Password input is hidden; type it and press Enter if the terminal appears to pause."
     if ! chsh -s "$FISH_PATH" 2>/dev/null; then
       echo "⚠️  chsh failed (wrong password, or shell not allowed). Try:"
       echo "    chsh -s $FISH_PATH"
