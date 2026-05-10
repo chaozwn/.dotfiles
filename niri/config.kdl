@@ -169,7 +169,6 @@ environment {
   LANGUAGE "zh_CN:zh"
   LC_MESSAGES "zh_CN.UTF-8"
   XDG_CURRENT_DESKTOP "niri"
-  GTK_IM_MODULE "fcitx"
   QT_IM_MODULE "fcitx"
   QT_IM_MODULES "wayland;fcitx"
   XMODIFIERS "@im=fcitx"
