@@ -390,7 +390,11 @@ keymap = [
   { on = [
     "g",
     "d",
-  ], run = "cd ~/Downloads", desc = "Go to the downloads directory" },
+  ], run = "shell -- sh -c 'dir=\"$(xdg-user-dir DOWNLOAD 2>/dev/null || true)\"; [ -d \"$dir\" ] || dir=\"$HOME/Downloads\"; [ -d \"$dir\" ] || dir=\"$HOME/下载\"; [ -d \"$dir\" ] && ya emit cd \"$dir\"'", desc = "Go to the downloads directory" },
+  { on = [
+    "g",
+    "D",
+  ], run = "shell -- sh -c 'dir=\"$(xdg-user-dir DOCUMENTS 2>/dev/null || true)\"; [ -d \"$dir\" ] || dir=\"$HOME/Documents\"; [ -d \"$dir\" ] || dir=\"$HOME/文档\"; [ -d \"$dir\" ] && ya emit cd \"$dir\"'", desc = "Go to the documents directory" },
   { on = [
     "g",
     "t",

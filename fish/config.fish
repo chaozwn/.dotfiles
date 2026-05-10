@@ -166,10 +166,19 @@ end
 zoxide init fish | source
 
 # The next line updates PATH for the Google Cloud SDK.
-if test -f "$HOME/google-cloud-sdk/path.fish.inc"
-    source "$HOME/google-cloud-sdk/path.fish.inc"
-else if test -f "$HOME/Downloads/google-cloud-sdk/path.fish.inc"
-    source "$HOME/Downloads/google-cloud-sdk/path.fish.inc"
+set -l _gcloud_sdk_dirs "$HOME/google-cloud-sdk"
+if command -q xdg-user-dir
+    set -l _download_dir (xdg-user-dir DOWNLOAD 2>/dev/null)
+    if test -n "$_download_dir"
+        set -a _gcloud_sdk_dirs "$_download_dir/google-cloud-sdk"
+    end
+end
+set -a _gcloud_sdk_dirs "$HOME/Downloads/google-cloud-sdk" "$HOME/下载/google-cloud-sdk"
+for _gcloud_sdk_dir in $_gcloud_sdk_dirs
+    if test -f "$_gcloud_sdk_dir/path.fish.inc"
+        source "$_gcloud_sdk_dir/path.fish.inc"
+        break
+    end
 end
 
 # bun
