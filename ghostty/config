@@ -39,18 +39,20 @@ right-click-action = copy-or-paste
 copy-on-select = clipboard
 
 # ANSI 码键盘映射
-# keybind = ctrl+'=csi:39;5u
-# keybind = ctrl+(=csi:40;5u
-# keybind = ctrl+)=csi:41;5u
-# keybind = ctrl+,=csi:44;5u
-# keybind = ctrl++=csi:43;5u
-# keybind = ctrl+-=csi:45;5u
-# keybind = ctrl+.=csi:46;5u
-# keybind = ctrl+;=csi:59;5u
-# keybind = ctrl+==csi:61;5u
-# keybind = ctrl+/=csi:47;5u
-# keybind = ctrl+~=csi:126;5u
-# keybind = ctrl+`=csi:96;5u
+# 将 Ctrl+[ 发送为传统 ESC，避免非 tmux 下被编码成 CSI-u 后在 yazi/fzf 中残留 91;5u
+keybind = ctrl+left_bracket=text:\x1b
+keybind = ctrl+'=csi:39;5u
+keybind = ctrl+(=csi:40;5u
+keybind = ctrl+)=csi:41;5u
+keybind = ctrl+,=csi:44;5u
+keybind = ctrl++=csi:43;5u
+keybind = ctrl+-=csi:45;5u
+keybind = ctrl+.=csi:46;5u
+keybind = ctrl+;=csi:59;5u
+keybind = ctrl+==csi:61;5u
+keybind = ctrl+/=csi:47;5u
+keybind = ctrl+~=csi:126;5u
+keybind = ctrl+`=csi:96;5u
 
 # 背景透明度（可选，取消注释以启用）
 # background-opacity = 0.90
