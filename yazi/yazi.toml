@@ -72,7 +72,7 @@ rules = [
     "play",
     "reveal",
   ] },
-  { mime = "inode/x-empty", use = [
+  { mime = "inode/{empty,x-empty}", use = [
     "edit",
     "reveal",
   ] },
