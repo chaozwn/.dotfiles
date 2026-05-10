@@ -17,6 +17,12 @@ keymap.set("n", "N", "Nzz", { noremap = true, silent = true })
 
 keymap.set("n", "x", '"_x', { noremap = true, silent = true })
 keymap.set("n", "<leader>/", LazyVim.pick("live_grep", { root = false }), { desc = "Grep (cwd)" })
+keymap.set("n", "<leader>yy", function()
+  require("utils").copy_file_location(false)
+end, { desc = "Copy File Location" })
+keymap.set("x", "<leader>yy", function()
+  require("utils").copy_file_location(true)
+end, { desc = "Copy File Location" })
 
 if LazyVim.has("mini.pairs") then
   -- for mini.pairs

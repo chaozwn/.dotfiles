@@ -19,6 +19,44 @@ function M.yaml_ft(path, bufnr)
   end
 end
 
+function M.copy_file_location(visual)
+  local filepath = vim.api.nvim_buf_get_name(0)
+  if filepath == "" then
+    vim.notify("No file path to copy", vim.log.levels.WARN)
+    return
+  end
+
+  filepath = vim.fn.fnamemodify(filepath, ":p")
+  filepath = vim.fn.fnamemodify(filepath, ":.")
+
+  local start_line
+  local end_line
+  if visual then
+    start_line = vim.fn.line("v")
+    end_line = vim.fn.line(".")
+    if start_line > end_line then
+      start_line, end_line = end_line, start_line
+    end
+  else
+    start_line = vim.fn.line(".")
+    end_line = start_line
+  end
+
+  local location
+  if start_line == end_line then
+    location = ("@%s:%d"):format(filepath, start_line)
+  else
+    location = ("@%s:%d:%d"):format(filepath, start_line, end_line)
+  end
+
+  vim.fn.setreg("+", location, "c")
+  vim.notify(("Copied: `%s`"):format(location))
+
+  if visual then
+    vim.api.nvim_feedkeys(vim.keycode("<Esc>"), "n", false)
+  end
+end
+
 function M.remove_keymap(mode, key)
   for _, map in pairs(vim.api.nvim_get_keymap(mode)) do
     ---@diagnostic disable-next-line: undefined-field
