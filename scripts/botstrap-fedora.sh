@@ -3,10 +3,10 @@
 # Optional: tmuxinator — gem install tmuxinator (needs ruby)
 # Optional: nvm — install upstream (see brew-both.txt)
 # Optional: bob (Neovim version manager) — official script, no Homebrew:
-#   DOTFILES_BOB=0 bash scripts/bootstap-fedora.sh   # skip bob (default: install)
+#   DOTFILES_BOB=0 bash scripts/botstrap-fedora.sh   # skip bob (default: install)
 #
 # Extras not in Fedora base+updates (fc43): starship, bottom, lazygit, yazi — installed via COPR by default.
-#   DOTFILES_FEDORA_COPR=0 bash scripts/bootstap-fedora.sh   # skip third-party COPR repos
+#   DOTFILES_FEDORA_COPR=0 bash scripts/botstrap-fedora.sh   # skip third-party COPR repos
 
 set -euo pipefail
 
@@ -28,7 +28,7 @@ sudo dnf install -y \
   @development-tools \
   git curl \
   fish fastfetch bat fd-find grc htop mosh tmux eza ncdu \
-  file ffmpegthumbnailer jq poppler-utils ripgrep fzf zoxide mpv resvg \
+  file ffmpegthumbnailer jq poppler-utils ripgrep fzf zoxide mpv \
   perl-Image-ExifTool \
   7zip 7zip-standalone \
   ImageMagick libgomp unar mediainfo glow gdu protobuf-compiler chafa git-delta \
@@ -63,6 +63,9 @@ if [ "${DOTFILES_BOB:-1}" != "1" ]; then
 fi
 if ! command -v ya &>/dev/null; then
   echo "ℹ️  ya: missing. Ensure your Yazi package includes both \`yazi\` and \`ya\` if you use \`ya pack\`."
+fi
+if ! command -v resvg &>/dev/null; then
+  echo "ℹ️  resvg: optional SVG preview helper is missing; Fedora official repos do not currently provide it."
 fi
 echo "ℹ️  Not covered here: ripgrep-all, ast-grep, numbat, nvm (install from upstream)."
 echo "ℹ️  Fonts: jetbrains-mono-fonts is installed; for Nerd-patched glyphs use ~/.dotfiles/fonts/*.ttf (see install_fonts.sh)."

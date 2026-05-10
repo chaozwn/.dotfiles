@@ -29,7 +29,7 @@ else
     bash "$BASEDIR/scripts/bootstrap-arch.sh"
   elif [ -f /etc/fedora-release ]; then
     echo "==> [1-2/8] Fedora: installing packages via dnf (set DOTFILES_USE_BREW=1 to use Homebrew on Linux)..."
-    bash "$BASEDIR/scripts/bootstap-fedora.sh"
+    bash "$BASEDIR/scripts/botstrap-fedora.sh"
   elif [ -f /etc/os-release ]; then
     # shellcheck source=/dev/null
     . /etc/os-release
