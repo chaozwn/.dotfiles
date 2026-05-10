@@ -3,7 +3,7 @@
 --   https://github.com/lei4519/blog/issues/85
 --   https://github.com/halfmoonvic/Rime/blob/master/lua/vim_mode.lua
 --
--- Behavior (only when the active app has app_options/vmode = true):
+-- Behavior (when the `vmode` switch is on; rime_ice enables it by default):
 --   * Press <Esc> / <C-[>:
 --       - clear any active preedit / candidate menu first
 --       - always switch to ASCII (English) mode
@@ -69,7 +69,16 @@ local function vim_mode(key, env)
   local vmode_on = ctx:get_option("vmode")
   local kc = key.keycode
 
-  notify(string.format("key=%s kc=%d vmode=%s", key:repr(), kc, tostring(vmode_on)))
+  notify(string.format(
+    "key=%s kc=%d vmode=%s ascii=%s composing=%s menu=%s normal=%s",
+    key:repr(),
+    kc,
+    tostring(vmode_on),
+    tostring(ctx:get_option("ascii_mode")),
+    tostring(ctx:is_composing()),
+    tostring(ctx:has_menu()),
+    tostring(in_normal_mode)
+  ))
 
   if not vmode_on then
     return kNoop
@@ -77,6 +86,7 @@ local function vim_mode(key, env)
 
   if in_normal_mode and is_insert_key(kc) then
     in_normal_mode = false
+    notify("leave normal mode via insert key")
     return kNoop
   end
 
@@ -86,6 +96,7 @@ local function vim_mode(key, env)
       ctx:clear()
     end
     ctx:set_option("ascii_mode", true)
+    notify(string.format("enter normal mode; ascii=%s", tostring(ctx:get_option("ascii_mode"))))
   end
 
   return kNoop

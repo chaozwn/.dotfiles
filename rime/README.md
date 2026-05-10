@@ -20,10 +20,10 @@ This folder only holds **my customization delta**, not the upstream dictionary /
 |-------------------------------|-------------------------------------------------------------------------------|
 | `rime.lua`                    | librime-lua entry point; exports `vim_mode = require("vim_mode")`             |
 | `default.custom.yaml`         | Global tweaks: page size, Shift_L=commit_code, key bindings (no schema list override; rime-ice's own list stands) |
-| `rime_ice.custom.yaml`        | Hooks `lua_processor@vim_mode` into the rime_ice schema and registers a `vmode` switch (off by default) |
+| `rime_ice.custom.yaml`        | Hooks `lua_processor@vim_mode` into the rime_ice schema and registers a `vmode` switch (on by default) |
 | `lua/vim_mode.lua`            | The processor itself: Esc / Ctrl+[ clears candidates and switches to ASCII; i/a/o/c leaves normal-mode state without forcing CN/ASCII afterwards |
 | `squirrel.custom.yaml`        | macOS: solarized_dark theme + per-app `vmode: true` (Cursor, VSCode, kitty, Ghostty, JetBrains, Obsidian, …) |
-| `fcitx5.custom.yaml`          | Linux: per-app `vmode: true` (kitty, Ghostty, alacritty, code, cursor, JetBrains, Obsidian) |
+| `fcitx5.custom.yaml`          | Linux: per-app initial ASCII / punctuation options, plus explicit `vmode: true` for common editor/shell app ids |
 
 `*.custom.yaml` is gitignored by rime-ice itself, so layering them in won't conflict with `git pull` in the rime-ice user dir.
 
@@ -31,7 +31,7 @@ This folder only holds **my customization delta**, not the upstream dictionary /
 
 Inspired by [lei4519/blog#85](https://github.com/lei4519/blog/issues/85).
 
-When the active app has `app_options/vmode: true`:
+With the `rime_ice` schema, `vmode` is enabled by default:
 
 1. **Esc / Ctrl+[ pressed**:
    - clear any active preedit / candidate menu
@@ -44,7 +44,8 @@ When the active app has `app_options/vmode: true`:
 
 Caveats (from upstream):
 - Rime can't actually see Vim's mode, so this heuristic isn't 100%. Pressing Esc / Ctrl+[ when you're already in normal mode resets state harmlessly.
-- Per-app behavior depends on librime-rime correctly reporting the current app id. On Linux, set fcitx5 *Global Options → Shared Input State = No*, otherwise per-app options don't re-apply on focus change.
+- Per-app initial ASCII / punctuation behavior depends on librime-rime correctly reporting the current app id. On Linux, set fcitx5 *Global Options → Shared Input State = No*, otherwise per-app options don't re-apply on focus change.
+- DMS / Quickshell overlays can create transient input contexts after restart; keeping `vmode` enabled at the schema level avoids losing vim-mode when those app ids are empty or unstable.
 - App identifiers on Linux:
 
   ```bash
@@ -68,5 +69,5 @@ patch:
   switches/+:
     - name: vmode
       states: [ NoVim, Vim ]
-      reset: 0
+      reset: 1
 ```

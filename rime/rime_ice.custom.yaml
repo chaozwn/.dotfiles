@@ -1,8 +1,9 @@
 # Patch rime-ice's main schema (rime_ice) to support cross-platform vim_mode
 # via lua_processor. See ./lua/vim_mode.lua and rime/README.md.
 #
-# `vmode` is OFF by default (reset: 0); it gets enabled per-app via
-# app_options in fcitx5.custom.yaml (Linux) and squirrel.custom.yaml (macOS).
+# `vmode` is ON by default (reset: 1). Some Wayland shells (DMS / Quickshell)
+# can create transient input contexts with unstable app ids after restart, so
+# the vim-mode processor should not depend on per-app app_options to stay on.
 
 patch:
   # Insert the lua processor right after select_character (index 0),
@@ -13,4 +14,4 @@ patch:
   switches/+:
     - name: vmode
       states: [ NoVim, Vim ]
-      reset: 0
+      reset: 1

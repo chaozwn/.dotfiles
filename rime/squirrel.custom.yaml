@@ -5,8 +5,8 @@
 # - All `vim_mode: true` entries are replaced with `vmode: true` so they
 #   route through our cross-platform lua_processor (see lua/vim_mode.lua),
 #   which behaves the same on Linux/fcitx5.
-# - `vim_mode: false` entries are dropped (vmode defaults to off via the
-#   `reset: 0` switch in rime_ice.custom.yaml).
+# - `vim_mode: false` entries are dropped because `vmode` defaults to on via
+#   the `reset: 1` switch in rime_ice.custom.yaml.
 
 patch:
   show_notifications_when: always
@@ -37,7 +37,8 @@ patch:
       hilited_candidate_text_color: 0x3942CB
       hilited_comment_text_color: 0x8144C2
 
-  # Per-app behavior. `vmode: true` activates lua/vim_mode.lua.
+  # Per-app behavior. `vmode` defaults on; entries here mostly tune ASCII /
+  # inline behavior and keep common app ids explicit.
   app_options/+:
     # ── Vim-family editors ──────────────────────────────────────
     org.vim.MacVim:
@@ -53,7 +54,7 @@ patch:
       no_inline: true
       vmode: true
 
-    # ── Terminals (no vim mode by default) ──────────────────────
+    # ── Terminals ───────────────────────────────────────────────
     com.googlecode.iterm2:
       no_inline: true
     com.apple.Terminal:

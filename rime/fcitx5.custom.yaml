@@ -8,11 +8,23 @@
 #   dbus-send --print-reply=literal --dest=org.fcitx.Fcitx5 \
 #     /controller org.fcitx.Fcitx.Controller1.DebugInfo
 #
-# `vmode: true` activates lua/vim_mode.lua (see rime_ice.custom.yaml for the
-# processor wiring and switch declaration).
+# rime_ice enables vmode by default; explicit vmode entries here keep common
+# editor/shell app ids aligned while per-app options handle ASCII defaults.
 
 patch:
   app_options/+:
+    # ── DMS / Quickshell overlays ──────────────────────────────
+    # DMS can create transient Wayland input contexts after restart; keep
+    # known shell ids in vmode so focusing overlays does not disable it.
+    dms:
+      ascii_mode: true
+      ascii_punct: true
+      vmode: true
+    quickshell:
+      ascii_mode: true
+      ascii_punct: true
+      vmode: true
+
     # ── Terminals where I use vim/nvim heavily ────────────────
     kitty:
       ascii_mode: true
