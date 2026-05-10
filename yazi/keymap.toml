@@ -212,7 +212,7 @@ keymap = [
     ":",
   ], run = "shell --interactive --block", desc = "Run a shell command (block the UI until the command finishes)" },
 
-  # plugins 
+  # plugins
   { on = [
     "t",
     "d",
@@ -415,15 +415,15 @@ keymap = [
 
   { on = [
     "S",
-  ], run = "plugin fg 'rg'", desc = "find file by content (ripgrep match)" },
+  ], run = "plugin fg -- rg", desc = "find file by content (ripgrep match)" },
 
   { on = [
     "F",
-  ], run = "plugin fg 'rga'", desc = "find file by content (ripgrep also search in PDFs, E-Books, Office documents, zip, tar.gz, etc.)" },
+  ], run = "plugin fg -- rga", desc = "find file by content (ripgrep also search in PDFs, E-Books, Office documents, zip, tar.gz, etc.)" },
 
   { on = [
     "f",
-  ], run = "plugin fg 'fzf'", desc = "find file by filename" },
+  ], run = "plugin fg -- fzf", desc = "find file by filename" },
 
   { on = [
     "t",
@@ -432,7 +432,7 @@ keymap = [
 
   { on = [
     "s",
-  ], run = "plugin searchjump 'autocd'", desc = "searchjump" },
+  ], run = "plugin searchjump -- autocd", desc = "searchjump" },
 
   { on = [
     "E",
