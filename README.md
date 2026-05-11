@@ -82,3 +82,16 @@ For manual/source installs, force the DMS CLI updater with `bash scripts/update_
 ├── nvm/                  # Node.js version + global packages
 └── <tool>/               # Config dirs (fish, tmux, lazyvim, ...)
 ```
+
+# 设置盒盖不关机
+
+打开 `sudo nvim /etc/systemd/logind.conf`
+
+```shell
+  [Login]
+  HandleLidSwitch=ignore
+  HandleLidSwitchExternalPower=ignore
+  HandleLidSwitchDocked=ignore
+```
+
+`sudo systemctl restart systemd-logind`
