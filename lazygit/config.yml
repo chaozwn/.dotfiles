@@ -47,7 +47,7 @@ keybinding:
     commitChanges: c # using the interactive commit dialog
     toggleTreeView: f
 os:
-  editPreset: "nvim-remote"
+  editPreset: "nvim"
 promptToReturnFromSubprocess: false
 notARepository: "quit"
 gui:

@@ -52,7 +52,8 @@ function M:peek(job)
 			upper_bound = true 
 		})
 	else
-		lines = lines:gsub("\t", string.rep(" ", PREVIEW.tab_size))
+		local tab_size = rt and rt.preview and rt.preview.tab_size or 2
+		lines = lines:gsub("\t", string.rep(" ", tab_size))
 		preview(job, { ui.Text.parse(lines):area(job.area) })
 	end
 end
