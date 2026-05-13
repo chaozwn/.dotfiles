@@ -1,4 +1,4 @@
-status is-interactive || exit
+status is-interactive || return
 
 set --global autopair_left "(" "[" "{" '"' "'"
 set --global autopair_right ")" "]" "}" '"' "'"

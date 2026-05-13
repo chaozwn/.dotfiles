@@ -3,4 +3,6 @@
 set style moon
 set theme tokyonight_{$style}
 
-fish_config theme choose $theme
+if status is-interactive
+    fish_config theme choose $theme
+end
