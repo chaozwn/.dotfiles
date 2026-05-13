@@ -99,7 +99,7 @@ configure_gnome_keyboard() {
 REQUIRED_PKGS=(
   build-essential
   git curl wget ca-certificates
-  fish starship fastfetch bat fd-find grc htop mosh tmux eza ncdu
+  fish starship fastfetch bat httpie fd-find grc htop mosh tmux eza ncdu
   file ffmpegthumbnailer jq poppler-utils ripgrep fzf zoxide
   libimage-exiftool-perl
   p7zip-full

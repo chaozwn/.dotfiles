@@ -80,6 +80,7 @@ set -x MANROFFOPT -c
 # 给help添加彩色打印
 abbr -a --position anywhere --set-cursor -- -h "-h 2>&1 | bat --plain --language=help"
 abbr j just
+abbr curl http
 
 # Tmux
 abbr t tmux
@@ -100,6 +101,7 @@ alias la 'eza --color=always --icons --group-directories-first --all --header'
 alias ll 'eza --color=always --icons --group-directories-first --all --header --long'
 alias lg 'eza --color=always --icons --group-directories-first --all --header --long --git'
 alias lt 'eza --tree -L 2 --icons'
+alias cat "bat --theme='TwoDark'"
 abbr l ll
 abbr ncdu "ncdu --color dark"
 
@@ -128,6 +130,8 @@ abbr gm "git branch -l main | rg main > /dev/null 2>&1 && git checkout main || g
 abbr gcp "git commit -p"
 abbr gpp "git push"
 abbr gp "git pull"
+
+abbr dc lazydocker
 
 # Other
 abbr df "grc /bin/df -h"

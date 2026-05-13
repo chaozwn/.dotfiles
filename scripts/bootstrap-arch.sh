@@ -10,7 +10,7 @@ echo "==> Installing packages via pacman (official repos)..."
 
 sudo pacman -S --needed \
   base-devel git curl \
-  fish starship fastfetch bat fd grc htop mosh tmux eza ncdu bottom \
+  fish starship fastfetch bat httpie fd grc htop mosh tmux eza ncdu bottom \
   file yazi ffmpegthumbnailer jq poppler ripgrep fzf zoxide mpv resvg \
   perl-image-exiftool lazygit lazydocker \
   p7zip imagemagick ripgrep-all mediainfo glow gdu protobuf ast-grep chafa git-delta \

@@ -3,6 +3,7 @@ fish
 fastfetch
 gum
 gh
+httpie
 fd
 grc
 bat
