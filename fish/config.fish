@@ -13,7 +13,7 @@ set -gx fish_cursor_replace_one underscore
 set -gx TERM xterm-256color
 set -gx XDG_CONFIG_HOME ~/.config
 set -gx NODE_OPTIONS --max-old-space-size=4096 --experimental-vm-modules
-set -gx DOTFILES_FASTFETCH_ON_STARTUP 0
+set -gx DOTFILES_FASTFETCH_ON_STARTUP 1
 
 # Path
 set -x fish_user_paths
