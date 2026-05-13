@@ -38,6 +38,7 @@ That's it. `bootstrap.sh` will run the following steps automatically:
 | [ghostty](https://ghostty.org) | `ghostty/` | Terminal emulator |
 | [kitty](https://sw.kovidgoyal.net/kitty/) | `kitty/` | Terminal emulator |
 | [fastfetch](https://github.com/fastfetch-cli/fastfetch) | `fastfetch/` | System info |
+| [bottom](https://github.com/ClementTsang/bottom) | `bottom/` | System monitor |
 | [glow](https://github.com/charmbracelet/glow) | `glow/` | Markdown reader |
 | [yabai](https://github.com/koekeishiya/yabai) | `yabai/` | Window manager (macOS) |
 | [skhd](https://github.com/koekeishiya/skhd) | `skhd/` | Hotkey daemon (macOS) |

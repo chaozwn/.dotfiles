@@ -16,6 +16,7 @@
     ~/.config/tmux: ./tmux
     ~/.config/nvim: ./lazyvim
     ~/.config/fastfetch: ./fastfetch
+    ~/.config/bottom: ./bottom
     ~/.config/lazygit: ./lazygit
     ~/.config/glow: ./glow
     ~/.config/sketchybar: ./sketchybar
