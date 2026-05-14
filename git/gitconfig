@@ -26,9 +26,18 @@
 [core]
 	editor = nvim
 	pager = delta
+  autocrlf = input
+	# Treat whitespace issues as errors
+	whitespace = trailing-space,space-before-tab
 
 [interactive]
 	diffFilter = delta --color-only --show-syntax-themes --features=interactive
+
+[delta "decorations"]
+	keep-plus-minus-markers = false
+	commit-decoration-style = bold yellow box ul
+	file-style = bold yellow ul
+	file-decoration-style = none
 
 [delta]
 	side-by-side = true
@@ -45,20 +54,37 @@
 	line-numbers-plus-style       = "#449dab"
 	line-numbers-zero-style       = "#3b4261"
 
+[diff]
+	algorithm = histogram
+	colorMoved = default
+	tool = nvim_difftool
+	# Better submodule diffs
+	submodule = log
+
+[difftool "nvim_difftool"]
+  cmd = nvim -c \"packadd nvim.difftool\" -c \"DiffTool $LOCAL $REMOTE\"
+
 [pull]
 	rebase = true
 
 [merge]
 	conflictStyle = zdiff3
-
-[delta "interactive"]
-	keep-plus-minus-markers = false
+  tool = nvimdiff
 
 [rerere]
 	enabled = true
 
 [rebase]
 	updateRefs = true
+
+[color]
+  ui = auto
+
+[help]
+	autocorrect = prompt
+
+[log]
+	date = auto:human
 
 [alias]
 	; https://stackoverflow.com/questions/1057564/pretty-git-branch-graphs
