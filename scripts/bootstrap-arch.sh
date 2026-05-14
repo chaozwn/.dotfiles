@@ -9,7 +9,7 @@ set -euo pipefail
 echo "==> Installing packages via pacman (official repos)..."
 
 sudo pacman -S --needed \
-  base-devel git curl \
+  base-devel git git-lfs curl \
   fish starship fastfetch bat httpie fd grc htop mosh tmux eza ncdu bottom \
   file yazi ffmpegthumbnailer jq poppler ripgrep fzf zoxide mpv resvg \
   perl-image-exiftool lazygit lazydocker \

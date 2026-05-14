@@ -98,7 +98,7 @@ configure_gnome_keyboard() {
 # Core: avoid one huge failure if a single name differs — split required vs optional.
 REQUIRED_PKGS=(
   build-essential
-  git curl wget ca-certificates
+  git git-lfs curl wget ca-certificates
   fish starship fastfetch bat httpie fd-find grc htop mosh tmux eza ncdu
   file ffmpegthumbnailer jq poppler-utils ripgrep fzf zoxide
   libimage-exiftool-perl

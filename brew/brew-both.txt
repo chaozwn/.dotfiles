@@ -1,3 +1,6 @@
+# git (shared defaults in git/gitconfig — LFS filters need this package)
+git-lfs
+
 # fish
 fish
 fastfetch

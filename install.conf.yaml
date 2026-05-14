@@ -9,6 +9,7 @@
 # No trailing slash on link paths: Python os.path.islink(".../dir/") is false for symlinks,
 # which breaks dotbot relink and triggers "appears to be the same file" errors.
 - link:
+    ~/.gitconfig: ./git/gitconfig
     ~/.config/starship.toml: ./starship/starship.toml
     ~/.config/fish: ./fish
     ~/.config/kitty: ./kitty

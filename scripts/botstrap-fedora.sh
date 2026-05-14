@@ -26,7 +26,7 @@ echo "==> Installing packages via dnf (Fedora official repositories)..."
 
 sudo dnf install -y \
   @development-tools \
-  git curl \
+  git git-lfs curl \
   fish fastfetch bat httpie fd-find grc htop mosh tmux eza ncdu \
   file ffmpegthumbnailer jq poppler-utils ripgrep fzf zoxide mpv \
   perl-Image-ExifTool \
