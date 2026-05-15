@@ -2,10 +2,6 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
-[submodule "astronvim_user"]
-	path = astronvim_user
-	url = https://github.com/chaozwn/astronvim_user.git
-	ignore = dirty
 [submodule "ghostty/ghostty-shader-playground"]
 	path = ghostty/ghostty-shader-playground
 	url = https://github.com/KroneCorylus/ghostty-shader-playground.git
