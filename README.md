@@ -96,3 +96,51 @@ For manual/source installs, force the DMS CLI updater with `bash scripts/update_
 ```
 
 `sudo systemctl restart systemd-logind`
+
+
+## BTRFS
+
+### 查看status
+```
+snapper status 1..2
+```
+
+### 回滚
+
+```shell
+sudo snapper undochange 1..2
+```
+
+### 反回滚
+
+```shell
+sudo snapper undochange 2..1
+```
+
+### 只回滚某个目录
+
+```shell
+sudo snapper undochange 2..0 /etc/hosts
+```
+
+### 手动创建一个可以回退点
+
+```shell
+snapper -c root create -t pre -c number -d "Pre test"
+snapper -c home create -t pre -c number -d "Pre test"
+```
+
+### 创建指定的回退点并且连接到snapshots
+
+```shell
+snapper -c root create -t post --pre-number <pre-number> -c number -d "Post test"
+snapper -c home create -t post --pre-number <pre-number> -c number -d "Post test"
+```
+
+### 查看可用的snaphosts
+
+```shell
+snapper -c root ls
+snapper -c home ls
+```
+
