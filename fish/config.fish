@@ -189,19 +189,27 @@ end
 set -gx BUN_INSTALL "$HOME/.bun"
 fish_add_path $BUN_INSTALL/bin
 
-# Java — same project JDK on Mac if present; else Arch default / other common paths
-set -l _jdk_project $HOME/workspace/ai_project/nest_admin_source/infinity-sql/release/byzer-lang-all-in-one-darwin-amd64-3.3.0-1.0.0/jdk8/Contents/Home
-set -l _jdk_corretto $HOME/Library/Java/JavaVirtualMachines/corretto-17.0.8/Contents/Home
-if test -d "$_jdk_project"
-    set -gx JAVA_HOME "$_jdk_project"
-else if test -d "$_jdk_corretto"
-    set -gx JAVA_HOME "$_jdk_corretto"
-else if test -d /usr/lib/jvm/default
-    set -gx JAVA_HOME /usr/lib/jvm/default
-else if test -d /usr/lib/jvm/java-17-openjdk
-    set -gx JAVA_HOME /usr/lib/jvm/java-17-openjdk
-else if test -d /usr/lib/jvm/java-21-openjdk
-    set -gx JAVA_HOME /usr/lib/jvm/java-21-openjdk
+# Java — keep macOS and Linux defaults separate.
+switch (uname)
+    case Darwin
+        set -l _jdk_project $HOME/workspace/ai_project/nest_admin_source/infinity-sql/release/byzer-lang-all-in-one-darwin-amd64-3.3.0-1.0.0/jdk8/Contents/Home
+        set -l _jdk_corretto $HOME/Library/Java/JavaVirtualMachines/corretto-17.0.8/Contents/Home
+        if test -d "$_jdk_project"
+            set -gx JAVA_HOME "$_jdk_project"
+        else if test -d "$_jdk_corretto"
+            set -gx JAVA_HOME "$_jdk_corretto"
+        end
+    case Linux
+        set -l _jdk_oracle8_fedora /usr/java/jdk-1.8-oracle-x64
+        if test -d "$_jdk_oracle8_fedora"
+            set -gx JAVA_HOME "$_jdk_oracle8_fedora"
+        else if test -d /usr/lib/jvm/default
+            set -gx JAVA_HOME /usr/lib/jvm/default
+        else if test -d /usr/lib/jvm/java-17-openjdk
+            set -gx JAVA_HOME /usr/lib/jvm/java-17-openjdk
+        else if test -d /usr/lib/jvm/java-21-openjdk
+            set -gx JAVA_HOME /usr/lib/jvm/java-21-openjdk
+        end
 end
 if set -q JAVA_HOME
     fish_add_path $JAVA_HOME/bin
