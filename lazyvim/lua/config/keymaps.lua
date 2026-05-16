@@ -17,6 +17,8 @@ keymap.set("n", "N", "Nzz", { noremap = true, silent = true })
 
 keymap.set("n", "x", '"_x', { noremap = true, silent = true })
 keymap.set("n", "<leader>/", LazyVim.pick("live_grep", { root = false }), { desc = "Grep (cwd)" })
+
+-- Copy file path (prefix `<leader>y` → which-key group "copy", see lua/plugins/keymaps-copy-whichkey.lua)
 keymap.set("n", "<leader>yy", function()
   require("utils").copy_file_location(false)
 end, { desc = "Copy File Location" })
