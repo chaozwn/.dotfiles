@@ -210,4 +210,15 @@ function M.size(max, value)
   return value > 1 and math.min(value, max) or math.floor(max * value)
 end
 
+--- 获取 Mason 管理的二进制的绝对路径 (`<mason-root>/bin/<name>`)。
+--- 优先尊重 `$MASON` 环境变量,与 LazyVim 内部 `get_pkg_path` 行为一致。
+--- 如果 Mason 尚未安装该二进制,回退为裸名,由 $PATH 解析。
+---@param name string mason/bin 下的可执行文件名
+---@return string
+function M.mason_bin(name)
+  local root = vim.env.MASON or (vim.fn.stdpath("data") .. "/mason")
+  local path = root .. "/bin/" .. name
+  return (vim.uv or vim.loop).fs_stat(path) and path or name
+end
+
 return M
