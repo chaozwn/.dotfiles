@@ -5,6 +5,9 @@ vim.opt.showbreak = "↪ "
 vim.opt.wrap = false
 vim.g.lazyvim_picker = "snacks"
 vim.g.lazyvim_cmp = "blink.cmp"
+-- Default TypeScript LSP. `pack-vue.lua` overrides to `vtsls` at
+-- spec-load time when Vue is detected, because `tsgo` doesn't yet
+-- support TypeScript plugins like `@vue/typescript-plugin`.
 vim.g.lazyvim_ts_lsp = "tsgo"
 
 vim.g.ai_cmp = false
