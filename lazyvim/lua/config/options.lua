@@ -5,6 +5,8 @@ vim.opt.showbreak = "↪ "
 vim.opt.wrap = false
 vim.g.lazyvim_picker = "snacks"
 vim.g.lazyvim_cmp = "blink.cmp"
+vim.g.lazyvim_ts_lsp = "tsgo"
+
 vim.g.ai_cmp = false
 vim.g.lazyvim_check_order = false
 vim.g.autoformat = false
