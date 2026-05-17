@@ -15,6 +15,7 @@ sudo pacman -S --needed \
   perl-image-exiftool lazygit lazydocker \
   p7zip imagemagick ripgrep-all mediainfo glow gdu protobuf ast-grep chafa git-delta \
   coreutils neovim numbat gum github-cli \
+  wl-clipboard xclip xsel \
   ttf-jetbrains-mono-nerd
 
 echo ""

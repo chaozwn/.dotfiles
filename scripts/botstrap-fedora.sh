@@ -33,6 +33,7 @@ sudo dnf install -y \
   7zip 7zip-standalone \
   ImageMagick libgomp unar mediainfo glow gdu protobuf-compiler chafa git-delta \
   coreutils neovim gum gh \
+  wl-clipboard xclip xsel \
   jetbrains-mono-fonts 
 
 if [ "${DOTFILES_FEDORA_COPR:-1}" = "1" ]; then

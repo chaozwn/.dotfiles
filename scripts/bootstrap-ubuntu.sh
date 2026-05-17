@@ -105,6 +105,7 @@ REQUIRED_PKGS=(
   p7zip-full
   imagemagick kimageformat6-plugins libgomp1 unar mediainfo mpv
   chafa gdu glow protobuf-compiler
+  wl-clipboard xclip xsel
   coreutils
   neovim gum gh
   git-delta
