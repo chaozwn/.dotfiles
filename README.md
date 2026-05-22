@@ -13,7 +13,7 @@ That's it. `bootstrap.sh` will run the following steps automatically:
 
 | Step | What it does |
 |------|-------------|
-| 1–2 | **macOS / Linux (non-Arch-Fedora-Ubuntu or `DOTFILES_USE_BREW=1`)**: Install [Homebrew](https://brew.sh) and packages from `brew/brew-both.txt` + `brew/brew-mac.txt` or `brew/brew-linux.txt`. **Arch Linux (default)**: `scripts/bootstrap-arch.sh` via `pacman`. **Fedora**: `scripts/botstrap-fedora.sh` via `dnf`. **Ubuntu** / **Linux Mint** / **Pop!_OS** (default): `scripts/bootstrap-ubuntu.sh` via `apt` (enable `universe` if needed) and **[yazi](https://snapcraft.io/yazi) via `snap install`**. All without Homebrew unless you opt in. |
+| 1–2 | **macOS / Linux (non-Arch-Fedora-Ubuntu or `DOTFILES_USE_BREW=1`)**: Install [Homebrew](https://brew.sh) and packages from `brew/brew-both.txt` + `brew/brew-mac.txt` or `brew/brew-linux.txt`. **Arch Linux (default)**: `scripts/bootstrap-arch.sh` via `pacman`. **Fedora**: `scripts/bootstrap-fedora.sh` via `dnf`. **Ubuntu** / **Linux Mint** / **Pop!_OS** (default): `scripts/bootstrap-ubuntu.sh` via `apt` (enable `universe` if needed) and **[yazi](https://snapcraft.io/yazi) via `snap install`**. All without Homebrew unless you opt in. |
 | 3 | Set [fish](https://fishshell.com) as the default shell (`/opt/homebrew`, Linuxbrew, or `/usr/bin/fish` on Arch) |
 | 4 | Install [Nerd Fonts](https://www.nerdfonts.com) (JetBrains Mono): Homebrew cask on macOS; `pacman` package or `~/.dotfiles/fonts/*.ttf` on Linux |
 | 5 | Symlink all config files via dotbot |
@@ -143,4 +143,3 @@ snapper -c home create -t post --pre-number <pre-number> -c number -d "Post test
 snapper -c root ls
 snapper -c home ls
 ```
-

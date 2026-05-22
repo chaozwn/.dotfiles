@@ -3,10 +3,10 @@
 # Optional: tmuxinator — gem install tmuxinator (needs ruby)
 # Optional: nvm — install upstream (see brew-both.txt)
 # Optional: bob (Neovim version manager) — official script, no Homebrew:
-#   DOTFILES_BOB=0 bash scripts/botstrap-fedora.sh   # skip bob (default: install)
+#   DOTFILES_BOB=0 bash scripts/bootstrap-fedora.sh   # skip bob (default: install)
 #
 # Extras not in Fedora base+updates (fc43): starship, bottom, lazygit, yazi — installed via COPR by default.
-#   DOTFILES_FEDORA_COPR=0 bash scripts/botstrap-fedora.sh   # skip third-party COPR repos
+#   DOTFILES_FEDORA_COPR=0 bash scripts/bootstrap-fedora.sh   # skip third-party COPR repos
 
 set -euo pipefail
 
@@ -30,7 +30,7 @@ sudo dnf install -y \
   fish fastfetch bat httpie fd-find grc htop mosh tmux eza ncdu \
   file ffmpegthumbnailer jq poppler-utils ripgrep fzf zoxide mpv \
   perl-Image-ExifTool \
-  7zip 7zip-standalone \
+  7zip 7zip-standalone-all zip unzip \
   ImageMagick libgomp unar mediainfo glow gdu protobuf-compiler chafa git-delta \
   coreutils neovim gum gh \
   wl-clipboard xclip xsel \

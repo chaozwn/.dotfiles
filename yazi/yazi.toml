@@ -39,8 +39,7 @@ reveal = [
   { run = '''exiftool "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show EXIF", for = "unix" },
 ]
 extract = [
-  { run = 'unar "$1"', desc = "Extract here", for = "unix" },
-  { run = 'unar "%1"', desc = "Extract here", for = "windows" },
+  { run = "ya pub extract --list %s", desc = "Extract here" },
 ]
 play = [
   { run = 'mpv "$@"', orphan = true, for = "unix" },
@@ -86,40 +85,13 @@ rules = [
     "reveal",
   ] },
 
-  { mime = "application/zip", use = [
+  { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [
     "extract",
     "reveal",
-    "archive",
   ] },
-  { mime = "application/gzip", use = [
+  { url = "*.{zip,rar,7z,tar,gz,tgz,bz,bz2,tbz,tbz2,xz,txz,zst,jar,war,ear,apk,ipa,deb,rpm}", use = [
     "extract",
     "reveal",
-    "archive",
-  ] },
-  { mime = "application/x-tar", use = [
-    "extract",
-    "reveal",
-    "archive",
-  ] },
-  { mime = "application/x-bzip", use = [
-    "extract",
-    "reveal",
-    "archive",
-  ] },
-  { mime = "application/x-bzip2", use = [
-    "extract",
-    "reveal",
-    "archive",
-  ] },
-  { mime = "application/x-7z-compressed", use = [
-    "extract",
-    "reveal",
-    "archive",
-  ] },
-  { mime = "application/x-rar", use = [
-    "extract",
-    "reveal",
-    "archive",
   ] },
   { url = "*", use = [
     "open",
@@ -129,6 +101,8 @@ rules = [
 
 [plugin]
 prepend_previewers = [
+  { url = "*.{zip,rar,7z,tar,gz,tgz,bz,bz2,tbz,tbz2,xz,txz,zst,jar,war,ear,apk,ipa,deb,rpm}", run = "archive" },
+  { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", run = "archive" },
   { url = "*.md", run = "glow" },
   { mime = "audio/*", run = "exifaudio" },
   { url = "*/", run = "eza-preview" },

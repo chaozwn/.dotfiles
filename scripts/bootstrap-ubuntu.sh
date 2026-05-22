@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Native Ubuntu bootstrap (no Homebrew). Same roles as brew-both + scripts/botstrap-fedora.sh where possible.
+# Native Ubuntu bootstrap (no Homebrew). Same roles as brew-both + scripts/bootstrap-fedora.sh where possible.
 # Optional: tmuxinator — gem install tmuxinator
 # Optional: nvm — installed later by bootstrap.sh via nvm.fish
 # Optional: bob (Neovim version manager) —
