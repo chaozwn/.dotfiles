@@ -4,6 +4,12 @@
         "key": "cmd+o",
         "command": "projectManager.listGitProjects#sideBarGit"
     },
+    // Linux 下的 Mod/Super 键在 VS Code keybindings 里对应 meta
+    {
+        "key": "meta+f",
+        "command": "actions.find",
+        "when": "editorFocus || editorIsOpen"
+    },
     // 按ctrl+=可以不断扩大选中
     {
         "command": "expand_region",
