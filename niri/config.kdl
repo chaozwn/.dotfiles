@@ -21,8 +21,8 @@ input {
             // You can set rules, model, layout, variant and options.
             // For more information, see xkeyboard-config(7).
 
-            // Swap Caps Lock <-> Left Ctrl (xkb option ctrl:swapcaps).
-            options "ctrl:swapcaps"
+            // Swap Caps Lock <-> Left Ctrl and Left Alt <-> Left Win/Super.
+            options "ctrl:swapcaps,altwin:swap_lalt_lwin"
 
             // If this section is empty, niri will fetch xkb settings
             // from org.freedesktop.locale1. You can control these using
