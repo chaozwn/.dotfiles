@@ -22,6 +22,7 @@ volume_change() {
              --set $NAME slider.percentage=$INFO
 
   INITIAL_WIDTH="$(sketchybar --query $NAME | jq -r ".slider.width")"
+  [[ "$INITIAL_WIDTH" =~ ^[0-9]+$ ]] || INITIAL_WIDTH=0
   if [ "$INITIAL_WIDTH" -eq "0" ]; then
     sketchybar --animate tanh 30 --set $NAME slider.width=$WIDTH 
   fi
@@ -30,6 +31,7 @@ volume_change() {
 
   # Check wether the volume was changed another time while sleeping
   FINAL_PERCENTAGE="$(sketchybar --query $NAME | jq -r ".slider.percentage")"
+  [[ "$FINAL_PERCENTAGE" =~ ^[0-9]+$ ]] || FINAL_PERCENTAGE=-1
   if [ "$FINAL_PERCENTAGE" -eq "$INFO" ]; then
     sketchybar --animate tanh 30 --set $NAME slider.width=0
   fi
