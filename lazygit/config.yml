@@ -51,6 +51,7 @@ os:
 promptToReturnFromSubprocess: false
 notARepository: "quit"
 gui:
+  language: en
   commitHashLength: 0
   skipRewordInEditorWarning: true
   nerdFontsVersion: "3"
