@@ -154,18 +154,8 @@ if test -f "$HOME/.g/env"
     source "$HOME/.g/env"
 end
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-if test -f ~/miniconda3/bin/conda
-    eval ~/miniconda3/bin/conda "shell.fish" "hook" $argv | source
-else
-    if test -f ~/miniconda3/etc/fish/conf.d/conda.fish
-        . ~/miniconda3/etc/fish/conf.d/conda.fish
-    else
-        fish_add_path ~/miniconda3/bin
-    end
-end
-# <<< conda initialize <<<
+# conda: lazy-loaded via functions/conda.fish (first `conda` call runs the hook).
+# PATH already includes ~/miniconda3/bin above.
 
 zoxide init fish | source
 
