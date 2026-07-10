@@ -90,7 +90,7 @@ function M:peek(job)
     elseif empty_output then
         preview(job, {
             ui.Text({ ui.Line("No items") }):area(job.area)
-                :align(ui.Text.CENTER),
+                :align(ui.Align.CENTER),
         })
     else
         preview(job, { ui.Text.parse(lines):area(job.area) })
