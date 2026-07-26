@@ -68,7 +68,7 @@ function M:peek(job)
 				preview(job, { p })
 			end
 			local function display_error()
-				local p = ui.Text(error):area(job.area):wrap(ui.Text.WRAP)
+				local p = ui.Text(error):area(job.area):wrap(ui.Wrap.YES)
 				preview(job, { p })
 			end
 			if pcall(display_error) then else pcall(display_error_legacy) end
@@ -104,7 +104,7 @@ function M:peek(job)
 		preview(job, { p })
 	end
 	local function display_metadata()
-		local p = ui.Text(metadata):area(job.area):wrap(ui.Text.WRAP)
+		local p = ui.Text(metadata):area(job.area):wrap(ui.Wrap.YES)
 		preview(job, { p })
 	end
 	if pcall(display_metadata) then else pcall(display_metadata_legacy) end
