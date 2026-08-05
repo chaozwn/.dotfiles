@@ -456,5 +456,6 @@
   },
   "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
   "gitlens.ai.model": "vscode",
-  "gitlens.ai.vscode.model": "copilot:gpt-4.1"
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+  "chat.sessionSync.enabled": true
 }

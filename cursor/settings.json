@@ -464,5 +464,6 @@
   "git.ignoreRebaseWarning": true,
   "go.toolsManagement.autoUpdate": true,
   "diffEditor.maxComputationTime": 0,
-  "window.autoDetectColorScheme": false
+  "window.autoDetectColorScheme": false,
+  "explorer.confirmPasteNative": false
 }
