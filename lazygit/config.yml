@@ -86,6 +86,6 @@ gui:
       - "#c8d3f5"
 git:
   parseEmoji: true
-  pagers:
+  diffRenderers:
     - colorArg: always
-      pager: delta --paging=never
+      command: delta --paging=never
