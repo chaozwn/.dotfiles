@@ -70,7 +70,7 @@ input {
         // accel-speed 0.2
         // accel-profile "flat"
         // scroll-method "on-button-down"
-        // scroll-button 2731
+        // scroll-button 273
         // scroll-button-lock
         // middle-emulation
     }
@@ -295,9 +295,10 @@ recent-windows {
 }
 
 // Include dms files
-include "dms/colors.kdl"
-include "dms/layout.kdl"
-include "dms/alttab.kdl"
-include "dms/binds.kdl"
-include "dms/outputs.kdl"
-include "dms/cursor.kdl"
+include optional=true "dms/colors.kdl"
+include optional=true "dms/layout.kdl"
+include optional=true "dms/alttab.kdl"
+include optional=true "dms/binds.kdl"
+include optional=true "dms/outputs.kdl"
+include optional=true "dms/cursor.kdl"
+include optional=true "dms/input.kdl"
