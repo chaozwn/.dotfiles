@@ -57,7 +57,8 @@ theme = "TokyoNight Moon"
 macos-option-as-alt = true
 
 # 添加shader
-custom-shader = "~/.config/ghostty/ghostty-shader-playground/public/shaders/cursor_smear.glsl"
+# Temporarily disabled while checking terminal input/rendering latency.
+# custom-shader = "~/.config/ghostty/ghostty-shader-playground/public/shaders/cursor_smear.glsl"
 
 # 复制粘贴（Linux 上默认是 Ctrl+Shift+C / Ctrl+Shift+V；Ctrl+C 在 shell 里是“中断”）
 # performable：仅在有选区时才消耗 Ctrl+C 为复制，无选区时仍为中断( SIGINT )

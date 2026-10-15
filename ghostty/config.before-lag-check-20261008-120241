@@ -1,0 +1,90 @@
+# 配置文档: https://ghostty.org/docs/config/reference
+font-family = "JetBrainsMono Nerd Font Mono"
+font-size = 15
+
+# 终端环境变量
+term = "xterm-256color"
+
+# 窗口设置
+window-padding-x = 2
+window-padding-y = 0
+window-decoration = auto
+window-vsync = true
+
+# 不移除掉圆角
+macos-titlebar-style = hidden
+
+# 光标设置
+cursor-style = "block"
+cursor-style-blink = true
+
+# Scrollback
+scrollback-limit = 3023
+
+# Terminal features
+mouse-hide-while-typing = true
+confirm-close-surface = false
+
+# Disable in-app Ghostty toast notifications
+app-notifications = false
+
+# Key bindings for common actions
+#keybind = ctrl+c=copy_to_clipboard
+#keybind = ctrl+v=paste_from_clipboard
+keybind = ctrl+shift+n=new_window
+keybind = ctrl+t=new_tab
+keybind = ctrl+zero=reset_font_size
+
+# Material 3 UI elements
+unfocused-split-opacity = 0.7
+unfocused-split-fill = #44464f
+
+# Tab configuration
+gtk-titlebar = false
+
+# Shell integration
+shell-integration = detect
+shell-integration-features = cursor,sudo,title,no-cursor
+keybind = shift+enter=text:\n
+
+# Rando stuff
+gtk-single-instance = true
+
+# 主题设置（可选，取消注释以启用）
+theme = "TokyoNight Moon"
+
+# macOS 特定设置
+macos-option-as-alt = true
+
+# 添加shader
+custom-shader = "~/.config/ghostty/ghostty-shader-playground/public/shaders/cursor_smear.glsl"
+
+# 复制粘贴（Linux 上默认是 Ctrl+Shift+C / Ctrl+Shift+V；Ctrl+C 在 shell 里是“中断”）
+# performable：仅在有选区时才消耗 Ctrl+C 为复制，无选区时仍为中断( SIGINT )
+keybind = performable:ctrl+c=copy_to_clipboard:mixed
+keybind = ctrl+v=paste_from_clipboard
+
+# 右键：有选区则复制，否则粘贴（比仅弹出菜单更直观）
+right-click-action = copy-or-paste
+
+# 选中文本时同步到系统剪贴板（与 X11/Wayland 其它应用用 Ctrl+V 互通更稳）
+copy-on-select = clipboard
+
+# ANSI 码键盘映射
+# 将 Ctrl+[ 发送为传统 ESC，避免非 tmux 下被编码成 CSI-u 后在 yazi/fzf 中残留 91;5u
+keybind = ctrl+left_bracket=text:\x1b
+keybind = ctrl+'=csi:39;5u
+keybind = ctrl+(=csi:40;5u
+keybind = ctrl+)=csi:41;5u
+keybind = ctrl+,=csi:44;5u
+keybind = ctrl++=csi:43;5u
+keybind = ctrl+-=csi:45;5u
+keybind = ctrl+.=csi:46;5u
+keybind = ctrl+;=csi:59;5u
+keybind = ctrl+==csi:61;5u
+keybind = ctrl+/=csi:47;5u
+keybind = ctrl+~=csi:126;5u
+keybind = ctrl+`=csi:96;5u
+
+# 背景透明度（可选，取消注释以启用）
+# background-opacity = 0.90
