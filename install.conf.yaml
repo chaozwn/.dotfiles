@@ -26,11 +26,17 @@
     ~/.config/yabai: ./yabai
     ~/.config/ghostty: ./ghostty
     ~/.config/niri: ./niri
-    ~/.config/environment.d/90-dms.conf:
-      path: ./environment.d/90-dms.conf
+    ~/.config/environment.d/90-session.conf:
+      path: ./environment.d/90-session.conf
       if: '[ "$(uname)" = "Linux" ] && command -v niri >/dev/null 2>&1'
     ~/.config/fcitx5/config:
       path: ./fcitx5/config
+      if: '[ "$(uname)" = "Linux" ]'
+    # Firefox profiles live under $XDG_CONFIG_HOME/mozilla, but native messaging
+    # hosts are still read from ~/.mozilla (Firefox 155). Noctalia rewrites this
+    # file in place when the noctalia path changes; the description marks it as owned.
+    ~/.mozilla/native-messaging-hosts:
+      path: ./firefox/native-messaging-hosts
       if: '[ "$(uname)" = "Linux" ]'
     ~/.local/share/flatpak/overrides: ./flatpak/overrides
 

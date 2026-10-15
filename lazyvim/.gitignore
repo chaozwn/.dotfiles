@@ -1,4 +1,6 @@
 tt.*
+# Rendered by the Noctalia neovim community template
+lua/matugen.lua
 .tests
 doc/tags
 debug

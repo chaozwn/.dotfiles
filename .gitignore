@@ -4,6 +4,7 @@ tmux/plugins
 **/node_modules
 fish/fish_variables
 fish/local.fish
-niri/dms/outputs.kdl
+# Noctalia rewrites this whenever the palette changes.
+niri/noctalia.kdl
 # stray symlink to ~/.local/share/bob-nvim (Bob nvim install dir)
 /bob-nvim

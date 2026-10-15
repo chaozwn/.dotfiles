@@ -51,14 +51,13 @@ keybind = shift+enter=text:\n
 gtk-single-instance = true
 
 # 主题设置（可选，取消注释以启用）
-theme = "TokyoNight Moon"
 
 # macOS 特定设置
 macos-option-as-alt = true
 
 # 添加shader
 # Temporarily disabled while checking terminal input/rendering latency.
-# custom-shader = "~/.config/ghostty/ghostty-shader-playground/public/shaders/cursor_smear.glsl"
+custom-shader = "~/.config/ghostty/ghostty-shader-playground/public/shaders/cursor_smear.glsl"
 
 # 复制粘贴（Linux 上默认是 Ctrl+Shift+C / Ctrl+Shift+V；Ctrl+C 在 shell 里是“中断”）
 # performable：仅在有选区时才消耗 Ctrl+C 为复制，无选区时仍为中断( SIGINT )
@@ -87,5 +86,6 @@ keybind = ctrl+/=csi:47;5u
 keybind = ctrl+~=csi:126;5u
 keybind = ctrl+`=csi:96;5u
 
-# 背景透明度（可选，取消注释以启用）
-# background-opacity = 0.90
+# 半透明，让 niri 模糊透出壁纸。Neovim 编辑区背景由主题清掉，否则会盖住这层。
+background-opacity = 0.90
+theme = noctalia

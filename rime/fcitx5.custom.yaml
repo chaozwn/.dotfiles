@@ -13,14 +13,13 @@
 
 patch:
   app_options/+:
-    # ── DMS / Quickshell overlays ──────────────────────────────
-    # DMS can create transient Wayland input contexts after restart; keep
-    # known shell ids in vmode so focusing overlays does not disable it.
-    dms:
+    # ── Noctalia overlays ─────────────────────────────────────
+    # Keep the shell in vmode so focusing panels does not disable it.
+    noctalia:
       ascii_mode: true
       ascii_punct: true
       vmode: true
-    quickshell:
+    dev.noctalia.Noctalia:
       ascii_mode: true
       ascii_punct: true
       vmode: true

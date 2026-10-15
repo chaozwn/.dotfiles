@@ -87,11 +87,25 @@ input {
 // The built-in laptop monitor is usually called "eDP-1".
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
-// Remember to uncomment the node by removing "/-"!
-/-output "eDP-2" {
-    mode "2560x1600@239.998993"
-    position x=2560 y=0
-    variable-refresh-rate
+output "HDMI-A-1" {
+    mode "1920x1080@60.000"
+    scale 1
+    position x=0 y=0
+}
+output "DP-1" {
+    mode "2560x1440@74.599"
+    scale 1
+    position x=1921 y=0
+}
+output "DP-3" {
+    mode "2560x1440@74.599"
+    scale 1
+    position x=2020 y=0
+}
+output "eDP-1" {
+    mode "3072x1920@60.001"
+    scale 1.75
+    position x=2417 y=1440
 }
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
@@ -99,6 +113,7 @@ input {
 layout {
     // Set gaps around windows in logical pixels.
     background-color "transparent"
+    gaps 12
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
     //   or right edge of the screen.
@@ -133,12 +148,13 @@ layout {
     //
     // Alternatively, you can override it with a window rule called
     // `draw-border-with-background`.
+    // Colors come from noctalia.kdl so the ring follows the Noctalia palette.
+    focus-ring {
+        width 2
+    }
     border {
         off
         width 4
-        active-color   "#707070"      // Neutral gray
-        inactive-color "#d0d0d0"      // Light gray
-        urgent-color   "#cc4444"      // Softer red
     }
     shadow {
         softness 30
@@ -150,8 +166,29 @@ layout {
     }
 }
 layer-rule {
-    match namespace="^quickshell$"
+    match namespace="^noctalia-wallpaper"
     place-within-backdrop true
+}
+// Blur the windows behind Noctalia instead of sampling only the wallpaper.
+// A wide xray sample leaves wallpaper-colored pixels on rounded corners.
+layer-rule {
+    match namespace=r#"^noctalia-(bar-[^"]+|notification|dock|panel|attached-panel|osd)$"#
+    background-effect {
+        xray false
+    }
+}
+layer-rule {
+    match namespace="noctalia-window-switcher"
+    background-effect {
+        blur true
+        xray false
+    }
+}
+blur {
+    passes 2
+    offset 2.0
+    noise 0.02
+    saturation 1.2
 }
 overview {
     workspace-shadow {
@@ -164,6 +201,7 @@ overview {
 // See the binds section below for more spawn examples.
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "fcitx5"
+spawn-at-startup "noctalia"
 environment {
   LANG "zh_CN.UTF-8"
   LANGUAGE "zh_CN:zh"
@@ -217,6 +255,16 @@ animations {
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
+// Rounded, clipped windows with blur behind translucent clients.
+window-rule {
+    geometry-corner-radius 16
+    clip-to-geometry true
+    draw-border-with-background false
+    background-effect {
+        blur true
+        xray false
+    }
+}
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
 window-rule {
@@ -225,12 +273,6 @@ window-rule {
     // You can get away with just app-id="wezterm" if you want.
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
     default-column-width {}
-}
-window-rule {
-    match app-id=r#"^org\.gnome\."#
-    draw-border-with-background false
-    geometry-corner-radius 12
-    clip-to-geometry true
 }
 window-rule {
     match app-id=r#"^gnome-control-center$"#
@@ -267,17 +309,13 @@ window-rule {
     match app-id="flameshot"
     open-floating true
 }
-// Open dms windows as floating by default
 window-rule {
-    match app-id=r#"org.quickshell$"#
-    match app-id=r#"com.danklinux.dms$"#
-    open-floating true
+    match app-id="dev.noctalia.Noctalia"
+    open-floating false
 }
-// Settings 主窗口参与平铺（覆盖上一则规则；标题随语言为 Settings / 设置）
 window-rule {
-    match app-id=r#"org.quickshell$"#
-    match app-id=r#"com.danklinux.dms$"#
-    match title=r#"^(Settings|设置)$"#
+    match app-id="wechat"
+    match app-id="com.tencent.WeChat"
     open-floating false
 }
 debug {
@@ -294,11 +332,208 @@ recent-windows {
     }
 }
 
-// Include dms files
-include optional=true "dms/colors.kdl"
-include optional=true "dms/layout.kdl"
-include optional=true "dms/alttab.kdl"
-include optional=true "dms/binds.kdl"
-include optional=true "dms/outputs.kdl"
-include optional=true "dms/cursor.kdl"
-include optional=true "dms/input.kdl"
+binds {
+    // === System & Overview ===
+    Mod+D repeat=false { toggle-overview; }
+    Mod+Tab repeat=false { toggle-overview; }
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    // === Application Launchers ===
+    Mod+T hotkey-overlay-title="Open Terminal" { spawn "ghostty"; }
+    Mod+Space hotkey-overlay-title="Application Launcher" {
+        spawn "noctalia" "msg" "panel-toggle" "launcher";
+    }
+    Mod+V hotkey-overlay-title="Clipboard Manager" {
+        spawn "noctalia" "msg" "panel-toggle" "clipboard";
+    }
+    Super+X hotkey-overlay-title="Power Menu: Toggle" { spawn "noctalia" "msg" "panel-toggle" "session"; }
+    Mod+Comma hotkey-overlay-title="Settings" {
+        spawn "noctalia" "msg" "settings-toggle";
+    }
+    Mod+Y hotkey-overlay-title="Browse Wallpapers" {
+        spawn "noctalia" "msg" "panel-toggle" "wallpaper";
+    }
+    Mod+N hotkey-overlay-title="Notification Center" {
+        spawn "noctalia" "msg" "panel-toggle" "control-center" "notifications";
+    }
+
+    // === Security ===
+    Mod+Alt+L hotkey-overlay-title="Lock Screen" {
+        spawn "noctalia" "msg" "session" "lock";
+    }
+    Mod+Shift+E { quit; }
+
+    // === Audio Controls ===
+    XF86AudioRaiseVolume allow-when-locked=true {
+        spawn "noctalia" "msg" "volume-up" "3";
+    }
+    XF86AudioLowerVolume allow-when-locked=true {
+        spawn "noctalia" "msg" "volume-down" "3";
+    }
+    XF86AudioMute allow-when-locked=true {
+        spawn "noctalia" "msg" "volume-mute";
+    }
+    XF86AudioMicMute allow-when-locked=true {
+        spawn "noctalia" "msg" "mic-mute";
+    }
+    XF86AudioPause allow-when-locked=true {
+        spawn "noctalia" "msg" "media" "toggle";
+    }
+    XF86AudioPlay allow-when-locked=true {
+        spawn "noctalia" "msg" "media" "toggle";
+    }
+    XF86AudioPrev allow-when-locked=true {
+        spawn "noctalia" "msg" "media" "previous";
+    }
+    XF86AudioNext allow-when-locked=true {
+        spawn "noctalia" "msg" "media" "next";
+    }
+
+    // === Brightness Controls ===
+    XF86MonBrightnessUp allow-when-locked=true {
+        spawn "noctalia" "msg" "brightness-up" "current" "5";
+    }
+    XF86MonBrightnessDown allow-when-locked=true {
+        spawn "noctalia" "msg" "brightness-down" "current" "5";
+    }
+
+    // === Window Management ===
+    Mod+Q repeat=false { close-window; }
+    Mod+M { maximize-column; }
+    Mod+Shift+M { fullscreen-window; }
+    Mod+Shift+T { toggle-window-floating; }
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    Mod+W { toggle-column-tabbed-display; }
+
+    // === Focus Navigation ===
+    Mod+Left  { focus-column-left; }
+    Mod+Down  { focus-window-down; }
+    Mod+Up    { focus-window-up; }
+    Mod+Right { focus-column-right; }
+    Mod+H     { focus-column-left; }
+    Mod+J     { focus-workspace-down; }
+    Mod+K     { focus-workspace-up; }
+    Mod+L     { focus-column-right; }
+
+    // === Window Movement ===
+    Mod+Shift+Left  { move-column-left; }
+    Mod+Shift+Down  { move-window-down; }
+    Mod+Shift+Up    { move-window-up; }
+    Mod+Shift+Right { move-column-right; }
+    Mod+Shift+H     { move-column-left; }
+    Mod+Shift+J     { move-window-down; }
+    Mod+Shift+K     { move-window-up; }
+    Mod+Shift+L     { move-column-right; }
+
+    // === Column Navigation ===
+    Mod+Home { focus-column-first; }
+    Mod+End  { focus-column-last; }
+    Mod+Ctrl+Home { move-column-to-first; }
+    Mod+Ctrl+End  { move-column-to-last; }
+
+    // === Monitor Navigation ===
+    Mod+Ctrl+Left  { focus-monitor-left; }
+    Mod+Ctrl+Right { focus-monitor-right; }
+    Mod+Ctrl+H     { focus-monitor-left; }
+    Mod+Ctrl+J     { focus-monitor-down; }
+    Mod+Ctrl+K     { focus-monitor-up; }
+    Mod+Ctrl+L     { focus-monitor-right; }
+
+    // === Move to Monitor ===
+    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+
+    // === Workspace Navigation ===
+    Mod+Page_Down { focus-workspace-down; }
+    Mod+Page_Up   { focus-workspace-up; }
+    Mod+U         { focus-window-down; }
+    Mod+I         { focus-window-up; }
+    Mod+Ctrl+Down { move-column-to-workspace-down; }
+    Mod+Ctrl+Up   { move-column-to-workspace-up; }
+    Mod+Ctrl+U    { move-column-to-workspace-down; }
+    Mod+Ctrl+I    { move-column-to-workspace-up; }
+
+    // === Move Workspaces ===
+    Mod+Shift+Page_Down { move-workspace-down; }
+    Mod+Shift+Page_Up   { move-workspace-up; }
+    Mod+Shift+U         { move-workspace-down; }
+    Mod+Shift+I         { move-workspace-up; }
+
+    // === Mouse Wheel Navigation ===
+    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+
+    Mod+WheelScrollRight      { focus-column-right; }
+    Mod+WheelScrollLeft       { focus-column-left; }
+    Mod+Ctrl+WheelScrollRight { move-column-right; }
+    Mod+Ctrl+WheelScrollLeft  { move-column-left; }
+
+    Mod+Shift+WheelScrollDown      { focus-column-right; }
+    Mod+Shift+WheelScrollUp        { focus-column-left; }
+    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
+    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+
+    // === Numbered Workspaces ===
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+
+    // === Move to Numbered Workspaces ===
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+
+    // === Column Management ===
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+    Mod+Period { expel-window-from-column; }
+
+    // === Sizing & Layout ===
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+R { reset-window-height; }
+    Mod+Ctrl+F { expand-column-to-available-width; }
+    Mod+C { center-column; }
+    Mod+Ctrl+C { center-visible-columns; }
+
+    // === Manual Sizing ===
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    // === Screenshots ===
+    XF86Launch1 { screenshot; }
+    Ctrl+XF86Launch1 { screenshot-screen; }
+    Alt+XF86Launch1 { screenshot-window; }
+    Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+
+    // === System Controls ===
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    Mod+Shift+P { power-off-monitors; }
+}
+
+// Generated by Noctalia. Missing until the niri template has been applied once.
+include optional=true "noctalia.kdl"
