@@ -6,6 +6,12 @@ For more information see:
 * https://github.com/ryanoasis/nerd-fonts/
 * https://github.com/ryanoasis/nerd-fonts/releases/latest/
 
+# HarmonyOS Sans
+
+HarmonyOS Sans Fonts are used. Copyright 2021 Huawei Device Co., Ltd.
+The files under `harmonyos-sans/` are unmodified and include `LICENSE.txt`.
+Noctalia's shell font is `HarmonyOS Sans SC`.
+
 # PingFang (苹方)
 
 `PingFang.ttc` is Apple's PingFang TrueType Collection, useful as a CJK

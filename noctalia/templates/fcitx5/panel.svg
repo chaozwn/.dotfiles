@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="9" width="64" height="64" rx="16" fill="{{ colors.shadow.default.hex }}" fill-opacity="0.28"/>
+  <rect x="8.5" y="6.5" width="63" height="63" rx="14" fill="{{ colors.surface_container.default.hex }}" stroke="{{ colors.outline_variant.default.hex }}" stroke-width="1"/>
+</svg>

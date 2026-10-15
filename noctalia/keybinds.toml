@@ -1,0 +1,8 @@
+# Launcher / search picker: vim-style dismiss and list movement.
+# Escape, arrow keys, and the other default chords stay in place.
+[keybinds]
+cancel = ["escape", "ctrl+bracketleft"]
+left = ["left", "ctrl+h"]
+down = ["down", "ctrl+n", "ctrl+j"]
+up = ["up", "ctrl+p", "ctrl+k"]
+right = ["right", "ctrl+l"]

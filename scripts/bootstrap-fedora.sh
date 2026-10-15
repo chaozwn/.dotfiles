@@ -34,7 +34,8 @@ sudo dnf install -y \
   ImageMagick libgomp unar mediainfo glow gdu protobuf-compiler chafa git-delta \
   coreutils neovim gum gh \
   wl-clipboard xclip xsel \
-  jetbrains-mono-fonts 
+  jetbrains-mono-fonts \
+  niri noctalia adw-gtk3-theme qt6ct fcitx5 
 
 if [ "${DOTFILES_FEDORA_COPR:-1}" = "1" ]; then
   echo "==> Enabling COPR (starship, bottom, lazygit, yazi)..."
@@ -71,3 +72,4 @@ fi
 echo "ℹ️  Not covered here: ripgrep-all, ast-grep, numbat, nvm (install from upstream)."
 echo "ℹ️  Fonts: jetbrains-mono-fonts is installed; for Nerd-patched glyphs use ~/.dotfiles/fonts/*.ttf (see install_fonts.sh)."
 echo "ℹ️  Match Mac workflow: clone this repo to ~/.dotfiles and run bash install for dotbot symlinks."
+echo "ℹ️  Noctalia look is noctalia/appearance.toml. bash install writes ~/图片/wallpaper into ~/.config/noctalia/wallpaper.toml and points qt6ct at the generated palette."

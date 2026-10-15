@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- {{ mode }} {{ colors.primary.default.hex }} {{ colors.on_primary.default.hex }} {{ colors.on_surface.default.hex }} {{ colors.on_surface_variant.default.hex }} {{ colors.surface_container.default.hex }} {{ colors.outline.default.hex }} {{ colors.outline_variant.default.hex }} -->
+<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="8" cy="8" r="5.2" fill="none" stroke="{{ colors.on_surface_variant.default.hex }}" stroke-width="1.4"/>
+  <circle cx="8" cy="8" r="2.3" fill="{{ colors.primary.default.hex }}"/>
+</svg>

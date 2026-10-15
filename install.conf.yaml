@@ -26,11 +26,26 @@
     ~/.config/yabai: ./yabai
     ~/.config/ghostty: ./ghostty
     ~/.config/niri: ./niri
+    ~/.config/noctalia/appearance.toml:
+      path: ./noctalia/appearance.toml
+      if: '[ "$(uname)" = "Linux" ]'
+    ~/.config/noctalia/keybinds.toml:
+      path: ./noctalia/keybinds.toml
+      if: '[ "$(uname)" = "Linux" ]'
     ~/.config/environment.d/90-session.conf:
       path: ./environment.d/90-session.conf
       if: '[ "$(uname)" = "Linux" ] && command -v niri >/dev/null 2>&1'
     ~/.config/fcitx5/config:
       path: ./fcitx5/config
+      if: '[ "$(uname)" = "Linux" ]'
+    ~/.config/fcitx5/conf/classicui.conf:
+      path: ./fcitx5/conf/classicui.conf
+      if: '[ "$(uname)" = "Linux" ]'
+    ~/.config/noctalia/templates.toml:
+      path: ./noctalia/templates.toml
+      if: '[ "$(uname)" = "Linux" ]'
+    ~/.config/noctalia/templates:
+      path: ./noctalia/templates
       if: '[ "$(uname)" = "Linux" ]'
     # Firefox profiles live under $XDG_CONFIG_HOME/mozilla, but native messaging
     # hosts are still read from ~/.mozilla (Firefox 155). Noctalia rewrites this
@@ -129,3 +144,4 @@
 - shell:
     - git submodule sync --recursive
     - git submodule update --init --recursive --remote
+    - if [ "$(uname)" = "Linux" ]; then bash scripts/setup_noctalia_desktop.sh; fi

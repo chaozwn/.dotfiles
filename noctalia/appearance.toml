@@ -1,0 +1,85 @@
+# Desktop look. Machine-specific wallpaper paths live in wallpaper.toml,
+# written by scripts/setup_noctalia_desktop.sh. GUI overrides in
+# ~/.local/state/noctalia/settings.toml win over this file.
+# HarmonyOS Sans Fonts are used (Huawei Device Co., Ltd.; fonts/harmonyos-sans/LICENSE.txt).
+
+[bar]
+order = [ "Jayce-Bar" ]
+
+[bar.Jayce-Bar]
+background_opacity = 0.62
+compositor_blur = true
+concave_edge_corners = true
+enabled = true
+margin_edge = 8
+margin_ends = 10
+radius = 16
+shadow = true
+
+[battery]
+warning_threshold = 39
+
+[backdrop]
+blur_intensity = 0.55
+enabled = true
+tint_intensity = 0.28
+
+[dock]
+background_opacity = 0.68
+cross_axis_padding = 4
+enabled = true
+icon_size = 30
+launcher_position = "start"
+main_axis_padding = 8
+margin_edge = 8
+position = "left"
+radius = 16
+shadow = true
+
+[location]
+address = "上海"
+auto_locate = true
+
+[notification]
+background_opacity = 0.78
+
+[osd]
+background_opacity = 0.78
+
+[shell]
+card_borders = false
+corner_radius_scale = 1.2
+font_family = "HarmonyOS Sans SC"
+lang = "zh-Hans"
+screen_time_enabled = true
+
+[shell.greeter_sync]
+auto_sync = true
+privilege_command = "pkexec"
+
+[shell.panel]
+open_near_click_session = true
+transparency_mode = "glass"
+
+[shell.screenshot]
+confirm_region = true
+
+[shell.window_switcher]
+style = "compact"
+
+[theme]
+community_palette = "Oxocarbon"
+mode = "auto"
+shell_mode = "auto"
+source = "wallpaper"
+wallpaper_scheme = "m3-content"
+
+[theme.templates]
+builtin_ids = [ "ghostty", "gtk3", "gtk4", "helix", "niri", "qt", "starship" ]
+community_ids = [ "neovim", "tmux", "pywalfox" ]
+enable_community_templates = true
+
+[wallpaper]
+fill_mode = "crop"
+transition = [ "fade" ]
+transition_duration = 1500

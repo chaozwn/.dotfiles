@@ -15,7 +15,7 @@ install_fonts() {
     mkdir -p ~/.local/share/fonts
     shopt -s nullglob
     local fonts
-    fonts=(~/.dotfiles/fonts/*.ttf ~/.dotfiles/fonts/*.ttc ~/.dotfiles/fonts/*.otf)
+    fonts=(~/.dotfiles/fonts/*.ttf ~/.dotfiles/fonts/*.ttc ~/.dotfiles/fonts/*.otf ~/.dotfiles/fonts/harmonyos-sans/*.ttf)
     shopt -u nullglob
     if [ "${#fonts[@]}" -gt 0 ]; then
       cp "${fonts[@]}" ~/.local/share/fonts/

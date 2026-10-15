@@ -1,0 +1,39 @@
+# Fcitx5 candidate window. Rendered whenever the Noctalia palette changes
+# (wallpaper, light/dark, or an explicit template apply).
+
+[theme.templates.user.fcitx5]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/fcitx5/theme.conf"
+output_path = "$XDG_DATA_HOME/fcitx5/themes/noctalia/theme.conf"
+index = 40
+
+[theme.templates.user.fcitx5_panel]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/fcitx5/panel.svg"
+output_path = "$XDG_DATA_HOME/fcitx5/themes/noctalia/panel.svg"
+index = 41
+
+[theme.templates.user.fcitx5_highlight]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/fcitx5/highlight.svg"
+output_path = "$XDG_DATA_HOME/fcitx5/themes/noctalia/highlight.svg"
+index = 42
+
+[theme.templates.user.fcitx5_prev]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/fcitx5/prev.svg"
+output_path = "$XDG_DATA_HOME/fcitx5/themes/noctalia/prev.svg"
+index = 43
+
+[theme.templates.user.fcitx5_next]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/fcitx5/next.svg"
+output_path = "$XDG_DATA_HOME/fcitx5/themes/noctalia/next.svg"
+index = 44
+
+[theme.templates.user.fcitx5_arrow]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/fcitx5/arrow.svg"
+output_path = "$XDG_DATA_HOME/fcitx5/themes/noctalia/arrow.svg"
+index = 45
+
+[theme.templates.user.fcitx5_radio]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/fcitx5/radio.svg"
+output_path = "$XDG_DATA_HOME/fcitx5/themes/noctalia/radio.svg"
+index = 46
+post_hook = "bash '{{ config_dir }}/templates/fcitx5/apply.sh'"
+hook_async = false

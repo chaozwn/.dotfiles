@@ -22,8 +22,9 @@ This folder only holds **my customization delta**, not the upstream dictionary /
 | `default.custom.yaml`         | Global tweaks: page size, Shift_L=commit_code, key bindings (no schema list override; rime-ice's own list stands) |
 | `rime_ice.custom.yaml`        | Hooks `lua_processor@vim_mode` into the rime_ice schema and registers a `vmode` switch (on by default) |
 | `lua/vim_mode.lua`            | The processor itself: Esc / Ctrl+[ clears candidates and switches to ASCII; i/a/o/c leaves normal-mode state without forcing CN/ASCII afterwards |
-| `squirrel.custom.yaml`        | macOS: solarized_dark theme + per-app `vmode: true` (Cursor, VSCode, kitty, Ghostty, JetBrains, Obsidian, …) |
+| `squirrel.custom.yaml`        | macOS: Noctalia color scheme + per-app `vmode: true` (Cursor, VSCode, kitty, Ghostty, JetBrains, Obsidian, …) |
 | `fcitx5.custom.yaml`          | Linux: per-app initial ASCII / punctuation options, plus explicit `vmode: true` for common editor/shell app ids |
+| `../noctalia/templates/fcitx5` | Linux candidate window: rounded panel, HarmonyOS Sans SC, colors re-rendered when the Noctalia palette changes |
 
 `*.custom.yaml` is gitignored by rime-ice itself, so layering them in won't conflict with `git pull` in the rime-ice user dir.
 
