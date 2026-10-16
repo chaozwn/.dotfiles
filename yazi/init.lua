@@ -3,20 +3,79 @@ require("smart-enter"):setup {
 }
 require("eza-preview"):setup()
 
-local tokyonight_theme = require("yatline-tokyonight"):setup "moon"
+-- Yatline expects color strings. Read them from the generated flavor so a
+-- wallpaper change updates the bar on the next Yazi start.
+local function flavor_text()
+  local root = os.getenv("XDG_CONFIG_HOME") or ((os.getenv("HOME") or "") .. "/.config")
+  local file = io.open(root .. "/yazi/flavors/noctalia.yazi/flavor.toml", "r")
+  if not file then
+    return ""
+  end
+  local text = file:read("*a")
+  file:close()
+  return text
+end
+
+local flavor = flavor_text()
+
+local function flavor_hex(section, key, part)
+  local body = flavor:match("%[" .. section .. "%]([^%[]*)") or ""
+  local row = body:match("\n%s*" .. key .. "%s*=%s*{[^\n]*")
+  if not row then
+    return nil
+  end
+  return row:match(part .. '%s*=%s*"(#%x%x%x%x%x%x)"')
+end
+
+local noctalia_theme = {
+  section_separator = { open = "", close = "" },
+  part_separator = { open = "", close = "" },
+  inverse_separator = { open = "", close = "" },
+
+  style_a = {
+    fg = flavor_hex("mode", "normal_main", "fg"),
+    bg_mode = {
+      normal = flavor_hex("mode", "normal_main", "bg"),
+      select = flavor_hex("mode", "select_main", "bg"),
+      un_set = flavor_hex("mode", "unset_main", "bg"),
+    },
+  },
+  style_b = {
+    fg = flavor_hex("mode", "normal_alt", "fg"),
+    bg = flavor_hex("mode", "normal_alt", "bg"),
+  },
+  style_c = {
+    fg = flavor_hex("mgr", "cwd", "fg"),
+    bg = flavor_hex("which", "mask", "bg"),
+  },
+
+  permissions_t_fg = flavor_hex("status", "perm_type", "fg"),
+  permissions_r_fg = flavor_hex("status", "perm_read", "fg"),
+  permissions_w_fg = flavor_hex("status", "perm_write", "fg"),
+  permissions_x_fg = flavor_hex("status", "perm_exec", "fg"),
+  permissions_s_fg = flavor_hex("status", "perm_sep", "fg"),
+
+  selected = { icon = "󱊅 ", fg = flavor_hex("mgr", "marker_selected", "fg") },
+  copied = { icon = "󰆏 ", fg = flavor_hex("mgr", "marker_copied", "fg") },
+  cut = { icon = "󰆐 ", fg = flavor_hex("mgr", "marker_cut", "fg") },
+
+  total = { icon = "󰆙 ", fg = flavor_hex("mode", "select_main", "bg") },
+  success = { icon = "󰄸 ", fg = flavor_hex("mode", "normal_main", "bg") },
+  failed = { icon = "󰱝 ", fg = flavor_hex("notify", "title_error", "fg") },
+}
 
 require("searchjump"):setup {
-  unmatch_fg = "#545c7e",
-  match_str_fg = "#c8d3f5",
-  match_str_bg = "#3e68d7",
-  label_fg = "#c8d3f5",
-  label_bg = "#ff007c",
+  unmatch_fg = flavor_hex("tabs", "inactive", "fg"),
+  match_str_fg = flavor_hex("mode", "normal_main", "fg"),
+  match_str_bg = flavor_hex("mode", "normal_main", "bg"),
+  label_fg = flavor_hex("mode", "unset_main", "fg"),
+  label_bg = flavor_hex("mode", "unset_main", "bg"),
   only_current = false, -- only search the current window
   -- search_patterns = {}  -- demo:{"%.e%d+","s%d+e%d+"}
 }
 
 require("yatline"):setup {
-  theme = tokyonight_theme,
+  theme = noctalia_theme,
   tab_width = 20,
   tab_use_inverse = false,
   show_background = true,

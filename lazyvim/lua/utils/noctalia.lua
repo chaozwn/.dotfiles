@@ -1,51 +1,7 @@
 local M = {}
 
-local clear_groups = {
-  "Normal",
-  "NormalNC",
-  "SignColumn",
-  "LineNr",
-  "CursorLineNr",
-  "LineNrAbove",
-  "LineNrBelow",
-  "EndOfBuffer",
-  "FoldColumn",
-  "WinSeparator",
-  "VertSplit",
-  "NeoTreeNormal",
-  "NeoTreeNormalNC",
-  "NeoTreeEndOfBuffer",
-  "NeoTreeWinSeparator",
-  "NvimTreeNormal",
-  "NvimTreeNormalNC",
-  "NvimTreeEndOfBuffer",
-  "NvimTreeWinSeparator",
-}
-
 local function theme_file()
   return vim.fn.stdpath("config") .. "/lua/matugen.lua"
-end
-
---- Drop the editor background so Ghostty's translucent surface shows through.
---- Floating windows and pickers keep the opaque palette from matugen.lua.
-local function clear_background()
-  for _, group in ipairs(clear_groups) do
-    local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = group, link = false })
-    if not ok or type(hl) ~= "table" then
-      vim.api.nvim_set_hl(0, group, { bg = "none" })
-    else
-      vim.api.nvim_set_hl(0, group, {
-        fg = hl.fg,
-        sp = hl.sp,
-        bold = hl.bold,
-        italic = hl.italic,
-        underline = hl.underline,
-        undercurl = hl.undercurl,
-        strikethrough = hl.strikethrough,
-        reverse = hl.reverse,
-      })
-    end
-  end
 end
 
 --- The generated matugen.lua also listens for SIGUSR1 and would paint an
@@ -92,7 +48,6 @@ function M.apply(opts)
     return false
   end
 
-  clear_background()
   claim_signal()
   vim.g.colors_name = "noctalia"
   if opts.redraw then

@@ -86,6 +86,5 @@ keybind = ctrl+/=csi:47;5u
 keybind = ctrl+~=csi:126;5u
 keybind = ctrl+`=csi:96;5u
 
-# 半透明，让 niri 模糊透出壁纸。Neovim 编辑区背景由主题清掉，否则会盖住这层。
-background-opacity = 0.90
+background-opacity = 1
 theme = noctalia

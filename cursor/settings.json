@@ -391,7 +391,7 @@
   ],
   "vim.flash.enable": true,
   "vim.flash.ignorecase": true,
-  "workbench.colorTheme": "Evondev Dracula Night Contrast",
+  "workbench.colorTheme": "Noctalia",
   "workbench.iconTheme": "material-icon-theme",
   // 设置vim
   "workbench.settings.editor": "json",

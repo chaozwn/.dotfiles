@@ -7,8 +7,8 @@
 order = [ "Jayce-Bar" ]
 
 [bar.Jayce-Bar]
-background_opacity = 0.62
-compositor_blur = true
+background_opacity = 1.0
+compositor_blur = false
 concave_edge_corners = true
 enabled = true
 margin_edge = 8
@@ -20,12 +20,12 @@ shadow = true
 warning_threshold = 39
 
 [backdrop]
-blur_intensity = 0.55
-enabled = true
-tint_intensity = 0.28
+blur_intensity = 0.0
+enabled = false
+tint_intensity = 0.0
 
 [dock]
-background_opacity = 0.68
+background_opacity = 1.0
 cross_axis_padding = 4
 enabled = true
 icon_size = 30
@@ -41,10 +41,10 @@ address = "上海"
 auto_locate = true
 
 [notification]
-background_opacity = 0.78
+background_opacity = 1.0
 
 [osd]
-background_opacity = 0.78
+background_opacity = 1.0
 
 [shell]
 card_borders = false
@@ -59,7 +59,7 @@ privilege_command = "pkexec"
 
 [shell.panel]
 open_near_click_session = true
-transparency_mode = "glass"
+transparency_mode = "solid"
 
 [shell.screenshot]
 confirm_region = true
@@ -76,7 +76,7 @@ wallpaper_scheme = "m3-content"
 
 [theme.templates]
 builtin_ids = [ "ghostty", "gtk3", "gtk4", "helix", "niri", "qt", "starship" ]
-community_ids = [ "neovim", "tmux", "pywalfox" ]
+community_ids = [ "claude-code", "codex", "pywalfox", "neovim", "vscode", "fcitx5", "lazygit", "tmux", "yazi" ]
 enable_community_templates = true
 
 [wallpaper]
