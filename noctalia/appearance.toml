@@ -3,18 +3,7 @@
 # ~/.local/state/noctalia/settings.toml win over this file.
 # HarmonyOS Sans Fonts are used (Huawei Device Co., Ltd.; fonts/harmonyos-sans/LICENSE.txt).
 
-[bar]
-order = [ "Jayce-Bar" ]
-
-[bar.Jayce-Bar]
-background_opacity = 1.0
-compositor_blur = false
-concave_edge_corners = true
-enabled = true
-margin_edge = 8
-margin_ends = 10
-radius = 16
-shadow = true
+# Built-in default bar. Omit a custom [bar.*] so Noctalia uses its stock top bar.
 
 [battery]
 warning_threshold = 39
