@@ -90,7 +90,7 @@ input {
 output "HDMI-A-1" {
     mode "1920x1080@60.000"
     scale 1
-    position x=0 y=0
+    position x=2335 y=360
 }
 output "DP-1" {
     mode "2560x1440@74.599"
