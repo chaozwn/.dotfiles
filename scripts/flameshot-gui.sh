@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Pick one monitor and open Flameshot on that image.
+# Capture the monitor under the pointer and open Flameshot on that image.
 #
 # Flameshot 13 lays the toolbar out using Qt screen rectangles. These outputs
 # do not start at (0, 0), and the laptop panel is 1.75x, so on that screen the
@@ -26,9 +26,12 @@ if [[ -f "$snapshot" ]]; then
   rm -f "$snapshot"
 fi
 
-output=$(slurp -o -r -f '%o' </dev/null | tr -d '\n') || exit 0
-if [[ -z "$output" || "$output" == "<unknown>" ]]; then
-  exit 0
+output=$(/usr/bin/python3 "$HOME/.dotfiles/scripts/niri-pointer-output.py" 2>/dev/null || true)
+if [[ -z "$output" ]]; then
+  output=$(niri msg focused-output | sed -n 's/.*(\([^)]*\)).*/\1/p' | head -1)
+fi
+if [[ -z "$output" ]]; then
+  exit 1
 fi
 
 layout=$(niri msg --json outputs | /usr/bin/python3 -c '
