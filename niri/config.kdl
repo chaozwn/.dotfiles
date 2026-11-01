@@ -438,8 +438,8 @@ binds {
     Mod+Up    { focus-window-up; }
     Mod+Right { focus-column-right; }
     Mod+H     { focus-column-left; }
-    Mod+J     { focus-workspace-down; }
-    Mod+K     { focus-workspace-up; }
+    Mod+J     { spawn-sh "\"$HOME/.dotfiles/scripts/niri-focus-vertical.sh\" down"; }
+    Mod+K     { spawn-sh "\"$HOME/.dotfiles/scripts/niri-focus-vertical.sh\" up"; }
     Mod+L     { focus-column-right; }
 
     // === Window Movement ===
