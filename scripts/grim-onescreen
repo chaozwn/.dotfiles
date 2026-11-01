@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Flameshot's grim adapter captures every output as one image. On this niri
-# layout the monitors use different scales, so that image does not line up
-# with either screen. When a screen was chosen for this capture, pass it to
-# the real grim. Every other invocation is unchanged.
+# Flameshot calls `grim -t ppm <file>` and then sizes its editor to that image.
+# A physical capture of the 1.75x laptop panel is larger than the panel's
+# logical size, so the editor spills onto the other monitor. Capture the chosen
+# output, then scale it to that output's logical size.
 set -euo pipefail
 
 real=/usr/bin/grim
@@ -16,12 +16,56 @@ for arg in "$@"; do
   fi
 done
 
-if [[ "$wants_ppm" == 1 && -f "$request" ]]; then
-  output=$(tr -d '\n' <"$request")
-  rm -f "$request"
-  if [[ -n "$output" ]]; then
-    exec "$real" -o "$output" "$@"
-  fi
+if [[ "$wants_ppm" != 1 || ! -f "$request" ]]; then
+  exec "$real" "$@"
 fi
 
-exec "$real" "$@"
+output=$(tr -d '\n' <"$request")
+rm -f "$request"
+if [[ -z "$output" ]]; then
+  exec "$real" "$@"
+fi
+
+"$real" -o "$output" "$@"
+
+dest=""
+skip_next=0
+for arg in "$@"; do
+  if [[ "$skip_next" == 1 ]]; then
+    skip_next=0
+    continue
+  fi
+  case "$arg" in
+    -t|-s|-o|-g|--scale)
+      skip_next=1
+      ;;
+    -*)
+      ;;
+    *)
+      dest=$arg
+      ;;
+  esac
+done
+
+if [[ -z "$dest" || ! -f "$dest" ]]; then
+  exit 0
+fi
+
+read -r width height scale < <(niri msg --json outputs | /usr/bin/python3 -c '
+import json, sys
+name = sys.argv[1]
+outputs = json.load(sys.stdin)
+info = outputs.get(name)
+if info is None:
+    raise SystemExit(1)
+logical = info["logical"]
+print(int(logical["width"]), int(logical["height"]), logical["scale"])
+' "$output") || exit 0
+
+if awk "BEGIN { exit !($scale == 1) }"; then
+  exit 0
+fi
+
+scaled=$(mktemp --suffix=.ppm)
+magick "$dest" -filter Lanczos -resize "${width}x${height}!" "$scaled"
+mv "$scaled" "$dest"

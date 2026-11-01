@@ -202,6 +202,7 @@ overview {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "fcitx5"
 spawn-at-startup "noctalia"
+spawn-at-startup "bash" "/home/zhaown/.dotfiles/scripts/flameshot-clipboard-bridge.sh"
 environment {
   LANG "zh_CN.UTF-8"
   LANGUAGE "zh_CN:zh"
