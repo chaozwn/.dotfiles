@@ -10,6 +10,26 @@
 
 set -euo pipefail
 
+# Flameshot 14 only captures through the Screenshot portal. niri 26.04 rejects
+# that call when more than one monitor is connected, so the GUI never opens.
+# 13.3 still has useGrimAdapter and captures with grim.
+install_flameshot() {
+  local ver
+  ver=$(flameshot --version 2>/dev/null || true)
+  if [[ "$ver" != *"v13."* ]]; then
+    local rpm="https://kojipkgs.fedoraproject.org/packages/flameshot/13.3.0/4.fc44/x86_64/flameshot-13.3.0-4.fc44.x86_64.rpm"
+    echo "==> Installing Flameshot 13.3 (grim capture; 14's portal path fails on multi-monitor niri 26.04)..."
+    if ! sudo dnf install -y --allowerasing "$rpm"; then
+      sudo rpm -Uvh --oldpackage "$rpm"
+    fi
+  fi
+
+  # Keep dnf from replacing this with Flameshot 14, which cannot capture here.
+  if ! dnf versionlock list 2>/dev/null | grep -q 'flameshot'; then
+    sudo dnf versionlock add flameshot || true
+  fi
+}
+
 install_lazydocker() {
   if command -v lazydocker &>/dev/null; then
     return
@@ -34,6 +54,7 @@ sudo dnf install -y \
   ImageMagick libgomp unar mediainfo glow gdu protobuf-compiler chafa git-delta \
   coreutils neovim gum gh \
   wl-clipboard xclip xsel \
+  grim slurp \
   jetbrains-mono-fonts \
   niri noctalia adw-gtk3-theme qt6ct fcitx5 
 
@@ -46,6 +67,7 @@ if [ "${DOTFILES_FEDORA_COPR:-1}" = "1" ]; then
   sudo dnf install -y starship bottom lazygit yazi
 fi
 
+install_flameshot
 install_lazydocker
 
 if [ "${DOTFILES_BOB:-1}" = "1" ]; then

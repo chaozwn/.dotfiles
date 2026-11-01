@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Flameshot's grim adapter captures every output as one image. On this niri
+# layout the monitors use different scales, so that image does not line up
+# with either screen. When a screen was chosen for this capture, pass it to
+# the real grim. Every other invocation is unchanged.
+set -euo pipefail
+
+real=/usr/bin/grim
+request="${XDG_RUNTIME_DIR:-/tmp}/flameshot-output"
+
+wants_ppm=0
+for arg in "$@"; do
+  if [[ "$arg" == "ppm" ]]; then
+    wants_ppm=1
+    break
+  fi
+done
+
+if [[ "$wants_ppm" == 1 && -f "$request" ]]; then
+  output=$(tr -d '\n' <"$request")
+  rm -f "$request"
+  if [[ -n "$output" ]]; then
+    exec "$real" -o "$output" "$@"
+  fi
+fi
+
+exec "$real" "$@"

@@ -256,7 +256,10 @@ animations {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
 // Rounded, clipped windows with blur behind translucent clients.
+// Flameshot's editor is the captured image itself; rounding and clipping
+// would crop the selection.
 window-rule {
+    exclude app-id=r#"flameshot"#
     geometry-corner-radius 16
     clip-to-geometry true
     draw-border-with-background false
@@ -312,8 +315,25 @@ window-rule {
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     match app-id="zoom"
-    match app-id="flameshot"
     open-floating true
+}
+// Flameshot 13 captures with grim, then opens a normal window for the editor.
+// Float and focus it so annotation shortcuts land here, and so it does not
+// take a full column on the scrolling layout. Pins (F3) stay unfocused cards.
+window-rule {
+    match app-id=r#"^flameshot$"#
+    exclude title="^flameshot-pin$"
+    open-floating true
+    open-focused true
+    open-maximized false
+    open-fullscreen false
+}
+window-rule {
+    match app-id=r#"^flameshot$"# title="^flameshot-pin$"
+    open-floating true
+    open-focused false
+    open-maximized false
+    open-fullscreen false
 }
 window-rule {
     match app-id="dev.noctalia.Noctalia"
@@ -535,6 +555,8 @@ binds {
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
+    F1 repeat=false hotkey-overlay-title="Flameshot" { spawn-sh "\"$HOME/.dotfiles/scripts/flameshot-gui.sh\""; }
+    F3 repeat=false hotkey-overlay-title="Pin screenshot" { spawn-sh "\"$HOME/.dotfiles/scripts/flameshot-pin.sh\""; }
 
     // === System Controls ===
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }

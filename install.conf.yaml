@@ -26,6 +26,12 @@
     ~/.config/yabai: ./yabai
     ~/.config/ghostty: ./ghostty
     ~/.config/niri: ./niri
+    ~/.config/flameshot/flameshot.ini:
+      path: ./flameshot/flameshot.ini
+      if: '[ "$(uname)" = "Linux" ]'
+    ~/.local/bin/grim:
+      path: ./scripts/grim-onescreen
+      if: '[ "$(uname)" = "Linux" ]'
     ~/.config/noctalia/appearance.toml:
       path: ./noctalia/appearance.toml
       if: '[ "$(uname)" = "Linux" ]'
